@@ -1,0 +1,12 @@
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.toc
+
+# macOS metadata
+.DS_Store
+__MACOSX/
