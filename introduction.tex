@@ -1,0 +1,200 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Let \(X=(X_1,\ldots,X_n)\) be a sequence of independent uniform binary
+random variables, and let \(Y\) be obtained by passing every coordinate
+through a binary symmetric channel (BSC) with crossover probability
+\(p\in[0,1/2]\). A Boolean summary \(f(X)\) retains one bit from the
+input. Courtade and Kumar conjectured that the mutual information between
+this summary and the complete noisy observation is maximized by retaining
+one of the original coordinates~\cite{CK}. Equivalently,
+\begin{equation}
+ I(f(X);Y)\leq 1-h_2(p),
+ \label{eq:intro-ck}
+\end{equation}
+where \(h_2\) is the binary entropy function. Equality is attained by any
+\textit{dictator} defined as \(f(X)=X_i\) for some \(i \in \{1,2,\dots,n\}\).
+
+The problem is different from maximizing correlation or noise
+stability. The observation \(Y\) is an \(n\)-dimensional random vector,
+and information carried jointly by its coordinates need not decompose
+into coordinatewise contributions. For example, the parity of two noisy
+bits can contain information that is absent from either noisy bit alone.
+Consequently, results for two Boolean outputs~\cite{AGKN,PPM} or for sums
+of coordinatewise mutual informations~\cite{JW} do not directly imply
+\eqref{eq:intro-ck}. The output \(f(X)\) may also be biased, which removes
+several symmetries available in the balanced case.
+
+This paper establishes \eqref{eq:intro-ck} in full generality. The proof
+uses the correlation parameter \(\rho=1-2p\). After monotone sorting, the
+mutual information becomes an entropy functional of the posterior mean
+\(T_\rho f\). Its derivative admits an edge decomposition. The central
+step is to strengthen the entropy-constrained edge envelope by retaining
+the squared angular displacement lost in a Cauchy--Schwarz comparison.
+The pivotal sets of the same Boolean function supply the Fourier and
+logarithmic-Sobolev control needed to pay for this correction. The final
+argument is dynamical: wherever a function has more information than a
+dictator, its advantage must increase with \(\rho\). Such an advantage
+cannot return to its nonpositive value at \(\rho=1\).
+
+We also study the natural vector-valued extension in which \(f(X)\)
+contains \(k\) bits. The scalar theorem does not tensorize through the
+chain rule because conditioning on preceding output bits destroys the
+uniform input law. In fact, the coordinate benchmark is false for
+sufficiently large fixed \(k\). We give explicit shortened-Hamming
+counterexamples for \(k=8,9,10\), extend them to every \(k\geq8\), and
+formulate a threshold conjecture for \(2\leq k\leq7\).
+
+\subsection{Related Work}
+
+Courtade and Kumar introduced the full-vector problem and proved several
+structural reductions, including the monotone sorting operation used
+below~\cite{CK}. The conjecture stimulated a sequence of Fourier,
+functional-inequality, and information-geometric approaches. The
+Friedgut--Kalai--Naor theorem identifies the rigidity of Boolean functions
+whose Fourier mass is concentrated on the first two levels~\cite{FKN}.
+Samorodnitsky established the conjecture in a dimension-free high-noise
+regime and developed strengthened inequalities for the entropy of noisy
+Boolean functions~\cite{Sam,SamEntropy}. Ordentlich, Shayevitz, and
+Weinstein obtained sharper balanced high-noise bounds using Fourier
+analysis and hypercontractivity~\cite{OSW}, while Yang and Wesel gave a
+complementary calculus argument in a dimension-dependent neighborhood of
+complete noise~\cite{YW}.
+
+Yu developed a general \(\Phi\)-stability framework and subsequently
+proved broad local-optimality and balanced finite-range results using
+quantitative Fourier estimates~\cite{YuPhi,Yu,YuSharp}. Javanmard and
+Woodruff proved the dictator bound for the sum of the individual-coordinate
+mutual informations and sharpened the high-noise analysis~\cite{JW}; the
+related Boolean-hull and moment relaxations are discussed in~\cite{Gemini}.
+Li and M\'edard connected the problem to posterior moments and
+noninteractive correlation distillation~\cite{LM}, and Barnes and
+\"Ozg\"ur showed that the balanced conjecture is essentially equivalent
+to a symmetrized Li--M\'edard formulation~\cite{BO}.
+
+A second line of work seeks stronger entropy or isoperimetric statements.
+Anantharam, Bogdanov, Chakrabarti, Jayram, and Nair proposed a Hellinger
+inequality implying the conjecture~\cite{Hellinger}. Chen and Nair placed
+this proposal in an ordered family of entropy inequalities and related
+the low-noise limits to sharp cube isoperimetry~\cite{CN}. The critical
+square-root isoperimetric inequality was recently established by Durcik,
+Ivanisvili, Roos, and Xie~\cite{DIRX}. These limiting or stronger
+statements do not themselves yield the finite-noise Shannon inequality.
+
+The closest antecedent to the present proof is the differential-equation
+framework odf Chen, Gohari, and Nair~\cite{CGN}. Their entropy-flow identity
+and entropy-constrained two-point extremal formula are used here. 
+
+Two
+concurrent works establish the scalar conjecture in full
+generality~\cite{CGJLMNW,KyTran}. Chen, Gohari, Javanmard, Lin, Mirrokni,
+Nair, and Woodruff close the differential-equation program through an
+unrestricted four-moment Bellman inequality for a hybrid potential,
+using analytic reductions together with certified interval arithmetic.
+Ky and Tran instead develop an entropy-production and spectral framework.
+Their method is substantially closer to ours: both arguments use monotone
+compression, edgewise entropy-production estimates, Fourier control of
+functions with diffuse coordinate dependence, separate channel regimes,
+and a differential contradiction at the noiseless endpoint. The
+quantitative implementations differ. Our proof centers on an angular
+edge correction and logarithmic-Sobolev estimates for pivotal sets,
+whereas Ky and Tran use a profile-clock integration and selected-coordinate
+spectral estimates. Finally, neither of~\cite{CGJLMNW,KyTran} considers the \(k\)-bit extension
+studied in the present paper where we conjecture that up to $k=7,$ the most informative \(k\)-bit function follows a similar structure.
+
+Related operator and channel perspectives include principal inertia
+components~\cite{PIC} and mutual-information bounds based on adjacency
+events~\cite{HOS}. Continuous analogues and stochastic-interpolation
+variants were developed in~\cite{KOW,EMR}.
+
+The present paper additionally develops the vector-valued extension in
+which the quantizer reports \(k\) bits. For this problem, Chandar and
+Tchamkerten characterized the positive-rate asymptotics and
+gave Hamming- and Golay-code counterexamples with \(k\geq11\)~\cite{CT}.
+Huleihel and Ordentlich proved coordinate optimality at the complementary
+endpoint \(k=n-1\)~\cite{HO}. The finite-block behavior observed in our
+code search is also related qualitatively to recent results showing that
+structured Reed--Solomon-based codebooks can outperform random codebooks
+under average Hamming covering radius~\cite{RMcover}; the objective in
+that work is different from BSC mutual information.
+
+\subsection{Contributions and Organization}
+
+Our fist main contribution is Theorem~\ref{thm:CK}, which proves the
+Courtade--Kumar conjecture in every dimension and for every crossover
+probability, without any balance assumption on the Boolean function. The
+proof follows a single dynamical strategy. For
+$
+ I_f(\rho)\coloneqq I(f(X);Y_\rho),
+ \phi(\rho)\coloneqq I(X_1;Y_\rho),
+ \Delta_f(\rho)\coloneqq I_f(\rho)-\phi(\rho),
+$
+we show that a positive advantage over a coordinate projection would have
+to grow strictly as the channel becomes less noisy. Section~\ref{sec:mechanism}
+introduces the posterior representation of \(I_f\), the required Fourier
+notation, and the monotone reduction. In particular,
+Lemma~\ref{lem:sorting} shows that coordinatewise sorting preserves any
+advantage, allowing the remainder of the proof to exploit the
+edge structure of a monotone Boolean decision set. An entropy-flow
+identity expresses \(\rho I_f'(\rho)\) as an action functional of the
+posterior mean \(T_\rho f\). Section~\ref{sec:edges} then decomposes this
+action over edges of the discrete cube. The key estimate,
+Lemma~\ref{lem:edges}, strengthens the usual two-point entropy envelope by
+retaining a squared angular correction that is exact for dictators. The
+rest of the proof shows that the Boolean and spectral structure of \(f\)
+always provides enough reserve to pay for this correction.
+
+Writing \(\ell=\operatorname{arctanh}\rho\), we divide the channel into
+the small-correlation range \(0\leq\ell\leq31/20\), the intermediate
+range \(31/20\leq\ell\leq7/2\), and the near-noiseless tail
+\(\ell\geq7/2\). Equivalently, the two junctions are
+\(\rho=\tanh(31/20)\) and \(\rho=\tanh(7/2)\). These cutoffs are technical
+junctions at which the corresponding estimates meet, rather than
+asserted phase transitions in the problem. Proposition~\ref{prop:low}
+settles the small-correlation range directly, at every output bias, by
+combining a Fourier energy gap with scalar entropy bounds. In the
+intermediate range, the pivotal sets of \(f\) supply the needed reserve:
+logarithmic Sobolev inequalities control the noisy entropies of their
+indicators, and a log-sum argument combines the coordinatewise costs with
+the global edge budget. This yields
+Proposition~\ref{prop:middle-growth}, according to which
+\(\Delta_f(\rho)>0\) implies \(\Delta_f'(\rho)>0\) throughout that range.
+The bounded angular reserve is insufficient by itself near the noiseless
+endpoint, so the tail argument supplements the same edgewise inequality
+with degree-weighted Fourier information. Lemma~\ref{lem:deficit}
+identifies the relevant coordinate deficits,
+Lemma~\ref{lem:baseline} converts the information advantage into an
+entropy-funded spectral baseline, and Lemma~\ref{lem:budget} turns the
+resulting budget comparison into strict information growth.
+Proposition~\ref{prop:local} separately rules out a counterexample having
+a sufficiently influential coordinate. Section~\ref{sec:coverage}
+assembles these complementary estimates in
+Lemma~\ref{lem:coverage}, which gives the global implication
+\[
+ \Delta_f(\rho)>0\quad\Longrightarrow\quad\Delta_f'(\rho)>0.
+\]
+Since \(\Delta_f(1)=H(f(X))-\log 2\leq0\), a positive advantage cannot
+persist to the noiseless endpoint; this contradiction completes the proof
+of Theorem~\ref{thm:CK}.
+
+Our second contribution, developed in
+Section~\ref{sec:multibit-extension}, concerns the natural extension in
+which the quantizer reports \(k\) bits and the coordinate benchmark is
+\(k(1-h_2(p))\). Proposition~\ref{prop:affine-multibit} shows that affine
+linear maps cannot violate this benchmark. Nonlinear nearest-codeword
+quantizers built from linear codebooks behave differently: an exact
+high-noise expansion, expressed through the coset-leader distribution,
+produces shortened-Hamming counterexamples for \(k=8,9,10\) in
+Proposition~\ref{prop:k8-k10-counterexamples}. A direct-sum construction
+in Proposition~\ref{cor:failure-all-k-ge-8} extends the failure to every
+\(k\geq8\). For \(k<8\), exhaustive searches over several structured
+code families and Monte Carlo experiments with random codebooks find no
+violation, while also showing a clear advantage of structured codebooks
+over random ones in this finite-block regime. These findings motivate
+Conjecture~\ref{conj:seven-bit-threshold}, which predicts that coordinate
+projections remain optimal for \(2\leq k\leq7\). The appendices provide
+the scalar inequalities, logarithmic-Sobolev and Fourier estimates,
+channel-range comparisons, endpoint reductions, exact arithmetic
+certificates, and reproducible numerical diagnostics used throughout the
+proof.
+

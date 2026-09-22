@@ -1,0 +1,52 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs,array}
+\usepackage{cite}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+
+\interdisplaylinepenalty=2500
+\setlength{\emergencystretch}{1.5em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{appendixlemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Compatibility wrappers for explanatory remarks retained in technical appendices.
+\newenvironment{intuition}[1]{\begin{remark}[#1]}{\end{remark}}
+\newenvironment{notebox}{\begin{remark}}{\end{remark}}
+
+\newcommand{\E}{\mathbb E}
+\newcommand{\Ent}{\operatorname{Ent}}
+\newcommand{\Inf}{\operatorname{Inf}}
+\newcommand{\atanh}{\operatorname{atanh}}
+\newcommand{\sech}{\operatorname{sech}}
+\newcommand{\Fhat}[1]{\widehat{#1}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\diff}{\,\mathrm d}
+\newcommand{\Lapl}{\mathcal L}
+\newcommand{\degree}{d}
+\newcommand{\logodds}{\ell_\rho}
+\newcommand{\weight}{\omega}
+\newcommand{\Klsi}{K_{\mathrm{LS}}}
+\newcommand{\cutoff}{v_{\mathrm{cut}}}
+\newcommand{\edgewidth}{d_{\mathrm{edge}}}
+\newcommand{\corr}{\operatorname{corr}}
+\newcommand{\unitcost}{\operatorname{yield}}
+
+\hypersetup{
+  pdftitle={The Most Informative Bit: A Proof of the Courtade--Kumar Conjecture and Multibit Extensions},
+  pdfauthor={Ahmad Beirami and Hessam Mahdavifar},
+  pdfsubject={Boolean functions, noisy channels, and multibit quantization}
+}

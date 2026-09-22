@@ -1,0 +1,114 @@
+\section{Canonical High-Correlation Comparisons}
+\label{app:verification}\label{app:tail}
+
+The middle-range argument ends at \(\ell=7/2\). The following
+three comparisons cover the entire remaining half-line with the same
+canonical penalty \(\gamma=\lambda\alpha\). The spectral multiplier
+is \(p=(\lambda+1/\alpha)^2\); it is not replaced by the angle
+constant \(P=\pi^2/4\). The constant \(P\) still denotes the
+limit of the angle profile \(c(v)\); it supplies elementary upper
+bounds and measures the angle saving at the half-height join. Keeping
+the exact spectral multiplier \(p\) preserves the low-degree
+cancellations in the join and cutoff proofs.
+
+\subsection{Reduction to Three Comparisons}
+\label{app:scalar-map}
+
+Write \(r=\rho=\tanh\ell\), \(x=e^{-\ell}\), \(L=\log2\), and
+\(\theta=\arcsin r\). Our definitions are
+\begin{equation}
+ \begin{split}
+ \lambda&=\theta/r,qquad
+ \alpha=(\theta+\sinh\ell)/\ell,\\
+ \gamma&=\lambda\alpha,qquad d=\ell/2+5/4.
+ \end{split}
+ \label{eq:common-policy}
+\end{equation}
+As before, \(\weight(s)=\gamma s/(\gamma+s)\),
+\(d_1=[\weight(d)-\weight(1)]r^2\),
+\(d_2=[\weight(d)-\weight(2)]r^4\), and \(d_b=d_1-d_2/2\).
+The retained-variance baseline is
+\begin{align*}
+ p&=(\lambda+1/\alpha)^2,& b&=\lambda^2(2+1/\gamma),\\
+ C_d&=p\weight(d)-b,& B&=2\theta^2+C_d\phi(r)/L.
+\end{align*}
+Here \(C_d\) is a channel-dependent spectral coefficient, not an
+entropy approximation constant. The degree balances the LSI exponential
+against the entropy ratio at half the channel height; the penalty
+itself is already fixed by the dictator-centered scalar tangent.
+
+The local lemma handles influences at least
+\(a_{\rm cut}=1/[1+(8/3)x]\). For the remaining coordinates we prove:
+\begin{enumerate}
+\item The line-angle LSI yield is below \(B/\ell\) for all heights
+up to \(z=\ell/2\) (Section~\ref{app:manual-small}).
+\item The original Parseval yield is below \(B/\ell\) at the same
+join (Section~\ref{app:manual-join-direct}).
+\item That yield is below \(B/\ell\) at the cutoff height
+\(F(V)=F(\ell)/a_{\rm cut}\)
+(Section~\ref{app:manual-cutoff-common}).
+\end{enumerate}
+We first check the lower-variance sign, all-bias mean condition, and
+coefficient needed for the global endpoint principle. That principle
+then fills the interval from \(z\) to \(V\); if \(V\le z\), the
+small-height comparison already covers it. No channel subdivision is
+needed in any of these checks.
+
+\input{manual-local}
+\input{canonical-tail-checks}
+
+\subsection{Fixed Constants}
+\label{app:fixed-arithmetic}
+
+All fixed exponential comparisons follow from one positive sum and
+its geometric remainder: for \(0<y<14\),
+\[
+ E_{12}(y):=\sum_{j=0}^{12}\frac{y^j}{j!}
+ <e^y<E_{12}(y)+\frac{y^{13}}{13!(1-y/14)}.
+\]
+This proves the exponential brackets used above by rational substitution.
+
+For logarithms use, for \(|y|<1\),
+\begin{align*}
+ \log\frac{1+y}{1-y}
+ &=2\sum_{j=0}^{N-1}\frac{y^{2j+1}}{2j+1}+R_N(y),\\
+ |R_N(y)|&\le\frac{2|y|^{2N+1}}{(2N+1)(1-y^2)}.
+\end{align*}
+Taking \(y=1/3\) bounds \(\log2\); taking
+\(y=(q-1)/(q+1)\) bounds \(\log q\) for every positive rational
+\(q\). The low-correlation arithmetic uses \(N=12\).
+The basic constant bounds are
+\[
+                 3.14159<\pi<3.1416,\qquad .69314<\log2<.69315.
+\]
+For \(\pi\), use Machin's identity
+\[
+ \pi=16\arctan(1/5)-4\arctan(1/239).
+\]
+Bound the first arctangent
+between its first four and first five alternating terms, and the
+second between its first two and first three. To verify the identity,
+the tangent addition formula gives
+\[
+ \tan(4\arctan(1/5))=120/119;
+\]
+subtracting \(\arctan(1/239)\)
+gives tangent one and an angle in \((0,\pi/2)\).
+For \(\log2\), take
+the first five terms of the displayed logarithm series at \(y=1/3\)
+and bound the remainder by
+\[
+ \frac{2(1/3)^{11}}{11(1-1/9)}.
+\]
+In particular these imply the bounds used here,
+\(25/8<\pi<22/7\), \(9/4<P<5/2\), and
+\(2/3<L<3/4\). The positive exponential sums give
+\(e^3>20\), \(e^{7/2}>33\), and
+\(3/5<e^{-1/2}<5/8\).
+Square-root bounds follow by squaring positive rational endpoints.
+
+\paragraph{Completion.}
+The three comparisons, the mean condition, and the local cutoff cover
+every \(\ell\ge7/2\), including the shared endpoint. All estimates
+are printed above; no interval receipt, symbolic sign certificate, or
+external computation supplies a missing comparison.

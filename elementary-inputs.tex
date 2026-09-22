@@ -1,0 +1,111 @@
+\subsection{Tensorized Logarithmic-Sobolev Inequality}
+\label{app:lsi-proof}
+
+The coordinate estimate in Lemma~\ref{lem:deficit} uses
+\[
+             \Ent(w^2)\le2\E[w\Lapl w].
+\]
+This classical inequality measures how far the nonnegative field
+\(w^2\) is from constant by the squared differences of \(w\) across
+edges. We include its proof, including the step that makes its constant
+independent of dimension.
+
+Start with one bit. Replacing the two values of \(w\) by their absolute
+values preserves entropy and reduces their squared difference.
+Homogeneity then lets us assume \(\E w^2=1\) and write the values as
+\(\sqrt{1+s},\sqrt{1-s}\), where \(0\le s\le1\). In this notation
+\begin{align*}
+ \Ent(w^2)&=\phi(s),\\
+ 2\E[w\Lapl w]&=\frac{(w_+-w_-)^2}{2}=1-\sqrt{1-s^2}.
+\end{align*}
+The derivative of \(s/\sqrt{1-s^2}-\atanh s\) is
+\((1-s^2)^{-3/2}-(1-s^2)^{-1}\ge0\). The difference vanishes at
+zero. Integrating \(\phi'(s)=\atanh s\) therefore proves
+\(\phi(s)\le1-\sqrt{1-s^2}\). Continuity supplies \(s=1\).
+
+It remains to tensorize the one-bit bounds. For a finite probability
+space, entropy is convex as a function of a nonnegative vector \(z\).
+For positive \(z\), its second derivative in a direction \(v\) is
+\[
+ \E\frac{v^2}{z}-\frac{(\E v)^2}{\E z}\ge0
+\]
+by Cauchy--Schwarz. Zero entries follow by continuity.
+For independent coordinates \(X,Y\), the entropy chain rule and this
+convexity give
+\begin{align*}
+ \Ent_{X,Y}(z)
+ &=\E_Y\Ent_X(z)+\Ent_Y(\E_Xz)\\
+ &\le\E_Y\Ent_X(z)+\E_X\Ent_Y(z).
+\end{align*}
+Induction over the coordinates yields
+\(\Ent(z)\le\sum_i\E\Ent_i(z)\), where \(\Ent_i\) takes entropy
+over coordinate \(i\) with all others fixed. Apply the one-bit result
+on each such pair, with \(z=w^2\):
+\[
+ \Ent(w^2)\le\frac12\sum_i\E_{-i}(w_{i,+}-w_{i,-})^2
+                         =2\E[w\Lapl w].
+\]
+No constant was multiplied by the number of coordinates.
+
+\subsection{Propagation of the Local Cutoff}
+\label{app:local-propagation}
+This is the threshold-propagation property in
+Yu's Lemma 4.9~\cite{Yu}, expressed in sign means and natural logarithms.
+We include the one-sign-change proof so that the local comparison
+requires no numerical monotonicity test or external lemma.
+
+Define the scalar local margin
+\[
+ M_{\rm loc}(r,a)=(1-r^2)h(ar)-(1-ar^2)h(r),\qquad 0\le r,a\le1.
+\]
+We prove the propagation used below: if \(M_{\rm loc}(r_1,a)\ge0\) for some
+\(0<r_1<1\), then \(M_{\rm loc}(r,a)\ge0\) whenever \(0\le r\le r_1\).
+The reason is a single change of sign in its entropy-series coefficients.
+
+The case \(a=1\) is an identity. For \(a<1\), put \(t=r^2\) and
+\(H(t)=h(\sqrt t)\). Let \(b_n=1/[2n(2n-1)]\) be the entropy-series
+coefficient, and let \(T_n=\sum_{j>n}b_j\) be its tail. Then
+\begin{align*}
+ H(t)&=L-\sum_{n\ge1}b_nt^n,\\
+ \frac{H(t)}{1-t}&=\sum_{n\ge0}T_nt^n,\\
+ T_n&=\int_0^1\frac{x^{2n}}{1+x}\,\mathrm dx.
+\end{align*}
+For the last identity, express
+\(b_j=\int_0^1x^{2j-2}(1-x)\,\mathrm dx\), sum the geometric series,
+and cancel \(1-x\). All series used here converge absolutely for
+\(t<1\).
+
+Expansion of the local margin now gives
+\begin{align*}
+ \frac{M_{\rm loc}(\sqrt t,a)}{1-t}&=\sum_{n\ge1}q_nt^n,\\
+ q_n&=\frac{1-a}{2n}\left[
+ \frac{a+a^2+\cdots+a^{2n-1}}{2n-1}-2nT_n\right].
+\end{align*}
+The average of the powers of \(a\) decreases with \(n\): the next
+average appends two terms no larger than the preceding terms.
+In the opposite direction,
+\[
+ (n+1)T_{n+1}-nT_n
+ =T_n-\frac1{2(2n+1)}>0,
+\]
+as is seen by replacing \(1/(1+x)\) by \(1/2\) in the integral.
+Thus the coefficients \(q_n\) are nonnegative first and negative
+thereafter, with at most one change of sign. They eventually are
+negative, since the power average tends to zero whereas
+\(2nT_n>n/(2n+1)\).
+
+Let \(N\) be the last index with \(q_N\ge0\). Such an index exists
+if the margin is nonnegative at \(r_1>0\). For
+\(t_1=r_1^2\) and \(\lambda=t/t_1\in(0,1]\), the sign ordering gives
+\[
+ \sum_{n\ge1}q_nt^n\ge
+             \lambda^N\sum_{n\ge1}q_nt_1^n\ge0.
+\]
+Indeed, \(\lambda^n\ge\lambda^N\) before the sign change; afterwards
+the inequality reverses when multiplied by the negative coefficient.
+This proves the propagation, with \(r=0\) immediate.
+
+Finally \(\partial_a^2M_{\rm loc}(r,a)=-(1-r^2)r^2/(1-a^2r^2)<0\) and
+\(M_{\rm loc}(r,1)=0\). A successful check at \((r_1,a_0)\) therefore covers
+all \(r\le r_1\) and \(a\ge a_0\): concavity extends in \(a\),
+and the series argument extends in \(r\).

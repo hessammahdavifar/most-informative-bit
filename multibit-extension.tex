@@ -1,0 +1,616 @@
+\section{Vector-Valued Quantization and a Threshold at Eight Bits}
+\label{sec:multibit-extension}
+
+Theorem~\ref{thm:CK} motivates the vector-valued question of whether a
+\(k\)-bit summary is optimized by retaining \(k\) input coordinates. The
+answer is negative in general. This section gives explicit counterexamples,
+describes their coding-theoretic mechanism, and isolates the range that
+remains open.
+
+The outcome is unexpectedly sharp. Shortened Hamming quantizers violate
+the coordinate benchmark for \(k=8,9,10\), and hence, by adding independent
+coordinate outputs, for every \(k\geq 8\). The same construction misses the
+benchmark at \(k=7\) by only \(1/64\) in the high-noise coefficient. A broad
+collection of searches below eight bits also failed to produce a violation.
+This leads us to conjecture that the coordinate projection is optimal for
+\(2\leq k\leq7\).
+
+Throughout this section, entropies and mutual informations are measured in
+bits. Let
+\begin{align*}
+ X&\sim\operatorname{Unif}(\mathbb F_2^n),\qquad Y=X\oplus Z,\\
+ Z_i&\stackrel{\mathrm{iid}}{\sim}\operatorname{Bernoulli}(p),
+ \qquad 0\leq p\leq\frac12.
+\end{align*}
+and write
+\[
+ h_2(p)=-p\log_2p-(1-p)\log_2(1-p),
+ \qquad C(p)=1-h_2(p).
+\]
+
+\subsection{Problem Formulation and Known Results}
+
+For \(n\geq k\), define
+\begin{equation}
+ M_k(n,p)
+ :=\max_{f:\mathbb F_2^n\to\mathbb F_2^k} I(f(X);Y).
+ \label{eq:multibit-Mkn}
+\end{equation}
+The \(k\)-coordinate projection
+\[
+ D_k(x)=(x_1,\ldots,x_k)
+\]
+satisfies \(I(D_k(X);Y)=kC(p)\). We call \(D_k\), and any version obtained
+by permuting input coordinates and relabeling its \(2^k\) outputs, a
+\emph{dictator tuple}. The most direct vector extension of the
+Courtade--Kumar assertion is therefore
+\begin{equation}
+ M_k(n,p)\stackrel{?}{\leq} kC(p)
+ \qquad\text{for every }n\geq k.
+ \label{eq:vector-CK}
+\end{equation}
+
+There are three useful landmarks in the literature.
+
+\begin{enumerate}
+\item For \(k=1\), inequality~\eqref{eq:vector-CK} is the original
+Courtade--Kumar conjecture~\cite{CK}, proved in this paper.
+
+\item Huleihel and Ordentlich proved the complementary endpoint: for every
+\(f:\mathbb F_2^n\to\mathbb F_2^{n-1}\),
+\[
+ I(f(X);Y)\leq(n-1)C(p).
+\]
+Their theorem also extends from the BSC to every binary-input memoryless
+output-symmetric channel~\cite{HO}. Notice that this is an assertion with
+\(k=n-1\), not an assertion for a fixed \(k\) and arbitrary \(n\); hence it
+does not conflict with the fixed-\(k\) counterexamples below.
+
+\item Chandar and Tchamkerten formulated the general optimization
+problem~\eqref{eq:multibit-Mkn} and characterized its positive-rate
+asymptotics~\cite{CT}. If \(k/n\to R\in(0,1)\), then
+\begin{equation}
+ \begin{split}
+ \frac{M_k(n,p)}{n}&\longrightarrow
+ 1-h_2\!\left(p\star h_2^{-1}(1-R)\right),\\
+ p\star q&=p(1-q)+(1-p)q.
+ \end{split}
+ \label{eq:CT-asymptotic}
+\end{equation}
+This limit can exceed \(RC(p)\), so the vector assertion cannot hold at
+every positive rate. At finite blocklength, they exhibited violations
+from the perfect \([15,11,3]\) Hamming code and the \([23,12,7]\) Golay
+code. They also observed that the \([7,4,3]\) Hamming code does not
+violate the bound and explicitly asked for constructions with \(k<11\).
+\end{enumerate}
+
+One elementary point prevents a possible misunderstanding: a linear
+\emph{code} can produce a nonlinear \emph{quantizer}.
+
+\begin{proposition}[Affine maps obey the coordinate bound]
+\label{prop:affine-multibit}
+If \(f(x)=Ax+b\) is affine, with output rank \(r\leq k\), then
+\[
+ I(f(X);Y)\leq rC(p)\leq kC(p).
+\]
+\end{proposition}
+
+\begin{proof}
+It is enough to treat a rank-\(r\) linear map. Since \(X\) is uniform,
+\(AX\) is uniform on \(\mathbb F_2^r\). Moreover, \(Z=X\oplus Y\) is
+independent of \(Y\), and hence
+\[
+ I(AX;Y)=r-H(AZ).
+\]
+Choose \(r\) columns of \(A\) that form an invertible submatrix and call
+their index set \(J\). Conditioning on \(Z_{J^c}\), the variable \(AZ\)
+is a translate of an invertible image of \(Z_J\). Consequently,
+\[
+ H(AZ)\geq H(AZ\mid Z_{J^c})=H(Z_J)=r h_2(p),
+\]
+which proves the claim.
+\end{proof}
+
+Thus every counterexample must use genuine nonlinearity. The constructions
+below use linear codebooks, but the nearest-codeword map into those
+codebooks is nonlinear.
+
+\subsection{Coset Quantizers and the High-Noise Expansion}
+\label{subsec:coset-diagnostic}
+
+Let \(C\leq\mathbb F_2^n\) be a binary linear code of dimension \(k\),
+with full-rank parity-check matrix \(H\in\mathbb F_2^{(n-k)\times n}\).
+For each syndrome \(a\in\mathbb F_2^{n-k}\), choose a minimum-weight
+coset leader \(e_a\) satisfying \(He_a=a\), with \(e_0=0\), and define
+\begin{equation}
+ Q(x)=x\oplus e_{Hx}\in C.
+ \label{eq:coset-quantizer}
+\end{equation}
+After composing \(Q\) with any bijection from \(C\) to
+\(\mathbb F_2^k\), this is a \(k\)-bit quantizer. The choice among tied
+minimum-weight leaders is part of the construction.
+
+If \(X\) is uniform, the change of variables
+\[
+ X=Q(X)\oplus E,
+ \qquad E=e_{HX},
+\]
+makes \(Q(X)\) uniform on \(C\), makes \(E\) uniform on the set of coset
+leaders, and makes the two variables independent. Since \(Y\) is uniform
+on \(\mathbb F_2^n\), translation invariance gives the exact identity
+\begin{equation}
+ I(Q(X);Y)=n-H(E\oplus Z).
+ \label{eq:coset-information}
+\end{equation}
+This reduces the entire information calculation to the entropy of a noisy
+coset leader.
+
+Set \(\rho=1-2p\) and define
+\begin{equation}
+ B(E):=\sum_{j=1}^n
+ \left(\mathbb E[(-1)^{E_j}]\right)^2.
+ \label{eq:leader-B}
+\end{equation}
+For a set \(S\), the Walsh coefficient of \(E\oplus Z\) is
+\[
+ \rho^{|S|}\mathbb E\!\left[(-1)^{\sum_{j\in S}E_j}\right].
+\]
+Expanding relative entropy from the uniform distribution at \(\rho=0\)
+therefore yields
+\begin{align}
+ I(Q(X);Y)
+ &=\frac{\rho^2}{2\ln2}B(E)+O(\rho^4),
+ \label{eq:code-high-noise}\\
+ kC(p)
+ &=\frac{\rho^2}{2\ln2}k+O(\rho^4).
+ \label{eq:benchmark-high-noise}
+\end{align}
+In particular,
+\begin{equation}
+ \begin{split}
+ B(E)>k\quad\Longrightarrow\quad I(Q(X);Y)>kC(p)\\
+ \text{for all \(p<1/2\) sufficiently close to \(1/2\)}.
+ \end{split}
+ \label{eq:B-counterexample}
+\end{equation}
+This exact second-order test is the main design criterion used below.
+
+\subsection{Shortened-Hamming Counterexamples for
+\texorpdfstring{\(k=8,9,10\)}{k=8,9,10}}
+\label{subsec:shortened-hamming}
+
+Identify the nonzero vectors of \(\mathbb F_2^4\) with the integers
+\(1,\ldots,15\) through their binary expansions. For
+\(s\in\{1,2,3\}\), let \(H_s\) have as its columns
+\[
+ \{s+1,s+2,\ldots,15\}.
+\]
+Thus \(C_s=\ker H_s\) is the shortened Hamming code
+\begin{equation}
+ C_s=[15-s,11-s,3],
+ \qquad n=15-s,
+ \qquad k=11-s.
+ \label{eq:shortened-Hamming-parameters}
+\end{equation}
+
+The retained syndrome \(8\) will be an anchor. Choose the following
+minimum-weight leader for every syndrome \(a\in\mathbb F_2^4\):
+\begin{equation}
+ e_a=
+ \begin{cases}
+ 0, & a=0,\\
+ \mathbf e_a, & a\in\{s+1,\ldots,15\},\\
+ \mathbf e_8\oplus\mathbf e_{8\oplus a}, & a\in\{1,\ldots,s\}.
+ \end{cases}
+ \label{eq:star-leaders}
+\end{equation}
+Here \(\mathbf e_a\) denotes the unit vector in the coordinate whose
+parity-check column is \(a\). Both \(8\) and \(8\oplus a\) are retained.
+The last line has syndrome \(a\), and it is minimum-weight because the
+column \(a\) itself was removed. The missing syndromes therefore use
+weight-two leaders that form a star around the common anchor \(8\).
+
+The leader set consists of one word of weight zero, \(n\) words of weight
+one, and \(s\) words of weight two. More importantly, the anchor occurs
+in \(s+1\) leaders, each of the \(s\) leaves occurs in two leaders, and
+each of the remaining \(14-2s\) coordinates occurs in one leader. Hence
+\begin{align}
+ B_s
+ &=\left(1-\frac{s+1}{8}\right)^2
+   +s\left(1-\frac{2}{8}\right)^2\notag\\
+ &\quad +(14-2s)\left(1-\frac{1}{8}\right)^2\notag\\
+ &=\frac{s^2-76s+735}{64},
+ \label{eq:star-B}\\
+ B_s-k
+ &=\frac{s^2-12s+31}{64}.
+ \label{eq:star-B-minus-k}
+\end{align}
+
+\begin{proposition}[Counterexamples below eleven bits]
+\label{prop:k8-k10-counterexamples}
+For each \(k\in\{8,9,10\}\), there are an \(n=k+4\), a quantizer
+\(f:\mathbb F_2^n\to\mathbb F_2^k\), and an open interval of crossover
+probabilities ending at \(1/2\) on which
+\[
+ I(f(X);Y)>kC(p).
+\]
+\end{proposition}
+
+\begin{proof}
+Use the quantizer~\eqref{eq:coset-quantizer} with the code and leaders in
+\eqref{eq:shortened-Hamming-parameters}--\eqref{eq:star-leaders}. For
+\(s=1,2,3\), corresponding respectively to \(k=10,9,8\),
+\[
+ B_s-k\in\left\{\frac5{16},\frac{11}{64},\frac1{16}\right\}>0.
+\]
+The conclusion follows from the high-noise expansion
+\eqref{eq:B-counterexample}.
+\end{proof}
+
+\begin{proposition}[Failure for every \(k\geq8\)]
+\label{cor:failure-all-k-ge-8}
+For every integer \(k\geq8\), inequality~\eqref{eq:vector-CK} fails for
+some input dimension and some \(p\in(0,1/2)\).
+\end{proposition}
+
+\begin{proof}
+Start with the \(8\)-bit counterexample \(f_8\). For \(t=k-8\), append
+\(t\) fresh independent input coordinates and define
+\[
+ F(x,u)=(f_8(x),u),
+ \qquad u\in\mathbb F_2^t.
+\]
+The two channel blocks are independent, so
+\[
+ I(F(X,U);Y_X,Y_U)=I(f_8(X);Y_X)+tC(p)>kC(p).
+\]
+\end{proof}
+
+The proof is analytic and uses only the sign of the exact rational number
+\(B_s-k\). Direct entropy evaluation gives a more quantitative picture.
+For \(y\in\mathbb F_2^n\), we computed
+\begin{equation}
+ \Pr(E\oplus Z=y)
+ =\frac1{16}\sum_{a\in\mathbb F_2^4}
+ p^{d_H(y,e_a)}(1-p)^{n-d_H(y,e_a)}
+ \label{eq:direct-leader-convolution}
+\end{equation}
+and substituted the resulting distribution in
+\eqref{eq:coset-information}. In Table~\ref{tab:shortened-hamming}, the
+leader enumerator is
+\(\sum_a z^{\operatorname{wt}(e_a)}\). The positive intervals and maxima
+are numerical; the code parameters, leader enumerators, and \(B_s-k\)
+are exact.
+
+\begin{table*}[t]
+\caption{Shortened-Hamming counterexamples. The code parameters,
+leader enumerators, and high-noise excesses are exact; the intervals and
+maxima are obtained by direct entropy evaluation.}
+\label{tab:shortened-hamming}
+\centering
+{\footnotesize\setlength{\tabcolsep}{5pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}cccccc@{}}
+\toprule
+\(k\) & code & leader enumerator & \(B_s-k\) & numerical \(p\)-interval
+& \(\max_p\Delta_k(p)/k\) \\ \midrule
+10 & \([14,10,3]\) & \(1+14z+z^2\) & \(5/16\)
+& \((0.088658,1/2)\) & \(4.48440\!\times\!10^{-3}\) \\
+9 & \([13,9,3]\) & \(1+13z+2z^2\) & \(11/64\)
+& \((0.152276,1/2)\) & \(1.83320\!\times\!10^{-3}\) \\
+8 & \([12,8,3]\) & \(1+12z+3z^2\) & \(1/16\)
+& \((0.265563,1/2)\) & \(3.21308\!\times\!10^{-4}\) \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+Here
+\[
+ \Delta_k(p)=I(f(X);Y)-kC(p).
+\]
+The maximizing crossover probabilities are approximately \(0.199318\),
+\(0.248809\), and \(0.332782\), respectively. Simple interior witness
+points are
+\begin{align*}
+ \Delta_{10}(0.2)/10&=0.0044842878,\\
+ \Delta_9(0.25)/9&=0.0018330159,\\
+ \Delta_8(1/3)/8&=0.0003212940.
+\end{align*}
+Direct convolution and an independent Walsh-transform calculation agreed
+to within \(10^{-14}\) at the tested crossover probabilities.
+
+\begin{remark}[Order of shortening and decoding]
+The successful operation is to remove columns from the Hamming
+parity-check matrix and then choose a new minimum-weight syndrome table.
+Deleting output bits after decoding with the full \([15,11,3]\) Hamming
+quantizer is a different operation and did not reproduce these gains.
+The shared anchor in~\eqref{eq:star-leaders} is also essential: it aligns
+the coordinate biases that enter \(B(E)\).
+\end{remark}
+
+\subsection{Searches Below Eight Bits}
+\label{subsec:below-eight-searches}
+
+The star construction itself explains why eight is a natural boundary.
+For \(s=4,5,6\), corresponding to \(k=7,6,5\), formula
+\eqref{eq:star-B-minus-k} gives
+\begin{table}[t]
+\caption{High-noise coefficients of the shortened-Hamming family below
+eight output bits.}
+\label{tab:hamming-below-eight}
+\centering
+{\scriptsize\setlength{\tabcolsep}{3.5pt}\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+\(k\) & \(n\) & leader enumerator & \(B_s\) & \(B_s-k\) \\ \midrule
+7 & 11 & \(1+11z+4z^2\) & \(447/64\) & \(-1/64\) \\
+6 & 10 & \(1+10z+5z^2\) & \(95/16\) & \(-1/16\) \\
+5 & 9  & \(1+9z+6z^2\)  & \(315/64\) & \(-5/64\) \\
+\bottomrule
+\end{tabular}}
+\end{table}
+The seven-bit case is strikingly close: its leading high-noise term misses
+the dictator tuple by only \(1/64\). A dense numerical evaluation found no
+positive gap on \(0<p<1/2\); for example, the per-bit deficits at
+\(p=0.1,0.2,0.4\) are respectively
+\[
+ 0.0115176,\qquad 0.00410469,\qquad 0.000105113.
+\]
+
+We then tested several ways in which the Hamming near-miss might be
+improved. Table~\ref{tab:k7-searches} records the scope of each computation and
+the best high-noise statistic found. A negative-curve outcome means that
+the full mutual-information curve was also evaluated on a dense grid and
+at its numerical stationary candidates; it is not an analytic
+impossibility proof.
+
+\begin{table*}[t]
+\caption{Computational searches for seven-bit code quantizers. A
+``negative curve'' records dense numerical evaluation and stationary-point
+checks, not an impossibility theorem for the corresponding family.}
+\label{tab:k7-searches}
+\centering
+{\footnotesize\setlength{\tabcolsep}{4pt}\renewcommand{\arraystretch}{1.13}
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{0.28\linewidth}
+  >{\raggedright\arraybackslash}p{0.36\linewidth}
+  >{\centering\arraybackslash}p{0.13\linewidth}
+  >{\raggedright\arraybackslash}p{0.15\linewidth}@{}}
+\toprule
+Family & Search performed & best \(B\) & outcome \\ \midrule
+Shortened Hamming, \(k=7\)
+& All \(\binom{15}{4}=1365\) shortenings and all \(451{,}920\)
+minimum-distance tie tables
+& \(447/64\) & negative curve \\
+
+Primitive BCH \([15,7,5]\)
+& All \(1941\) puncturings deleting \(0,\ldots,4\) coordinates, with
+multistart optimization of minimum-distance ties
+& \(447/64\) & best case returns the Hamming near-miss \\
+
+First- and second-order Reed--Muller family
+& All \(651\) seven-dimensional codes
+\(\mathrm{RM}(1,4)\subset C\subset\mathrm{RM}(2,4)\)
+& \(6.850952\) & negative curves \\
+
+Shortened binary Golay
+& \(203\) sampled shortenings to dimension seven, with tie optimization
+& \(6.895\) & negative curves \\
+
+Random parity-check matrices
+& \(345{,}000\) distinct-column searches with redundancies \(5,6,7,8\)
+& \(447/64\) & no improvement over Hamming \\
+
+Linear quotients of the \(k=8\) counterexample
+& All \(255\) rank-seven quotients of the \([12,8,3]\) quantizer
+& \(6.28125\) & negative curves \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+We also tested repeated parity-check columns, nonminimum coset
+representatives, the extended \([16,7,6]\) BCH construction, the
+\([15,5,7]\) BCH code, and \(\mathrm{RM}(1,4)=[16,5,8]\). Repeated-column
+searches occasionally reached \(B=7\), but only through a degeneracy whose
+entire information curve equals that of seven independent dictators; no
+strict gain appeared. Multistart searches over arbitrary coset
+representatives likewise reached equality but not a violation.
+
+These computations support a structural claim about the code-based
+mechanism, not a theorem about all quantizers. In particular, the exact
+exhaustion of Hamming tie tables certifies the best \(B\) only within that
+family. A quantizer with a smaller high-noise coefficient could still,
+in principle, cross the benchmark at an intermediate \(p\).
+
+\subsection{Random Coding at \texorpdfstring{\(n=15,\ k=7\)}{n=15, k=7}}
+\label{subsec:random-coding-k7}
+
+The failed structured searches raise a natural question: is an unstructured
+codebook more likely to find the missing gain? We tested the finite random
+ensemble suggested by the rate-distortion picture. Choose a codebook
+\(\mathcal C\) uniformly without replacement from all \(M=2^7\)-subsets of
+\(\mathbb F_2^{15}\), map each input to a nearest codeword, and break each
+tie independently and uniformly, once and for all.
+
+Some geometric statistics of this ensemble are exact. Let
+\[
+ N=2^{15},\qquad
+ S_d=\binom{15}{d},\qquad
+ V_d=\sum_{i=0}^d S_i.
+\]
+For a fixed source word, let \(D\) be its distance to the random codebook
+and \(T\) the number of codewords at that minimum distance. Then
+\begin{align}
+ \Pr(D>t)
+ &=\frac{\binom{N-V_t}{M}}{\binom NM},
+ \label{eq:random-distance-tail}\\
+ \Pr(D=d,T=m)
+ &=\frac{\binom{S_d}{m}\binom{N-V_d}{M-m}}{\binom NM}.
+ \label{eq:random-distance-ties}
+\end{align}
+For \(n=15\) and \(M=128\), these formulas give
+\begin{align*}
+ \mathbb E D&=2.6608532,& \frac{\mathbb E D}{15}&=0.1773902,\\
+ \Pr(T>1)&=0.4945889,& \mathbb E T&=2.1208972.
+\end{align*}
+Thus almost half of the source words have a nearest-neighbor tie.
+
+For an arbitrary quantizer \(U=Q(X)\), not necessarily a coset quantizer,
+the high-noise coefficient is
+\begin{equation}
+ B(Q)=\sum_{j=1}^n\sum_u\Pr(U=u)
+ \left(\mathbb E[(-1)^{X_j}\mid U=u]\right)^2,
+ \label{eq:general-B}
+\end{equation}
+and
+\begin{equation}
+ I(U;Y)=\frac{\rho^2}{2\ln2}B(Q)+O(\rho^4).
+ \label{eq:general-high-noise}
+\end{equation}
+We enumerated the full cube for \(128\) independently sampled codebooks
+and evaluated every reported mutual information exactly for that sampled
+quantizer. Thus the only Monte Carlo error is across codebooks, not within
+a codebook. The comparison below includes a structured code of the same
+length and size, and the shortened-Hamming near-miss of a different length.
+For the BCH code, the displayed syndrome table was optimized over its
+minimum-distance ties.
+
+\begin{table*}[t]
+\caption{Random and structured seven-bit quantizers. Mutual information
+is evaluated exactly for each sampled quantizer; only the averaging over
+random codebooks introduces Monte Carlo uncertainty.}
+\label{tab:random-versus-structured}
+\centering
+{\footnotesize\setlength{\tabcolsep}{8pt}\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Quantity
+& random \((15,2^7)\), mean
+& BCH \([15,7,5]\)
+& Hamming \([11,7,3]\) \\ \midrule
+\(H(U)\)
+& \(6.975169\)
+& \(7\)
+& \(7\) \\
+\(B(Q)\)
+& \(6.379431\)
+& \(6.850952\)
+& \(6.984375\) \\
+\(\Delta_7(0.1)/7\)
+& \(-0.0505444\)
+& \(-0.0294541\)
+& \(-0.0115176\) \\
+\(\Delta_7(0.4)/7\)
+& \(-0.00262873\)
+& \(-0.000697266\)
+& \(-0.000105113\) \\
+\bottomrule
+\end{tabular}}
+\end{table*}
+
+Across the \(128\) random codebooks, \(B(Q)\) ranged only from
+\(6.342219\) to \(6.423068\), and no sampled codebook beat the coordinate
+benchmark at any tested crossover probability. The random Voronoi cells
+were also appreciably unbalanced: their mean cell-size standard deviation
+was \(47.31\) around the ideal size \(256\). This explains the loss
+\(H(U)<7\) already at \(p=0\). The sample standard deviation of \(B(Q)\)
+was \(0.01856\), giving the normal-approximation \(95\%\) interval
+\([6.3762,6.3826]\) for its ensemble mean.
+
+Because ties are common, we separately optimized their assignments for
+the high-noise statistic. On \(64\) additional codebooks, a multistart
+coordinate-ascent heuristic increased the mean \(B\) from \(6.3809\) to
+\(6.6954\), with a best value \(6.71365\). This is a material improvement,
+but it remains well below both \(7\) and the shortened-Hamming value
+\(6.984375\). Since the tie optimization is heuristic, it is evidence
+rather than an ensemble upper bound.
+
+The experiment suggests that short-block structure matters in this
+problem. Translation-equivariant code quantizers have equal-size cells
+and can align their coordinate biases; a generic random Voronoi partition
+has neither feature. This conclusion is qualitatively consonant with the
+recent finite-block covering results of Riasat and Mahdavifar, where
+structured Reed--Solomon-based constructions often outperform random
+codebooks in average Hamming covering radius~\cite{RMcover}. The two
+statements should not be conflated: their objective is average
+nearest-codeword distance, whereas ours is BSC mutual information. The
+agreement is a shared finite-block phenomenon, not a formal implication.
+
+\subsection{A Seven-Bit Threshold Conjecture}
+\label{subsec:seven-bit-conjecture}
+
+The validity of the coordinate bound is monotone in the number of retained
+bits in a useful sense. If a \(k\)-bit counterexample exists, appending
+one fresh dictator gives a \((k+1)\)-bit counterexample. Conversely, if
+the bound is valid for \(K\) bits in every dimension, then it is valid for
+every \(k<K\): append \(K-k\) fresh dictators to a hypothetical \(k\)-bit
+counterexample. Thus the set of fixed output sizes for which the bound is
+universally true must be an initial segment of the positive integers.
+
+The constructions above show that this initial segment ends no later than
+seven. We conjecture that it ends exactly there.
+
+\begin{conjecture}[Seven-bit threshold]
+\label{conj:seven-bit-threshold}
+For every \(2\leq k\leq7\), every \(n\geq k\), every
+\(f:\mathbb F_2^n\to\mathbb F_2^k\), and every \(0\leq p\leq1/2\),
+\begin{equation}
+ I(f(X);Y)\leq k\bigl(1-h_2(p)\bigr).
+ \label{eq:seven-bit-conjecture}
+\end{equation}
+Equality is attained by a \(k\)-coordinate projection.
+\end{conjecture}
+
+By the padding observation, it would be enough to prove
+Conjecture~\ref{conj:seven-bit-threshold} for \(k=7\). Several pieces of
+evidence point in the same direction.
+
+\begin{enumerate}
+\item \emph{The Hamming family changes sign at exactly the proposed
+threshold.} Its exact excess coefficient is
+\((s^2-12s+31)/64\): it is \(1/16\) at \(k=8\) and \(-1/64\) at \(k=7\).
+This is not a numerical accident or a small interior-\(p\) margin.
+
+\item \emph{Linear maps cannot be counterexamples.} By
+Proposition~\ref{prop:affine-multibit}, a violation must combine nonlinear
+cells with enough symmetry to preserve almost all \(k\) output bits.
+Our unsuccessful postprocessing experiments illustrate the tension:
+coarsening an eight-bit counterexample destroys the bias alignment much
+faster than it reduces the benchmark.
+
+\item \emph{The first high-noise target is concrete.} A proof of
+\begin{equation}
+ B(Q)\leq7
+ \qquad\text{for every }Q:\mathbb F_2^n\to\mathbb F_2^7
+ \label{eq:seven-bit-B-target}
+\end{equation}
+would settle the sharp second-order comparison at \(p=1/2\). Every
+seven-bit family we tested satisfies this inequality, with the shortened
+Hamming construction coming closest among the nontrivial examples.
+
+\item \emph{Random coding points away from a hidden generic
+counterexample.} Random nearest-neighbor quantizers are substantially
+worse than the structured near-misses, even after aggressive tie
+optimization. If the conjecture is false, the counterexample is likely to
+require a rather special multiway partition rather than merely a good
+covering code.
+\end{enumerate}
+
+There is also a clear reason the scalar theorem does not immediately
+iterate. Writing \(U=(U_1,\ldots,U_k)\), the chain rule gives
+\[
+ I(U;Y)=\sum_{i=1}^k I(U_i;Y\mid U_1,\ldots,U_{i-1}),
+\]
+but after conditioning on the previous output bits, \(X\) is uniform only
+on a cell of the induced partition, not on the full cube. The scalar
+Courtade--Kumar theorem therefore does not apply to the conditional terms.
+A proof of the seven-bit conjecture will likely need either a conditional
+version of the scalar inequality or a genuinely multiway entropy-flow
+argument.
+
+\begin{remark}[A possible route for \(k=7\)]
+The conjecture for all \(2\leq k\leq7\) reduces to one endpoint, \(k=7\).
+A plausible program is to prove the high-noise inequality
+\eqref{eq:seven-bit-B-target}, identify its equality cases, obtain a
+multiway low-noise boundary inequality for balanced \(128\)-cell
+partitions, and then bridge the two channel regimes. The \(1/64\) Hamming
+near-miss provides a useful stress test for every proposed estimate.
+\end{remark}

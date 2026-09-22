@@ -1,0 +1,81 @@
+\input{preamble}
+
+\begin{document}
+
+\title{The Most Informative Bit and Beyond: \\A Proof of the Courtade--Kumar Conjecture \\and Multibit Extensions}
+
+\author{Hessam~Mahdavifar and Ahmad~Beirami
+\thanks{H. Mahdavifar is with the Department of Electrical and Computer
+Engineering, Northeastern University, Boston, MA 02115 USA
+(e-mail: h.mahdavifar@northeastern.edu).}
+\thanks{A. Beirami is with Fidian, San Francisco,
+CA, USA (e-mail: ab@fidian.ai).}%
+}
+
+\maketitle
+
+
+\begin{abstract}
+Let \(X=(X_1,\ldots,X_n)\) be uniform on the Boolean cube, and let \(Y\)
+be obtained by passing its coordinates independently through a binary
+symmetric channel with crossover probability \(p\). A natural quantization
+question asks how much information about \(Y\) can be retained by a
+function \(Q(X)\) constrained to \(k\) output bits. For \(k\leq n\),
+reporting \(k\) input coordinates retains \(k(1-h_2(p))\) bits of
+information, where \(h_2\) denotes the binary entropy function. This
+makes coordinate projections the natural benchmark.
+
+The case \(k=1\) is the Courtade--Kumar conjecture, which posits that every
+Boolean function \(f\) satisfies
+\[
+    I(f(X);Y)\leq 1-h_2(p),
+\]
+with equality attained by coordinate functions. We prove this conjecture
+for every dimension and crossover probability, without any balance
+assumption on \(f\). Our proof views the gap relative to the coordinate
+benchmark as a quantity that evolves with the channel correlation. After
+a monotone rearrangement, an entropy-flow identity relates its derivative
+to the edge boundary of the corresponding Boolean decision set. Combining
+a sharp local entropy comparison with Fourier analysis on the Boolean cube
+and logarithmic Sobolev estimates for pivotal sets yields a global
+differential inequality: if the gap is positive at any correlation level,
+then it must grow as the noise decreases. This contradicts the noiseless
+endpoint, where the gap is nonpositive.
+
+For \(k\geq8\), however, a distinctly coding-theoretic behavior emerges.
+We construct quantizers from shortened Hamming codes whose covering
+structure beats the coordinate-projection benchmark for \(k=8\), and a
+direct-sum argument extends this failure to every \(k\geq8\). Thus, unlike
+in the single-bit case, structured coding can retain more information than
+simple coordinate selection. Finally, exhaustive searches within several
+structured code families and Monte Carlo searches over random codebooks
+for \(2\leq k\leq7\) reveal a clear advantage of structured codebooks over
+random ones while still underperforming the coordinate benchmark. These findings
+lead us to conjecture that coordinate projections remain optimal for
+\(2\leq k\leq7\).
+\end{abstract}
+
+\begin{IEEEkeywords}
+Binary symmetric channel, Boolean functions, Courtade--Kumar conjecture,
+Fourier analysis, Hamming codes, logarithmic Sobolev inequality, mutual
+information, quantization.
+\end{IEEEkeywords}
+
+\input{introduction}
+\input{mechanism}
+\input{multibit-extension}
+\input{conclusion}
+\input{ai-disclosure}
+
+\appendices
+\input{scalar}
+\input{centered-support}
+\input{pivotal-channel-checks}
+\input{low}
+\input{endpoints}
+\input{verification}
+\input{numerical-diagnostics}
+
+\input{references}
+
+\end{document}

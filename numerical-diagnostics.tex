@@ -1,0 +1,158 @@
+\section{Numerical Verification and Reproducibility}
+\label{app:numerical-diagnostics}
+
+This appendix records independent numerical checks of the quantities used
+in the proof. They are designed to catch transcription, normalization, and
+sign errors. They are not proof inputs: finite enumeration cannot cover all
+dimensions, and a mesh cannot establish an inequality on a continuum. The
+analytic arguments in the preceding appendices remain the certificates.
+
+\begin{remark}[Reproducing the diagnostics]
+From the source directory, run
+\[
+ \texttt{python3 numerical\_diagnostics.py}.
+\]
+The script uses NumPy for finite-cube enumeration and stable elementary
+formulas for the scalar channel quantities. Information values are in
+nats; scalar margins use the normalizations of the cited lemmas. Displayed
+values are rounded only after the underlying expressions have been evaluated.
+\end{remark}
+
+\subsection{Exhaustive Checks on Small Cubes}
+
+For a truth table \(f\) on \(n\) bits, the computation forms the full
+noise matrix
+\begin{align*}
+ K_\rho(y,x)&=2^{-n}\prod_{i=1}^n(1+\rho x_i y_i),\\
+ u(y)&=\sum_xK_\rho(y,x)f(x),
+\end{align*}
+and evaluates \(I_f(\rho)=h(\E f)-2^{-n}\sum_yh(u(y))\).
+Thus there is no Monte Carlo error. We enumerated all \(2^{16}=65{,}536\)
+Boolean truth tables for \(n=4\). We also enumerated all \(7{,}581\)
+monotone truth tables for \(n=5\), generating them recursively from
+lower and upper sections \(g\le h\).
+
+At every tested channel the largest lead \(I_f-\phi\) was attained by
+a coordinate rule and differed from zero by at most
+\(3.4\times10^{-16}\). The table gives the positive deficit
+\(\phi-I_f\) of the best rule after excluding dictators and
+anti-dictators in dimension four, and after excluding coordinate rules
+in the monotone dimension-five enumeration.
+\begin{center}
+{\small\setlength{\tabcolsep}{7pt}\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}rrr@{}}
+\toprule
+\(\rho\) & all rules, \(n=4\) & monotone rules, \(n=5\)\\ \midrule
+0.10 & \(8.70084\times10^{-4}\) & \(5.09022\times10^{-4}\)\\
+0.25 & \(5.33512\times10^{-3}\) & \(3.15088\times10^{-3}\)\\
+0.50 & \(1.94985\times10^{-2}\) & \(1.18769\times10^{-2}\)\\
+0.75 & \(3.37645\times10^{-2}\) & \(2.12692\times10^{-2}\)\\
+0.90 & \(3.11339\times10^{-2}\) & \(1.93117\times10^{-2}\)\\
+0.99 & \(1.04605\times10^{-2}\) & \(6.06839\times10^{-3}\)\\
+\bottomrule
+\end{tabular}}
+\end{center}
+These deficits are not uniform as \(\rho\) approaches either endpoint;
+that is expected and is one reason the proof uses an endpoint argument
+rather than a global numerical gap.
+
+\subsection{Low-Correlation Certificates}
+
+The two tangent coefficients recompute as
+\begin{align*}
+ \alpha&=1.325831544044512\ldots,\\
+ \beta&=0.849913438894783\ldots.
+\end{align*}
+Substitution into the expressions of Section~\ref{app:low-arithmetic}
+gives the following values. The last column is the rational certificate
+printed in the proof.
+\begin{center}
+{\small\setlength{\tabcolsep}{6pt}\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Expression & Recomputed value & Certificate\\ \midrule
+\(M_{\rm loc}(r_1,5/8)\) & \(8.014515\times10^{-4}\) & \(>1/1400\)\\
+\(B_0'(5/8)\) & \(-6.848011\times10^{-2}\) & \(<-17/250\)\\
+\(B_0''(5/8)\) & \(2.332248\times10^{-1}\) & \(<7/30\)\\
+\(B_0'''(5/8)\) & \(-1.029815\) & \(<-1\)\\
+\(B_0''(4/5)\) & \(-1.196782\times10^{-1}\) & \(<-1/9\)\\
+\(B_0''(r_1)\) & \(-1.123197\times10^{-1}\) & \(<-1/10\)\\
+\(B_0(r_1)\) & \(3.913927\times10^{-4}\) & \(>1/4000\)\\
+Starting contraction slack & \(2.473064\times10^{-3}\) & \(>1/500\)\\
+\bottomrule
+\end{tabular}}
+\end{center}
+Every recomputed value lies on the strict side of its rational bound.
+The narrowest displayed clearance is the curvature check at \(5/8\):
+\(7/30-B_0''(5/8)=1.08491\times10^{-4}\).
+
+\subsection{Intermediate-Range Reserves}
+
+In this subsection, \(\alpha,\beta,\gamma,\lambda,\eta\) are the
+middle-range parameters of Lemma~\ref{lem:middle-channel-checks};
+\(\alpha\) and \(\beta\) no longer denote the tangent coefficients above.
+For reference, define the half-height profile margin and the two
+channel reserves by
+\begin{align*}
+ R_{\rm prof}(\ell)
+ &=\log\frac{(\ell/2)F(\ell/2)}{\ell F(\ell)}
+   -\beta\bigl[H(\ell)-H(\ell/2)\bigr],\\
+ R_{\rm en}(\ell)&=\theta^2-rH(\ell)-\eta/2,\\
+ R_{\rm mean}(\ell)
+ &=\gamma-\frac{2\theta^2}{\sinh^2\ell}
+                -\frac\lambda\alpha-r\ell.
+\end{align*}
+These are direct evaluations of the three comparisons in
+Lemma~\ref{lem:middle-channel-checks}; the full profile comparison has
+equality at \(v=\ell\), so \(R_{\rm prof}\) is shown at \(v=\ell/2\).
+\begin{center}
+{\small\setlength{\tabcolsep}{7pt}\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+\(\ell\) & \(R_{\rm prof}\) & \(R_{\rm en}\) & \(R_{\rm mean}\)\\ \midrule
+1.55 & 0.436092 & 0.752286 & 0.252406\\
+2.00 & 0.607533 & 0.809600 & 0.593983\\
+2.50 & 0.800374 & 0.691309 & 1.201045\\
+3.00 & 1.001815 & 0.424392 & 2.248303\\
+3.50 & 1.215187 & 0.057980 & 4.001328\\
+\bottomrule
+\end{tabular}}
+\end{center}
+A supplementary mesh used \(196\) channel heights at spacing \(0.01\)
+on \([1.55,3.5]\) and the \(99\) ratios
+\(v/\ell\in\{0.01,\ldots,0.99\}\). No negative profile margin was
+found; the smallest sampled one was \(8.2344\times10^{-3}\), adjacent
+to the equality endpoint. The smallest sampled energy and mean reserves
+were respectively \(0.057980\) and \(0.252406\), matching the opposite
+ends of the interval in the table.
+
+\subsection{High-Correlation Margins}
+
+The raw join and cutoff margins tend to zero as \(\ell\) grows. To
+distinguish genuine loss of sign from the expected asymptotic scale, the
+table reports \(e^{\ell/2}M_{\rm join}\) and
+\(e^\ell M_{\rm cut}\), together with the unscaled small-height margin.
+\begin{center}
+{\small\setlength{\tabcolsep}{7pt}\renewcommand{\arraystretch}{1.08}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+\(\ell\) & \(M_{\rm small}\) & \(e^{\ell/2}M_{\rm join}\) & \(e^\ell M_{\rm cut}\)\\ \midrule
+3.5 & 0.158997 & 2.403324 & 4.548284\\
+5 & 0.202903 & 3.896735 & 8.236764\\
+10 & 0.253236 & 5.976483 & 18.337516\\
+20 & 0.241820 & 6.279837 & 35.114182\\
+\bottomrule
+\end{tabular}}
+\end{center}
+On a \(0.01\)-spaced mesh of \(1{,}651\) heights from \(7/2\) to
+\(20\), all three quantities stayed positive. Their smallest sampled
+values were \(0.158997\), \(2.403324\), and \(4.548284\), all at the
+shared endpoint \(\ell=7/2\). This agrees with the analytic proof's
+choice to preserve the different asymptotic scales rather than seek a
+uniform positive lower bound for the raw margins.
+
+\paragraph{Outcome.}
+The exhaustive enumerations found no finite-dimensional counterexample,
+and the independently evaluated low, middle, and tail quantities showed
+no sign or normalization discrepancy. This is useful corroboration, but
+the theorem rests only on the analytic certificates printed earlier.

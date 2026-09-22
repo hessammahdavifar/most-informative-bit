@@ -1,0 +1,130 @@
+\subsection{Relative Rates of the Entropy Profile and Angle Correction}
+\label{app:profile-angle-rates}
+
+The middle argument compares the profile \(vF(v)\) with the edge
+correction \(v-c(v)\). The following statement involves only these
+two functions, independently of the channel or the Boolean rule.
+
+\begin{appendixlemma}[The profile pays for the angle correction]
+\label{lem:profile-angle-rates}
+Define the logarithmic decay rate \(Q(v)=-F'(v)/F(v)\). Then
+\begin{equation}
+ \begin{aligned}
+ Q(v)-\frac1v&>\frac32[1-c'(v)]&& (v>0),\\
+ Q(v)-\frac1v&>2[1-c'(v)]&& (0<v\le2).
+ \end{aligned}
+ \label{eq:middle-profile-angle-rates}
+\end{equation}
+Equivalently, the rate of decrease of \(\log[vF(v)]\) exceeds
+three halves of the rate of increase of \(v-c(v)\); up to height
+two, the factor improves to two.
+\end{appendixlemma}
+
+\begin{proof}
+We first record the angle geometry used in the rate comparison.
+For a variable height \(v>0\), write
+\(r_v=\tanh v\), \(\tau_v=\sech v\),
+\(\theta_v=\arcsin r_v\), and \(s(v)=\theta_v/\sinh v\).
+Since \(\theta_v'=\tau_v\), we have
+\(0<\theta_v<v<\sinh v\), hence \(0<s<1\). Differentiation gives
+\[
+ s'=\frac{\tau_v^2-s}{r_v}<0,\qquad
+ c'=2s-s^2,\qquad c''=2(1-s)s'<0.
+\]
+The first sign follows from \(\theta_v>r_v\tau_v\).
+Thus \(c\) increases, and \(c(v)/v\) decreases because \(c\) is
+concave and \(c(0)=0\).
+
+We will use the two angle bounds
+\begin{equation}
+ \frac{3z}{2+\sqrt{1-z^2}}\le\arcsin z
+ \le\frac{\pi z}{2+\sqrt{1-z^2}}
+ \qquad(0\le z\le1).
+ \label{eq:middle-angle-brackets}
+\end{equation}
+Here is a proof of both at once. Set \(z=\sin t\),
+\(0<t<\pi/2\). The derivative of
+\(t(2+\cos t)/\sin t\) has numerator
+\((2+\cos t)\sin t-t(1+2\cos t)\). This numerator vanishes at
+zero and has derivative \(2\sin t(t-\sin t)>0\). The quotient
+therefore increases from three to \(\pi\), proving the bounds.
+
+Since \(1-c'=(1-s)^2>0\), it suffices to compare
+\(Q-1/v\) with the indicated multiples of \((1-s)^2\).
+The fixed estimate \(e^4<55\) below follows from the finite sums in
+Section~\ref{app:fixed-arithmetic}.
+
+Two simple lower bounds on \(Q\) suffice. With \(q_v=e^{-2v}\),
+the entropy formula gives
+\[
+ Q(v)=\frac{4q_v[v+\log(1+q_v)]}
+ {(1-q_v)[(1+q_v)\log(1+q_v)+2vq_v]}
+ \ge\frac{4v}{2v+1}.
+\]
+Indeed \(\log(1+q_v)\le q_v\) bounds the denominator by
+\(q_v(1+2v)\), while the numerator is at least \(4q_vv\).
+Also \(Q(v)>\coth v\). To see this, let
+\begin{align*}
+ \mathcal H(v)&=\cosh v\,h(\tanh v),\\
+ D(v)&=v\coth v-\log(2\cosh v).
+\end{align*}
+We have \(D'=(\tanh v-v)/\sinh^2v<0\) and
+\(D(v)\longrightarrow0\) at infinity, so
+\(\mathcal H'=-\sinh v\,D<0\). Since
+\(F=\mathcal H/\sinh v\), this proves the claimed bound.
+
+The positive power series show that \((\cosh v-1)/v^2\) and
+\(\sinh v/v\) increase. The geometric estimates
+\begin{align*}
+ \cosh1-1&<\frac{1/2}{1-1/12}<\frac35,\\
+ \sinh1-1&<\frac{1/6}{1-1/20}<\frac15,\\
+ \cosh2-1&<\frac2{1-1/3}=3
+\end{align*}
+and \(\cosh4<(55+1)/2<33\) will give convenient quadratic bounds.
+For \(0<v\le1\), they imply
+\(\cosh v\le1+3v^2/5\). By
+\eqref{eq:middle-angle-brackets},
+\[
+ 1-s\le\frac{2v^2}{5+2v^2},\qquad
+ Q(v)-1/v>\coth v-1/v>\frac{5v}{18}>\frac v4.
+\]
+The second inequality uses
+\(v\cosh v-\sinh v=\int_0^v t\sinh t\,dt\ge v^3/3\) and
+\(\sinh v<6v/5\). Finally
+\((5+2v^2)^2-32v^3\ge25-12v^2>0\), so
+\(v/4>2[2v^2/(5+2v^2)]^2\).
+
+For \(1\le v\le2\), use \(\cosh v\le1+3v^2/4\), giving
+\(1-s\le v^2/(2+v^2)\). The numerator of
+\[
+ \frac{4v}{2v+1}-\frac1v-2\frac{v^4}{(2+v^2)^2},
+\]
+after multiplication by \(v(2v+1)(2+v^2)^2\), is
+\[
+ v^3(15v-4v^2-8)+4(3v+1)(v-1)>0.
+\]
+The concave quadratic in the first term is at least three on
+\([1,2]\); the second term is nonnegative.
+This proves the stronger rate bound for \(0<v\le2\).
+
+For \(2\le v\le4\), the bound \(\cosh v\le1+2v^2\) gives
+\(1-s\le4v^2/(3+4v^2)\). The numerator of
+\[
+ \frac{4v}{2v+1}-\frac1v-\frac32
+                   \frac{16v^4}{(3+4v^2)^2},
+\]
+after multiplication by \(v(2v+1)(3+4v^2)^2\), is
+\[
+ 16v^4(v-2)(v-3/2)+16v^3(2v-3)+3(4v^2-6v-3)>0.
+\]
+Each term is nonnegative, and the last quadratic is increasing
+from one. For \(v\ge4\), simply use
+\(Q(v)-1/v\ge2-2/(2v+1)-1/v>3/2\) and \((1-s)^2<1\).
+This proves the global rate bound.
+
+\end{proof}
+
+To use this lemma, integrate its rate bound between a coordinate
+height and the channel height. Appendix~\ref{app:middle-channel}
+checks which coefficient the channel needs; the profile calculation
+itself is now complete.

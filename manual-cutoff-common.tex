@@ -1,0 +1,57 @@
+\subsection{Cutoff Bound with Exact Low-Degree Multipliers}
+\label{app:manual-cutoff-common}\label{app:pivotal-tail-extension}
+
+The local cutoff is \(a_{\rm cut}=1/[1+(8/3)x]\). Let
+\(F(V)=F(\ell)/a_{\rm cut}\). The global profile bound
+\(-F'/F>8/5\) and \(\log(1+t)<t\) give
+\[
+                  0<\ell-V<\frac53x.
+\]
+We check the actual Parseval margin
+\[
+ M_{\rm cut}=\frac B\ell V-r c(V)
+                  -p[d_2/2+d_ba_{\rm cut}].
+\]
+By \eqref{eq:canonical-multipliers}, its exact dictator deficit is
+\[
+ B-pd_1-r c(\ell)=C_d[\phi(r)/L-r^2]=-C_dE/L.
+\]
+Concavity of \(c\), together with \(c'>0\), bounds the displacement
+loss below by \(-(B/\ell)(\ell-V)\). Since \(B>0\),
+\[
+ M_{\rm cut}\ge-C_dE/L+p d_b(1-a_{\rm cut})
+                              -\frac B\ell(\ell-V).
+\]
+This avoids any separate sign condition on a tangent coefficient.
+Use \(B\le2\lambda^2r^2+C_d\),
+\eqref{eq:canonical-db-pairing} as an equality in its first line,
+and \eqref{eq:shared-entropy-error}. They give
+\begin{align*}
+ \frac{M_{\rm cut}}x>{}&C_d\left[
+ \frac{8r^2(1-r^2/2)}{3+8x}-\frac{(2\ell-5/3)x}{L}
+                                      -\frac5{3\ell}\right]\\
+ &+\lambda^2r^2\left[
+ \frac8{3+8x}\left(1-\frac{r^2}{2(\gamma+2)}\right)
+                                      -\frac{10}{3\ell}\right].
+\end{align*}
+Both brackets have uniform positive lower bounds.
+Indeed \(x<1/32\) implies \(r^2>3/4\), so
+\[
+ \frac{8r^2(1-r^2/2)}{3+8x}>\frac{32}{13}\frac{15}{32}>1.
+\]
+The function \((2\ell-5/3)e^{-\ell}\) decreases; using \(L>2/3\),
+\[
+ \frac{(2\ell-5/3)x}{L}<\frac{16}{3}\frac1{32}\frac32=\frac14,
+ \qquad \frac5{3\ell}\le\frac{10}{21}<\frac12.
+\]
+Thus the first bracket exceeds \(1/4\). For the second,
+\(8/(3+8x)>2\), \(1-r^2/[2(\gamma+2)]>3/4\), and
+\(10/(3\ell)\le20/21<1\). It therefore exceeds \(1/2\).
+We conclude on the entire half-line that
+\[
+              M_{\rm cut}>x\left(\frac{C_d}{4}
+                                  +\frac{\lambda^2r^2}{2}\right)>0.
+\]
+This completes the third comparison. The original-yield endpoint
+principle now fills the retained heights between the join and the
+cutoff; heights below the join were covered by the LSI comparison.

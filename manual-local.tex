@@ -1,0 +1,127 @@
+\subsection{Local Cutoff}
+\label{app:manual-local}\label{app:analytic-local}
+
+Write \(x=e^{-\ell}\). We use the single influence cutoff
+\begin{equation}
+                 a_{\rm cut}=\frac{1}{1+(8/3)x}.
+ \label{eq:rational-local-cutoff}
+\end{equation}
+We need this cutoff only for \(\ell\ge7/2\). On this half-line
+\(x<1/32\): indeed \(e^3>20\) and
+\(e^{1/2}>1+1/2+1/8=13/8\) give \(e^{7/2}>32\).
+The proof retains the leading entropy logarithms until they cancel,
+then bounds the three remaining errors uniformly.
+
+Put \(r=(1-x^2)/(1+x^2)\), and let
+\(h_b(p)=-p\log p-(1-p)\log(1-p)\) denote binary entropy in
+probability coordinates. The following temporary quantities expose
+the cancellation between the two entropies:
+\begin{align*}
+ \kappa_{\rm loc}&=\frac4{3+8x},&
+ \eta_{\rm loc}&=\frac{3x}{4(1+x^2)},\\
+ p&=\frac{x^2}{1+x^2},&
+ q_{\rm loc}&=\kappa_{\rm loc}x(1+\eta_{\rm loc}),\\
+ A_{\rm loc}&=\frac1{2x^2}+\frac3{4x}+1+\frac{x^2}{2}.
+\end{align*}
+Thus \(p=(1-r)/2\), \(q_{\rm loc}=(1-r a_{\rm cut})/2\). The local margin
+\((1-r^2)h(r a_{\rm cut})-(1-a_{\rm cut}r^2)h(r)\), divided by the positive factor
+\(4\kappa_{\rm loc} x^3/(1+x^2)^2\), equals
+\[
+ \Lambda_{\rm loc}=\frac{h_b(q_{\rm loc})}{\kappa_{\rm loc}x}
+ -A_{\rm loc}h_b(p).
+\]
+
+\paragraph{Cancellation of the leading logarithms.}
+Both entropy estimates follow from one pair of logarithm bounds:
+\[
+ \frac{2t}{2+t}\le\log(1+t)\le t-\frac{t^2}{2(1+t)}
+ \qquad(t\ge0).
+\]
+These are the midpoint and trapezoid bounds for the integral of the
+convex function \(s\mapsto(1+ts)^{-1}\) on \([0,1]\), multiplied by \(t\).
+The lower bound, with \(t=q_{\rm loc}/(1-q_{\rm loc})\), gives
+\begin{align*}
+ h_b(q_{\rm loc})\ge{}&q_{\rm loc}\log(1/q_{\rm loc})+q_{\rm loc}\\
+ &-\frac{q_{\rm loc}^2}{2-q_{\rm loc}}.
+\end{align*}
+The upper bound gives
+\((1+\eta_{\rm loc})\log(1+\eta_{\rm loc})\le\eta_{\rm loc}+\eta_{\rm loc}^2/2\).
+Consequently
+\begin{align*}
+ \frac{h_b(q_{\rm loc})}{\kappa_{\rm loc}x}\ge{}&
+ (1+\eta_{\rm loc})(\ell-\log\kappa_{\rm loc})+1\\
+ &-\frac{\eta_{\rm loc}^2}{2}
+ -\frac{\kappa_{\rm loc}x(1+\eta_{\rm loc})^2}{2-q_{\rm loc}}.
+\end{align*}
+Here \(\eta_{\rm loc}\le3x/4\) and
+\(q_{\rm loc}\le x(4+3x)/(3+8x)\). Keep their two errors together:
+\begin{align*}
+ &\frac{\eta_{\rm loc}^2}{2}
+ +\frac{\kappa_{\rm loc}x(1+\eta_{\rm loc})^2}{2-q_{\rm loc}}\\
+ &\quad\le\frac9{32}x^2+\frac{x(4+3x)^2}{12(2+4x-x^2)}
+ \le\frac23x+\frac15x^2.
+\end{align*}
+For the last inequality, the identity
+\[
+ (8-x)(2+4x-x^2)-(4+3x)^2=x(6-21x+x^2)>0
+\]
+holds for \(x<1/4\). It bounds the rational term by
+\(2x/3-x^2/12\); then \(9/32-1/12<1/5\).
+
+For the other entropy, write
+\(h_b(p)=\log(1+x^2)+2\ell x^2/(1+x^2)\).
+The same trapezoid bound for the logarithm yields
+\begin{align*}
+ A_{\rm loc}\log(1+x^2)
+ &\le\frac12+\frac34x+\frac34x^2\\
+ &\quad+\frac{x^3[2x(1+x^2)-3]}{8(1+x^2)}\\
+ &\le\frac12+\frac34x+\frac34x^2.
+\end{align*}
+The remainder is negative for \(x<1/4\). Therefore
+\begin{align*}
+ A_{\rm loc}h_b(p)\le{}&\frac12+\frac34x+\frac34x^2\\
+ &+\frac{2A_{\rm loc}\ell x^2}{1+x^2}.
+\end{align*}
+The coefficient of \(\ell\) now cancels exactly to
+\begin{align*}
+ 1+\eta_{\rm loc}-\frac{2A_{\rm loc}x^2}{1+x^2}
+ &=-x\left[\frac{3}{4(1+x^2)}+x\right].
+\end{align*}
+Therefore
+\begin{equation}
+ \begin{split}
+ \Lambda_{\rm loc}\ge{}&\frac12-(1+\eta_{\rm loc})\log\kappa_{\rm loc}
+ -\frac{17}{12}x-\frac{19}{20}x^2\\
+ &-\ell x\left[\frac{3}{4(1+x^2)}+x\right].
+ \end{split}
+ \label{eq:manual-local-cancellation}
+\end{equation}
+
+\paragraph{Uniform remainder estimates.}
+The same trapezoid bound at \(t=1/3\) gives
+\(\log(4/3)<7/24\). Since \(\eta_{\rm loc}\le3/128\)
+and \(\kappa_{\rm loc}<4/3\),
+\[
+ (1+\eta_{\rm loc})\log\kappa_{\rm loc}
+ <\left(1+\frac3{128}\right)\frac7{24}<\frac13.
+\]
+Also
+\[
+ \frac{17}{12}x+\frac{19}{20}x^2
+ <\frac{17}{12\cdot32}+\frac{19}{20\cdot32^2}<\frac1{20}.
+\]
+Finally \(\ell e^{-\ell}\) decreases here, so \(\ell x<7/64\), and
+\[
+ \ell x\left[\frac3{4(1+x^2)}+x\right]
+ <\frac7{64}\left(\frac34+\frac1{32}\right)<\frac3{32}.
+\]
+Substitution in \eqref{eq:manual-local-cancellation} proves
+\begin{align*}
+ \Lambda_{\rm loc}&>\frac12-\frac13-\frac1{20}-\frac3{32}\\
+ &=\frac{11}{480}>0.
+\end{align*}
+Thus the criterion holds at \(a_{\rm cut}\) throughout
+\(\ell\ge7/2\). For fixed \(r\), its left side
+\((1-r^2)h(ra)-(1-ar^2)h(r)\) is concave in \(a\) and vanishes
+at \(a=1\). It is therefore nonnegative for every
+\(a\in[a_{\rm cut},1]\).

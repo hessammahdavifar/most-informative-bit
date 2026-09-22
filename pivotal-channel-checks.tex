@@ -1,0 +1,240 @@
+\section{Channel-Parameter Bounds in the Intermediate Regime}
+\label{app:middle-channel}
+
+\begin{appendixlemma}[The profile, energy, and mean reserves]
+\label{lem:middle-channel-checks}
+Let \(31/20\le\ell\le7/2\), and put
+\begin{align*}
+ r&=\tanh\ell,& \theta&=\arcsin r,& \lambda&=\frac\theta r,\\
+ \alpha&=\frac{\theta+\sinh\ell}{\ell},& \gamma&=\lambda\alpha,\\
+ \eta&=\frac{\theta^2\gamma}{\gamma+1},& \beta&=\frac{2r}{\eta}.
+\end{align*}
+Furthermore, define
+\begin{align*}
+ F(v)&=\frac{h(\tanh v)}{\tanh v},\\
+ c(v)&=\frac{\arcsin(\tanh v)^2}{\tanh v},\\
+ H(v)&=v-c(v).
+\end{align*}
+Then the following three inequalities hold:
+\begin{equation}
+ \log\frac{vF(v)}{\ell F(\ell)}
+ \ge\beta[H(\ell)-H(v)]\qquad(0<v\le\ell),
+ \label{eq:middle-profile-check}
+\end{equation}
+\begin{equation}
+ \theta^2-rH(\ell)-\frac\eta2\ge0,
+ \label{eq:middle-energy-check}
+\end{equation}
+\begin{equation}
+ \gamma-\frac{2\theta^2}{\sinh^2\ell}-\frac\lambda\alpha
+ \ge r\ell.
+ \label{eq:middle-mean-check}
+\end{equation}
+\end{appendixlemma}
+
+\begin{proof}
+The profile geometry is isolated in
+Lemma~\ref{lem:profile-angle-rates}. In particular, \(c\) increases,
+\(c(v)/v\) decreases, and the two ratios
+\[
+ s(v)=\frac{\arcsin(\tanh v)}{\sinh v},
+ \qquad
+ \lambda(v)=\frac{\arcsin(\tanh v)}{\tanh v}
+\]
+are respectively decreasing and increasing. The latter assertion follows
+because the derivative of \(\arcsin\) is increasing, so
+\(\arcsin r<r/\sqrt{1-r^2}\).
+Also \(\alpha(v)\) is the average on \([0,v]\) of
+\(\sech t+\cosh t\), whose derivative is \(\sinh t\tanh^2t>0\).
+Thus \(\alpha>2\), and both \(\alpha\) and \(\gamma\) increase.
+
+The two angle bounds \eqref{eq:middle-angle-brackets} were proved
+with the global profile lemma. We also use
+\begin{equation}
+ z-\frac{z^3}{3}\le\arctan z
+ \le z-\frac{z^3}{3(1+z^2)}\qquad(z\ge0).
+ \label{eq:middle-atan-brackets}
+\end{equation}
+These follow by bounding the integrand in
+\(z-\arctan z=\int_0^z t^2/(1+t^2)\,dt\).
+
+All fixed constant bounds below follow from the finite sums and
+geometric remainders in Section~\ref{app:fixed-arithmetic}. In
+particular we use
+\begin{align*}
+ \frac{157}{50}&<\pi<\frac{22}{7},&
+ 20&<e^3<\frac{81}{4},\\
+ e^4&<55,& e^{31/20}&>\frac{80}{17},& e^{1/2}&>\frac85.
+\end{align*}
+
+\paragraph{The profile check: two channel endpoints.}
+Lemma~\ref{lem:profile-angle-rates} supplies the rate bounds at
+every height. We only need to bound their channel coefficient.
+The identity
+\[
+ \beta(\ell)=\frac{2}{c(\ell)}\left(1+\frac1{\gamma(\ell)}\right)
+\]
+shows that \(\beta\) decreases. Its two needed endpoint bounds are
+\(\beta(31/20)<2\) and \(\beta(2)<3/2\), as follows.
+Monotonicity of \(\lambda\), the angle identity
+\(\theta=\pi/2-2\arctan(e^{-\ell})\), and
+\(e^{-31/20}<17/80\) give
+\[
+ \lambda(31/20)>
+ \left(\frac{157}{100}-\frac{17}{40}\right)
+ \frac{1+(17/80)^2}{1-(17/80)^2}>\frac54.
+\]
+Also \(r>19/21\), by \(e^3>20\), and \(\alpha>2\). Thus
+\(c(31/20)>475/336>7/5\), \(\gamma(31/20)>5/2\), and
+\(\beta(31/20)<2\).
+
+At two, the elementary series bounds
+\(155/21<e^2<37/5\) give \(r<27/28\) and
+\(\sinh2>18/5\). The lower bound is the exponential sum through
+degree seven; the upper bound follows from the sum through degree
+four and its geometric remainder. With \(t=21/155\),
+\eqref{eq:middle-atan-brackets} gives
+\[
+ \arctan(e^{-2})<t-\frac{t^3}{3(1+t^2)}<\frac{27}{200},
+ \qquad \theta(2)>\frac{13}{10}.
+\]
+These imply \(c(2)>7/4\), \(\lambda(2)>4/3\),
+\(\alpha(2)>49/20\), and \(\gamma(2)>13/4\). Consequently
+\(\beta(2)<136/91<3/2\).
+Combining these endpoint bounds with
+Lemma~\ref{lem:profile-angle-rates} proves
+\(Q(v)-1/v\ge\beta(\ell)[1-c'(v)]\) for every \(v\le\ell\).
+Integration from \(v\) to \(\ell\) is exactly \eqref{eq:middle-profile-check}.
+
+\paragraph{The energy check.}
+Since \(rH(\ell)=r\ell-\theta^2\), condition \eqref{eq:middle-energy-check} is equivalent to
+\[
+ \frac{c(\ell)}{\ell}
+       \left[\frac32+\frac1{2(\gamma+1)}\right]\ge1.
+\]
+Both positive factors decrease, so only \(\ell=7/2\) needs checking.
+The fixed exponential bounds give \(32<e^{7/2}<35\). At that height,
+\begin{align*}
+ \theta&>\frac\pi2-\frac1{16},& \lambda&<\frac85,\\
+ \alpha&<\frac{8/5+35/2}{7/2}=\frac{191}{35},& \gamma&<9.
+\end{align*}
+The angle bound uses \(\arctan z<z\); the bound on \(\lambda\)
+also follows from \eqref{eq:middle-angle-brackets}.
+Since \(c=\theta^2/r>\theta^2\), the required product exceeds
+\[
+ \frac{31}{20}\frac{(\pi/2-1/16)^2}{7/2}>1.
+\]
+The last rational comparison already follows from \(\pi>157/50\).
+
+\paragraph{The mean check: a positive completed square.}
+We prove \eqref{eq:middle-mean-check} on the larger range \(\ell\ge3/2\). Put
+\(\tau=\sech\ell\), and continue to use \(s=s(\ell)\).
+At \(\ell_0=3/2\), the fixed exponential bounds and the positive
+cosh series give
+\begin{equation}
+ \begin{split}
+ \frac{19}{21}<r<\frac{77}{85},\qquad
+ \frac{75}{32}<\cosh\ell_0<\frac52,\\
+ \frac{19}{9}<\sinh\ell_0<\frac{77}{36}.
+ \end{split}
+ \label{eq:middle-mean-endpoints}
+\end{equation}
+For example, the lower sinh bound is
+\(\sinh\ell_0>19/(4\sqrt5)>19/9\), and the lower cosh bound
+uses its terms through degree six. The upper cosh bound follows
+from \(e^{\ell_0}<9/2\) and \(e^{-\ell_0}<1/4\).
+The two angle bounds at this point are
+\[
+ \frac98<\theta(\ell_0)<\frac87.
+\]
+Indeed, \(e^{-\ell_0}<1/(2\sqrt5)\) and
+\eqref{eq:middle-atan-brackets} give
+\(\theta(\ell_0)>\pi/2-62/(63\sqrt5)>9/8\);
+the last comparison follows from \(\pi>157/50\) by squaring positive
+quantities. Conversely \(e^{-\ell_0}>2/9\) gives
+\(\theta(\ell_0)<11/7-4/9+16/2187<8/7\).
+In particular
+\begin{align*}
+ \frac{81}{154}&<s(\ell_0)<\frac{72}{133},\\
+ 2s(\ell)^2&<\frac35\qquad(\ell\ge\ell_0),
+\end{align*}
+where the uniform bound follows from the decrease of \(s\).
+
+To bound the positive terms in \eqref{eq:middle-mean-check}, define
+\[
+ Y(\ell)=c(\ell)+\theta\cosh\ell-r\ell^2-\frac65\ell.
+\]
+Thus \(Y/\ell=\gamma-r\ell-6/5\). Differentiating the angle
+identities above gives
+\[
+ Y'=2s-s^2+\theta\sinh\ell-\tau^2\ell^2-2r\ell-\frac15.
+\]
+With \(T=\theta\cosh\ell-r\), another derivative gives the exact
+factorization
+\[
+ Y''=T\left[1-\frac{2(1-s)}{\sinh^2\ell}\right]
+                       +2\tau^2\ell(r\ell-2).
+\]
+Throughout \(\ell\ge3/2\),
+\(r>9/10\), \(\cosh\ell>7/3\), and \(\sinh^2\ell>40/9\).
+The lower angle bound gives \(\lambda>6/5\), since \(\tau<1/2\).
+Hence \(T>81/50\), and its bracket exceeds \(11/20\).
+Also \(\tau^2\ell\) decreases, because its derivative is
+\(\tau^2(1-2r\ell)<0\). Its initial value is less than
+\((9/49)(3/2)<3/10\). As \(r\ell>27/20\), the second term
+exceeds \(-39/100\), whether it is negative or nonnegative. Therefore
+\[
+ Y''>\frac{81}{50}\frac{11}{20}-\frac{39}{100}>\frac12.
+\]
+The endpoint bounds already established give
+\[
+ \begin{split}
+ Y(\ell_0)&>
+ \left(\frac98\right)^2\frac{85}{77}
+ +\frac98\frac{75}{32}-\frac{77}{85}\frac94-\frac95>\frac3{16},\\
+ Y'(\ell_0)&>
+ 2\frac{81}{154}-\left(\frac{81}{154}\right)^2
+ +\frac{19}{8}-\frac{20}{49}-\frac{231}{85}-\frac15>-\frac15.
+ \end{split}
+\]
+For the second line, use that \(2s-s^2\) increases for \(0<s<1\),
+and \(\tau(\ell_0)^2<80/441\). Integrating the curvature bound,
+with \(t=\ell-3/2\ge0\), gives
+\[
+ Y(\ell)>\frac3{16}-\frac t5+\frac{t^2}{4}
+ =\frac14\left(t-\frac25\right)^2+\frac3{16}-\frac1{25}>0.
+\]
+Thus \(\gamma-r\ell>6/5\).
+
+It remains to bound \(\lambda/\alpha\). The upper angle bound in
+\eqref{eq:middle-angle-brackets} implies
+\[
+ \frac\lambda\alpha
+ =\frac{\ell\theta}{r(\theta+\sinh\ell)}
+ \le\frac{\pi\ell}{(\pi+1)r+2\sinh\ell}.
+\]
+Define \(Z(\ell)=(\pi+1)r+2\sinh\ell-(5\pi/3)\ell\).
+For \(\ell\ge3/2\),
+\[
+ Z''=2\sinh\ell-2(\pi+1)r\tau^2
+ >4-\frac{522}{343}>0.
+\]
+Here \(\tau^2<9/49\) and \(\pi+1<29/7\).
+At the initial point, \eqref{eq:middle-mean-endpoints} gives
+\[
+ Z'(\ell_0)>\frac{16}{25}+\frac{14}{3}-\frac{110}{21}>0,
+\]
+\[
+ Z(\ell_0)>
+ \frac{19}{21}+2\frac{19}{9}-\frac{67}{42}\frac{22}{7}>0.
+\]
+The derivative bound uses \(\tau(\ell_0)^2>4/25\), and the value
+bound combines the terms containing \(\pi\) before using its upper
+bound. Consequently \(Z>0\), proving \(\lambda/\alpha<3/5\).
+Together with the bounds above,
+\[
+ \gamma-r\ell-2s^2-\frac\lambda\alpha
+ >\frac65-\frac35-\frac35=0.
+\]
+This proves \eqref{eq:middle-mean-check}, and completes all three checks.
+\end{proof}

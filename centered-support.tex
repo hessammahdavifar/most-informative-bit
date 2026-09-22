@@ -1,0 +1,102 @@
+\section{An Entropy Tangent for the Angular Error}
+\label{app:centered-support}
+
+This appendix proves \eqref{eq:centered-support}. Its purpose is
+to preserve equality at the dictator's two posterior values
+\(\pm r\), while controlling the error of the line
+\(x\mapsto(\arcsin r)x/r\).
+
+Fix \(5/4\le\lambda\le\pi/2\). On \(0\le x\le1\), define
+\begin{align*}
+ A_{\rm sc}(x)&=x\arcsin x,\\
+ e(x)&=\arcsin x-\lambda x,\\
+ \Psi(x)&=\phi(x)+e(x)^2/2.
+\end{align*}
+We will show that \(\Psi\) increases and that \(A_{\rm sc}\) is
+convex as a function of \(\Psi\). A tangent at \(x=r\) will then
+give exactly the required inequality.
+
+Put \(x=\sin t\), \(c=\cos t\), and \(g=\atanh(\sin t)\).
+Dots in this paragraph denote derivatives in \(t\). Direct
+differentiation gives
+\begin{align*}
+ \dot A_{\rm sc}&=ct+x,& \ddot A_{\rm sc}&=2c-xt,\\
+ \dot\Psi&=gc+e(1-\lambda c),\\
+ \ddot\Psi&=1-gx+(1-\lambda c)^2+\lambda xe.
+\end{align*}
+The terms linear in \(\lambda\) cancel in the curvature numerator:
+\[
+ K_\lambda:=\ddot A_{\rm sc}\dot\Psi-
+                \dot A_{\rm sc}\ddot\Psi
+ =g(1+c^2)-x(t^2+2)+\lambda^2(x-c^3t).
+\]
+Since \(t<\tan t=x/c\), its last coefficient is positive.
+It suffices to show \(K_{5/4}>0\).
+
+Here are two matched integral bounds, with their remainders exposed:
+\begin{align*}
+ \left[\frac{y(15+4y^2)}{15+9y^2}-\arctan y\right]'
+   &=\frac{36y^6}{(15+9y^2)^2(1+y^2)},\\
+ \left[\atanh y-\frac{y(15-4y^2)}{15-9y^2}\right]'
+   &=\frac{36y^6}{(15-9y^2)^2(1-y^2)}.
+\end{align*}
+Both differences vanish at zero. Substituting \(y=\tan(t/2)\)
+and using the half-angle formulas gives
+\[
+ \frac tx\le\frac{19+11c}{3(1+c)(4+c)},\qquad
+ \frac gx\ge\frac{11+19c}{3(1+c)(1+4c)}.
+\]
+Use these upper bounds for the negative \(t,t^2\) terms and the
+lower bound for \(g\). After multiplication by positive
+denominators the result is
+\[
+ \frac{16K_{5/4}}x\ge
+ \frac{(1-c)Q(c)}{9(1+c)(4+c)^2(1+4c)},
+\]
+where the following identity proves the sign directly:
+\begin{align*}
+ Q(c)={}&375(2-6c-7c^2)^2+164(1-c)^5\\
+ &+740c(1-c)^4+c^2(1-c)^3\\
+ &+25c^3(1-c)^2+5925c^4(1-c)+8625c^5.
+\end{align*}
+Indeed expansion gives
+\(Q(c)=1664-9080c+1681c^2+34322c^3+22113c^4+3300c^5\),
+the numerator produced by the preceding substitution.
+Each term in the identity is nonnegative on \(0\le c\le1\),
+and not all vanish. Thus \(K_\lambda>0\) in the interior.
+
+To justify using \(\Psi\) as a coordinate, observe that
+\[
+ \left(\frac{\dot\Psi}{\dot A_{\rm sc}}\right)'
+       =-\frac{K_\lambda}{\dot A_{\rm sc}^{\,2}}<0.
+\]
+As \(t\uparrow\pi/2\), this ratio tends to \(\pi/2-\lambda\ge0\).
+It is therefore positive before the endpoint. This proves
+\(\dot\Psi>0\), and
+\(d^2A_{\rm sc}/d\Psi^2=K_\lambda/\dot\Psi^3>0\).
+
+Now let \(r=\tanh\ell\), \(\ell\ge31/20\), and
+\(\lambda=\arcsin(r)/r\). This slope lies in \([5/4,\pi/2]\).
+For the lower bound, \(e^{31/10}>20(1+1/10)=22\) gives
+\(r>21/23\), hence \(r^2>5/6\).
+The alternating sine bound, with \(y=5r/4<5/4\), gives
+\[
+ \frac{\sin(5r/4)}r
+ \le\frac54-\frac{125}{384}r^2+\frac{3125}{122880}r^4<1.
+\]
+The quadratic on the right decreases on \(0\le r^2\le1\);
+its value at \(5/6\) is below one. As \(5r/4<\pi/2\),
+\(\arcsin r>5r/4\). The upper bound is the endpoint chord
+of the convex function \(\arcsin r\).
+
+At \(x=r\) we have \(e(r)=0\), \(\Psi(r)=\phi(r)\), and
+\[
+ \frac{dA_{\rm sc}}{d\Psi}(r)
+   =\frac{\arcsin r+r/\sqrt{1-r^2}}{\atanh r}
+   =\alpha.
+\]
+The supporting line of the proved convex function is
+\(A_{\rm sc}(x)-A_{\rm sc}(r)\ge
+\alpha[\phi(x)-\phi(r)+e(x)^2/2]\).
+This is \eqref{eq:centered-support}; evenness extends it to
+negative \(x\), and continuity includes the endpoints.

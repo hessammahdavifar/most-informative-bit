@@ -1,0 +1,229 @@
+\subsection{Canonical Penalty and Preliminary Bounds}
+\label{app:canonical-prerequisites}
+
+Throughout this appendix \(\ell\ge7/2\), \(x=e^{-\ell}\), and
+\(\theta=\arcsin r\). The rule is
+\begin{align*}
+ \lambda&=\theta/r,& \alpha&=(\theta+\sinh\ell)/\ell,\\
+ \gamma&=\lambda\alpha,& d&=\ell/2+5/4,
+\end{align*}
+and
+\begin{align*}
+ p&=(\lambda+1/\alpha)^2,& b&=\lambda^2(2+1/\gamma),\\
+ C_d&=p\weight(d)-b,& B&=2\theta^2+C_d\phi(r)/L.
+\end{align*}
+The elementary bounds \(e^{7/2}>33\), \(157/50<\pi<22/7\), and
+\(2/3<L<3/4\) give \(r>99/100\), \(\theta>3/2\), and
+\(\lambda^2<P<5/2\); the angle ratio is bounded by the endpoint
+chord of the convex function \(\arcsin r\). Since
+\(\theta+\sinh\ell>1/(2x)\),
+\begin{equation}
+ \gamma>\frac{3e^\ell}{4\ell}>\ell+\frac72=2d+1.
+ \label{eq:canonical-penalty-lower}
+\end{equation}
+For the second inequality, \(3e^\ell-4\ell^2-14\ell\) is positive
+at \(7/2\), its first derivative is positive there, and its second
+derivative \(3e^\ell-8\) stays positive.
+
+The exact multiplier identities are
+\begin{equation}
+ \begin{split}
+ p\weight(1)-b&=-\lambda^2,\\
+ p\weight(2)-b&=-\frac{\lambda^2}{\gamma+2},\\
+ C_d&=\lambda^2\left[d-2-\frac{(d-1)^2}{\gamma+d}\right].
+ \end{split}
+ \label{eq:canonical-multipliers}
+\end{equation}
+Thus \(C_d>0\), since \(\gamma(d-2)>1\), and
+\(C_d<(5/2)(d-2)\), \(b<(5/2)(2+1/7)<6\).
+The all-bias mean condition follows without a separate channel test:
+\begin{align*}
+ \gamma-b-C_d\left(1-\frac1{2L}\right)
+ &>\ell+\frac72-6-\frac56\left(\frac\ell2-\frac34\right)\\
+ &=\frac16+\frac7{12}\left(\ell-\frac72\right)>0.
+\end{align*}
+Here \(0<1-1/(2L)<1/3\). Finally, the coefficient required by the
+original-yield endpoint principle satisfies
+\begin{align*}
+ \frac{p d_2}{2r}
+ &=\frac p2(d-2)\frac\gamma{\gamma+d}
+                   \frac\gamma{\gamma+2}r^3\\
+ &>1\cdot1\cdot\frac12\cdot\frac12\cdot\frac34
+ =\frac3{16}>\frac5{32}.
+\end{align*}
+Also \(0<d_2<d_1\), so \(d_b>0\). The global shape inequality
+\eqref{eq:original-shape} therefore applies with multiplier \(p\).
+
+\paragraph{Entropy estimate.}
+Put \(E=h(r)-L(1-r^2)\ge0\). For every \(\ell\ge3/2\),
+\begin{equation}
+                     E\le x^2(2\ell-5/3).
+ \label{eq:shared-entropy-error}
+\end{equation}
+Indeed, with \(q=x^2\), the entropy formula gives
+\begin{align*}
+ 2\ell-\frac E q
+ &=\frac{2\ell q}{1+q}+\frac{4L}{(1+q)^2}
+ -\frac{\log(1+q)}q.
+\end{align*}
+The reciprocal trapezoid bound gives
+\(\log(1+q)/q\le(2+q)/[2(1+q)]\). Using \(2\ell\ge3\) leaves
+\[
+ 2\ell-\frac E q-\frac53
+ \ge\frac{4(L-2/3)-11q/6+5q^2/6}{(1+q)^2}>0.
+\]
+The last numerator exceeds \(8/81-11/120>0\): the first two terms
+of \(L=2\operatorname{atanh}(1/3)\) give \(L-2/3>2/81\), and
+\(e^3>20\) gives \(q<1/20\).
+
+\subsection{Small Heights: Paired Spectral Costs}
+\label{app:manual-small}
+
+Let \(z=\ell/2\). The line-angle LSI comparison is
+\begin{align*}
+ M_{\rm small}&=\frac B\ell-r
+       -\frac{pK_{\rm LS}r^2F(\ell)}{zF(z)},\\
+ K_{\rm LS}&=\frac{\gamma^2 e^{2d-3}}{2(\gamma+d)(\gamma+1)}.
+\end{align*}
+Set \(a_d=d-1\), \(k=e^{-1/2}\),
+\(T=e^\ell F(\ell)/F(z)\), and \(f_d=C_d/\lambda^2\).
+The identities \eqref{eq:canonical-multipliers} and
+\(\phi(r)/L=r^2-E/L\) give the useful cancellation
+\begin{equation}
+ \begin{split}
+ \frac{\ell M_{\rm small}}{\theta^2}
+ ={}&d-\frac\ell{c(\ell)}-kT\\
+ &-\frac{a_d(a_d-kT)}{\gamma+d}-\frac{f_dE}{Lr^2}.
+ \end{split}
+ \label{eq:canonical-small-pairing}
+\end{equation}
+We bound the first three terms below, keeping the resolvent loss
+paired with the profile cost in the fourth term.
+
+The elementary logarithm bounds
+\(t/(1+t)\le\log(1+t)\) and
+\((1+t)\log(1+t)\le t+t^2/2\), obtained by integration, yield
+\begin{align*}
+ \frac{2\ell+1}{(\ell+1+x/2)(1+x)}
+ &\le T\le\frac{2\ell+1+x^2/2}{(\ell+1)(1+x)}\\
+ &\le2-\frac1{\ell+1}.
+\end{align*}
+The lower bound exceeds \(5/3\): after multiplication by its
+positive denominator, the difference has numerator
+\[
+ \ell-2-5\ell x-\frac{15}2x-\frac52x^2
+ \ge\frac32-\frac{25}{32}-\frac5{2048}>0.
+\]
+Here this expression increases with \(\ell\) and decreases with
+\(x\) on \(\ell\ge7/2\), \(0<x<1/32\).
+Since \(3/5<k<5/8\) and \(c(\ell)>\theta^2>9/4\),
+\begin{align*}
+ 1&<kT<\frac58\left(2-\frac1{\ell+1}\right),\\
+ d-\frac\ell{c(\ell)}-kT
+ &>\frac\ell{18}+\frac5{8(\ell+1)}\ge\frac13.
+\end{align*}
+The last difference from \(1/3\) equals
+\((2\ell-3)(2\ell-7)/[72(\ell+1)]\).
+
+Next, \(\gamma+d>4(d-1)(d-2)\). By
+\eqref{eq:canonical-penalty-lower}, it suffices that
+\(3e^\ell>4\ell^3-6\ell^2-8\ell\).
+For \(s=\ell-7/2\ge0\), the positive cubic Taylor sum for \(e^s\)
+and \(e^{7/2}>33\) bound this difference below by
+\[
+                  29+2s+\frac{27}2s^2+\frac{25}2s^3>0.
+\]
+Consequently
+\[
+ \frac{a_d(a_d-kT)}{\gamma+d}
+ <\frac{a_d(a_d-1)}{\gamma+d}<\frac14.
+\]
+Finally, \eqref{eq:shared-entropy-error}, \(f_d<d-2\),
+\(L>2/3\), and \(r^2>3/4\) give
+\[
+ \frac{f_dE}{Lr^2}<2(d-2)(2\ell-5/3)e^{-2\ell}<\frac1{96}.
+\]
+The product decreases: its logarithmic derivative is at most
+\(1/2+3/8-2<0\). At \(7/2\) its value is less than
+\(2(16/3)/32^2=1/96\). Thus
+\[
+ M_{\rm small}>\frac{\theta^2}{\ell}
+                      \left(\frac13-\frac14-\frac1{96}\right)
+                =\frac{7\theta^2}{96\ell}>0.
+\]
+Since \(vF(v)\) decreases and \(c(v)\le v\), this comparison at
+\(z\) covers every \(0<v\le z\). In particular \(B/\ell>r\).
+
+\subsection{Half-Height Join and Angular Saving}
+\label{app:joining-height}\label{app:manual-join-direct}
+
+Write \(a_z=F(\ell)/F(z)\). The original Parseval margin at the
+join has the exact form
+\begin{align*}
+ M_{\rm join}
+ &:={Bz}/{\ell}-r c(z)-p[d_2/2+d_ba_z]\\
+ &=r[c(\ell)-c(z)]-\frac{\lambda^2r^4}{2(\gamma+2)}
+   +\frac{C_d}{2}\left[1-r^4-\frac{h(r)}L\right]\\
+ &\quad-p d_ba_z.
+\end{align*}
+The multiplier identities also give
+\begin{equation}
+ \begin{split}
+ p d_b={}&C_d(r^2-r^4/2)
+       +\lambda^2\left[r^2-\frac{r^4}{2(\gamma+2)}\right]\\
+       &\le C_d/2+P\le Pd/2.
+ \end{split}
+ \label{eq:canonical-db-pairing}
+\end{equation}
+
+The angle saving is of order \(\sqrt x\), while the losses are of
+order \(x\). To see it directly, the function
+\(e^v[P-c(v)]\) increases. With \(t=\arcsin(\tanh v)\),
+\begin{align*}
+ &(t+\cos t)^2-c(v)-c'(v)\\
+ &\quad=(1-\sin t)(t/\sin t-\cos t)^2
+ +\sin t\cos^2t>0.
+\end{align*}
+As \(t+\cos t<\pi/2\), this gives \(c+c'<P\).
+At \(v=\log(10/3)\), the bounds \(4/\pi>5/4\) and
+\(\arctan y\ge y-y^3/3\) at \(y=3/10\) give
+\[
+ 2t/\pi<16/25,\qquad
+ c(v)/P<(16/25)^2(109/91)<1/2.
+\]
+Hence \(P-c(z)>(5P/3)\sqrt x\), since
+\(z\ge7/4>\log(10/3)\). On the other hand,
+\(c(\ell)\ge\theta^2\ge P-2\pi x\), so
+\[
+                 c(\ell)-c(z)>\frac{5P}{3}\sqrt x-2\pi x.
+\]
+Also \(h(r)<(2\ell+1)x^2\), and
+\(\log(1+x)\ge x/(1+x)\) gives
+\[
+ \frac{F(\ell)}{F(z)}
+ <x\frac{2\ell+1}{\ell+1}\frac{1+x^2}{1+x}<2x.
+\]
+Using these bounds, \eqref{eq:canonical-db-pairing}, and
+\eqref{eq:canonical-penalty-lower}, and discarding the positive
+\(C_d(1-r^4)/2\), gives
+\begin{align*}
+ \frac{M_{\rm join}}{P\sqrt x}
+ >{}&\frac{5r}{3}
+ -\left(\frac76\ell+\frac54+\frac8\pi\right)e^{-\ell/2}\\
+ &-\frac{(d-2)(2\ell+1)}{2L}e^{-3\ell/2}.
+\end{align*}
+The first term increases and both losses decrease. For the affine
+loss this follows by differentiation; for the last, the logarithmic
+derivative is
+\(1/(\ell-3/2)+1/(\ell+1/2)-3/2<0\).
+At \(\ell=7/2\), use \(r>99/100\), \(\sqrt x<7/40\),
+\(8/\pi<8/3\), and \(2L>4/3\). The affine coefficient is less
+than eight, and the last loss is less than \(6(7/40)^3<1/25\).
+Thus the whole half-line satisfies
+\[
+             \frac{M_{\rm join}}{P\sqrt x}
+                  >\frac{33}{20}-\frac75-\frac1{25}
+                   =\frac{21}{100}>0.
+\]
+
+\input{manual-cutoff-common}

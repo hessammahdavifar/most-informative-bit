@@ -1,0 +1,152 @@
+\subsection{Endpoint Principle for the Original Yield}
+\label{app:original-yield}
+
+The original Parseval yield has no interior maximum once its constant
+term pays for the following global curvature bound:
+\begin{equation}
+ \begin{split}
+ &\frac{-c''(v)[vJ'(v)-J(v)]}{J''(v)}-[c(v)-vc'(v)]<\frac5{32},\\
+ &\hspace{8em}J=1/F,\qquad v>0.
+ \end{split}
+ \label{eq:original-shape}
+\end{equation}
+We prove it below. Its use is simple. For positive constants
+\(A_0,A_1\), the derivative of
+\[
+                    Y_P(v)=\frac{r c(v)+A_0+A_1 J(v)}v
+\]
+has the sign of
+\[
+ A_1-\frac{A_0+r[c(v)-vc'(v)]}{vJ'(v)-J(v)}.
+\]
+The denominator is positive. Differentiation and
+\eqref{eq:original-shape} show that the fraction strictly decreases
+if \(A_0/r\ge5/32\). The derivative of \(Y_P\) can therefore change
+sign only from negative to positive: \(Y_P\) has no interior maximum.
+This applies directly to the Parseval yield with
+\(A_0=p d_2/2\) and \(A_1=p(d_1-d_2/2)F(\ell)\).
+Appendix~\ref{app:canonical-prerequisites} proves
+\(p d_2/(2r)>3/16>5/32\) for every \(\ell\ge7/2\).
+
+\paragraph{Small-height entropy comparison.}
+Recall \(L=\log2\). Continue to write
+\({\mathcal H}(v)=\cosh v\,h(\tanh v)\), and put
+\(\Lambda(v)=\log(2\cosh v)\). Recall that \({\mathcal H}'<0\) and
+\(J'=\Lambda/{\mathcal H}^2\).
+Put \(r_v=\tanh v\), \(\delta_v=1-r_v^2\). For a decreasing
+function \(f\) and an increasing function \(g\) on \([0,1]\),
+\begin{align*}
+ &\int_0^1fg-\left(\int_0^1f\right)\left(\int_0^1g\right)\\
+ &\quad=\frac12\int_0^1\!\int_0^1
+ [f(s)-f(t)][g(s)-g(t)]\,ds\,dt\le0.
+\end{align*}
+Apply this to \(f(s)=1/(1+s)\), \(g(s)=1/(1-r_v^2s^2)\):
+\[
+ \frac{h(r_v)}{\delta_v}
+ =\int_0^1\frac{ds}{(1+s)(1-r_v^2s^2)}
+ \le L\int_0^1\frac{ds}{1-r_v^2s^2}=\frac{Lv}{r_v}.
+\]
+The integral identity follows by integrating the partial fractions
+\begin{align*}
+ \frac1{(1+s)(1-r^2s^2)}={}&
+ \frac1{(1-r^2)(1+s)}\\
+ &+\frac{r}{2(1+r)(1-rs)}\\
+ &-\frac{r}{2(1-r)(1+rs)}.
+\end{align*}
+
+For \(0<v\le1\), this also gives \({\mathcal H}''<0\). Indeed,
+\(v/\tanh v\) increases, so \(h(r_v)/\delta_v\le L\coth1<1\):
+use \(e^2>7\), hence \(\coth1<4/3\), and \(L<3/4\). Differentiation gives
+\({\mathcal H}''=(h(r_v)-\delta_v)/\sqrt{\delta_v}\).
+Thus \({\mathcal H}^{-2}\) is increasing and convex on this interval.
+The product rule gives \(J'''=(\Lambda {\mathcal H}^{-2})''>0\), since
+\(\Lambda\) is positive, increasing, and convex. Hence
+\begin{equation}
+ vJ'(v)-J(v)=\int_0^v tJ''(t)\,dt
+                  <\frac{v^2}{2}J''(v)\qquad(0<v\le1).
+ \label{eq:original-profile-curvature}
+\end{equation}
+
+\paragraph{Accumulated curvature.}
+We first strengthen the preceding integral bound to
+\begin{equation}
+ \frac{vJ'(v)-J(v)}{J''(v)}<\frac v2\qquad(v>0).
+ \label{eq:profile-ratio-linear}
+\end{equation}
+For \(v\le1\), \eqref{eq:original-profile-curvature} already proves it.
+For \(v\ge1\), put
+\begin{align*}
+ q&=e^{-2v},& T&=\frac{\log(1+q)}q,\\
+ K&=2v+(1+q)T,& D&=vJ'-J.
+\end{align*}
+The entropy formula gives \(J=(1-q)/(qK)\), and differentiation gives
+\begin{align*}
+ qD&=1-\frac{1-q+2T}K+\frac{(1-q^2)T^2}{K^2},\\
+ K'&=2T,\qquad 0<T'<q.
+\end{align*}
+Here primes denote derivatives in \(v\). The last bound follows from
+the reciprocal trapezoid estimate: \(T'=2[T-1/(1+q)]<q\).
+Also \(T\ge1-q/2\). The last numerator \((1-q^2)T^2\) increases,
+so differentiating and dropping its positive derivative gives
+\begin{align*}
+ (qD)'\ge\frac1{K^2}\biggl[&2T(1-q+2T)-K(2q+2T')\\
+ &-\frac{4(1-q^2)T^3}K\biggr]>0.
+\end{align*}
+The three terms are respectively greater than \(4\), less than
+\(2\), and less than \(2\). Indeed, \(e^2>7\) gives
+\(q<1/7\) and \(1-q,T>6/7\). Also
+\(qK<e^{-2v}(2v+3/2)<1/2\), since this upper bound decreases
+from a value below \((1/7)(7/2)\) at one. Finally \(K>2\) and \(T<1\).
+Since \((qD)'=q(vJ''-2D)\), this proves
+\eqref{eq:profile-ratio-linear}.
+
+\paragraph{Scaling of angular curvature.}
+Write
+\[
+ w(v)=\frac{\arcsin(\tanh v)}{\sinh v},
+ \qquad k(v)=-c''(v)>0.
+\]
+The function \(w\) is decreasing and convex as a function of \(v^2\).
+For a direct proof, put \(r_v=\tanh v\) and
+\(\tau_v=\operatorname{sech}v\).
+The elementary angle bound
+\[
+ \arcsin r_v\ge\frac{3r_v}{2+\tau_v},\qquad
+ w(v)\ge\frac{3\tau_v}{2+\tau_v}
+\]
+follows by differentiation: the derivative of the first difference,
+with respect to \(r_v\), is
+\((1-\tau_v)^2/[\tau_v(2+\tau_v)^2]\ge0\).
+Since \(3\tau_v/(2+\tau_v)>\tau_v^2\), the identity
+\(w'=(\tau_v^2-w)/r_v\) also proves that \(w\) decreases.
+Differentiate once more and substitute
+this lower bound:
+\[
+ vw''-w'\ge
+ \frac{\tau_v(1-\tau_v)}{r_v^2(2+\tau_v)}
+ \bigl[(3+\tau_v)r_v+v\{4-(1+\tau_v)^3\}\bigr]>0.
+\]
+For the last sign, \(r_v\ge v\tau_v\) leaves
+\(v(3-2\tau_v^2-\tau_v^3)>0\) inside the bracket.
+The sign \(vw''-w'>0\) is exactly convexity in \(v^2\).
+
+Consequently \(f(v)=1-w(v)\) is increasing and concave in \(v^2\),
+and vanishes at zero. For \(0<t\le v\),
+concavity gives \(f(t)\ge(t/v)^2f(v)\) and
+\(f'(t)\ge(t/v)f'(v)\). Since \(k=2ff'\), integration yields
+\begin{equation}
+ c(v)-vc'(v)=\int_0^v t k(t)\,dt
+                     \ge\frac{v^2}{5}k(v).
+ \label{eq:angle-curvature-scaling}
+\end{equation}
+Also \(k(v)\le\tanh^3(v)/2<1/2\): in
+\(k=2(1-w)(w-\delta)/r\), where \(r=\tanh v\) and
+\(\delta=1-r^2\), maximize the quadratic in \(w\).
+Combining the two estimates gives
+\begin{align*}
+ &\frac{k(v)[vJ'(v)-J(v)]}{J''(v)}-[c(v)-vc'(v)]\\
+ &\qquad\le k(v)\left(\frac v2-\frac{v^2}5\right)<\frac5{32}.
+\end{align*}
+For \(v\le5/2\), use \(k<1/2\) and complete the square;
+for larger \(v\), the bracket is nonpositive. This proves
+\eqref{eq:original-shape}, and hence the endpoint principle.

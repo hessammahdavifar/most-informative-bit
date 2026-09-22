@@ -1,0 +1,288 @@
+\section{The Small-Correlation Regime}
+\label{app:low}
+
+This appendix proves CK for \(0\le\rho\le\rho_*\), at every bias,
+where \(\rho_*=\tanh(31/20)\) is the common boundary.
+Its mechanism is an energy gap. A rule with one large singleton
+coefficient is covered by the local lemma. Otherwise its total singleton
+energy is bounded away from one. Two quadratics tangent to binary
+entropy convert that energy gap into the required information bound.
+This is the local-optimality/Fourier-gap strategy developed in
+Samorodnitsky's and Yu's work~\cite{Sam,YuPhi,Yu}. The distinction in
+this appendix is its self-contained quantitative input: the cap below
+is proved by sections and sign sums, and the entropy comparison keeps
+the output mean. Yu's published balanced range is not being used as an
+all-bias black box.
+
+Write \(r=\rho\) in this appendix. For a cube function \(v\), its
+\emph{singleton energy} is
+\(W_1(v)=\sum_i\widehat v(\{i\})^2\). Let
+\(a=\max_i|\widehat f(\{i\})|\) be the largest singleton coefficient
+in absolute value. Use the cutoff \(a_0=5/8\) and the energy cap
+\[
+                   M=1-a_0+a_0^2=\left(\frac78\right)^2.
+\]
+These choices match two bounds: splitting on the strongest coordinate
+gives \(1-a_0+a_0^2\), while the sign-sum estimate below gives
+\(7/8\). The cutoff makes their energy bounds agree exactly.
+We shall start the entropy comparison at \(r_0=5/8\) and end at
+\(r_1=\rho_*\).
+Contraction will then cover all correlations below \(r_0\).
+
+\input{fourier-cap}
+
+\subsection{Mean-Sensitive Energy Bound}
+
+The Fourier estimate just proved says
+\begin{equation}
+ a\le a_0\quad\Longrightarrow\quad W_1(f)\le M.
+ \label{eq:fourier-cap}
+\end{equation}
+The local check in Section~\ref{app:low-local-check}, followed by
+Section~\ref{app:local-propagation}, handles \(a\ge a_0\) throughout
+\(r\le r_1\).
+
+For a biased rule, introduce one new sign bit and form
+\[
+ G(1,x)=f(x),\qquad G(-1,x)=-f(-x).
+\]
+The new rule is balanced. Its singleton coefficient on the new bit is
+\(m=\E f\); on the old bits it has the original singleton coefficients.
+Consequently, if \(|m|\le a_0\) and \(a\le a_0\),
+\begin{equation}
+                         m^2+W_1(f)=W_1(G)\le M.
+ \label{eq:lift}
+\end{equation}
+Only this Fourier relation is needed from \(G\).
+Larger biases are covered directly by entropy contraction:
+\[
+ I_f(r)\le r^2h(m)<r^2/2\le\phi(r),
+\]
+Indeed, the first two terms of the entropy series give, when
+\(|m|\ge a_0=5/8\),
+\begin{align*}
+ h(m)&\le h(a_0)\le L-a_0^2/2-a_0^4/12\\
+ &<7/10-a_0^2/2-a_0^4/12<1/2.
+\end{align*}
+The point \(r=0\) is immediate.
+
+\subsection{Tangent Quadratic Minorants}
+
+\begin{remark}[Role of the quadratic minorant]
+The first two moments of the noisy rule have simple Fourier formulas.
+A quadratic below entropy lets us use those formulas directly. We
+construct the quadratic by making it touch entropy, rather than by
+fitting its coefficients to a numerical grid.
+\end{remark}
+
+For a contact point \(0<t<1\) and an entropy argument \(0\le s\le1\), define
+\begin{align*}
+ A_t&=\frac{\log(2/(1+t))}{(1-t)^2},\\
+ z_t&=2t-\frac{g(t)}{A_t},\\
+ Q_t(s)&=A_t(1-s)(1+s-z_t).
+\end{align*}
+The coefficient \(A_t\) sets the scale; \(z_t\) sets the shape.
+They are determined by contact at \(t\) and vanishing at one. The identity
+\(h(t)-(1-t)g(t)=\log(2/(1+t))\) gives
+\[
+ Q_t(t)=h(t),\qquad Q_t'(t)=h'(t),\qquad Q_t(1)=h(1)=0.
+\]
+Moreover, every such quadratic is a global lower bound:
+\begin{equation}
+                         Q_t(s)\le h(s)\qquad(0\le s\le1).
+ \label{eq:entropy-tangent-family}
+\end{equation}
+To see this, put \(D_t=h-Q_t\). Its second derivative
+\(D_t''(s)=2A_t-1/(1-s^2)\) strictly decreases. It must be positive
+at \(t\); otherwise \(D_t\) would decrease strictly from its zero at
+\(t\) to its zero at one. Thus \(D_t\) decreases to zero before
+\(t\), then rises and falls back to zero on \([t,1]\).
+It stays nonnegative throughout. This proves the entire family at once.
+
+Use the two contact points \(t_0=2/5\) and \(t_1=2/3\).
+For \(j=0,1\), abbreviate \(A_j=A_{t_j}\) and \(z_j=z_{t_j}\).
+Define \(\alpha,\beta\) by the line
+through the two points \((z_j,1/A_j)\):
+\begin{align*}
+ \beta&=\frac{1/A_0-1/A_1}{z_1-z_0},\\
+ \alpha&=\frac1{A_0}+\beta z_0,\\
+ c_{\rm ent}(r)&=\frac1{\alpha-\beta r^2}.
+\end{align*}
+Thus the coefficient is determined by the two entropy tangencies.
+The fixed comparisons at the end of this appendix give
+\(z_0<r_0^2\) and \(r_1^2<z_1\).
+For any \(r\in[r_0,r_1]\), write \(r^2=\mu z_0+(1-\mu)z_1\),
+where \(0\le\mu\le1\). The weights
+\(\mu c_{\rm ent}/A_0\) and \((1-\mu)c_{\rm ent}/A_1\) sum to one.
+Their convex combination of \eqref{eq:entropy-tangent-family} gives
+\begin{equation}
+ h(s)\ge c_{\rm ent}(r)(1-s)(1+s-r^2).
+ \label{eq:minorant}
+\end{equation}
+This is the only entropy minorant used below.
+
+\subsection{From Entropy to Fourier Energy}
+
+For each Fourier degree \(k\), put
+\(W_k=\sum_{|S|=k}\widehat f(S)^2\). Since \(f\) takes only the
+values \(-1,1\),
+\[
+ \E|T_r f|\ge\E[fT_r f]=\sum_{k=0}^n r^kW_k.
+\]
+Apply \eqref{eq:minorant} to \(|T_r f|\), and use Parseval for its
+second moment. All higher-degree contributions have the favorable sign:
+\(r^{k+2}-r^{2k}\ge0\) for \(k\ge2\). Hence
+\[
+ \E h(T_r f)\ge
+ c_{\rm ent}(r)\bigl[1-r^2-(1-r^2)m^2-r^2(1-r)W_1\bigr].
+\]
+Insert \eqref{eq:lift} and \(\phi(m)\ge m^2/2\):
+\begin{align}
+ \E h(T_r f)+\phi(m)\ge{}&
+ c_{\rm ent}(r)(1-r)(1+r-Mr^2)\notag\\
+ &+\bigl[1/2-c_{\rm ent}(r)(1-2r^2+r^3)\bigr]m^2.
+ \label{eq:low-credit}
+\end{align}
+The mean coefficient is positive. After multiplication by
+\(2/c_{\rm ent}(r)>0\), it becomes
+\[
+ \alpha-2+(4-\beta)r^2-2r^3.
+\]
+This increases on \([r_0,1]\), since \(\beta<1\). At \(r_0=5/8\),
+the bounds \(\alpha>53/40\) and \(\beta<17/20\) give a value
+larger than \(43/640>0\). We may therefore discard the mean term.
+
+\subsection{One change of curvature controls the remaining gap}
+
+The information inequality now reduces to the positivity of
+\[
+ B_0(r)=(1-r)(1+r-Mr^2)-(\alpha-\beta r^2)h(r).
+\]
+We prove that \(B_0\) decreases, so a single comparison at \(r_1\)
+finishes the interval. The reason is a simple derivative shape:
+\begin{equation}
+ B_0''''(r)=
+ \frac{2[\alpha(1+3r^2)-\beta(r^4-3r^2+6)]}{(1-r^2)^3}.
+ \label{eq:low-curvature-shape}
+\end{equation}
+The numerator increases as a function of \(r^2\). Thus \(B_0''''\)
+can change sign only from negative to positive. Since
+\(B_0'''(r_0)<0\), the same is true of \(B_0'''\).
+It follows that \(B_0''\) has no interior maximum on any subinterval.
+
+The fixed comparisons below establish
+\[
+ \begin{gathered}
+ B_0'(r_0)<-1/16,\qquad B_0''(r_0)<1/3,\qquad B_0'''(r_0)<0,\\
+ B_0''(4/5)<0,\qquad B_0''(r_1)<0.
+ \end{gathered}
+\]
+The endpoint property gives \(B_0''<1/3\) up to \(4/5\), and
+\(B_0''<0\) thereafter. Consequently
+\begin{align*}
+ B_0'(r)&<-\frac1{16}+\frac{4/5-5/8}{3}
+          =-\frac1{240}<0,\\
+ &\hspace{8em}r_0\le r\le4/5,
+\end{align*}
+and \(B_0'\) decreases after \(4/5\).
+Therefore \(B_0(r)\ge B_0(r_1)>0\) throughout the interval.
+Equation~\eqref{eq:low-credit} now gives CK on \([r_0,r_1]\).
+
+\subsection{Contract from the starting point to zero}
+
+The same estimate leaves extra slack at \(r_0\):
+\[
+ c_{\rm ent}(r_0)(1-r_0)(1+r_0-Mr_0^2)+r_0^2/2-L>0.
+\]
+Thus \(I_f(r_0)<r_0^2/2\). Entropy contraction gives
+\[
+ I_f(r)\le(r/r_0)^2I_f(r_0)\le r^2/2\le\phi(r)
+                   \qquad(0\le r\le r_0).
+\]
+The strict starting slack matters: contracting a bound equal to
+\(\phi(r_0)\) would not suffice, since \(\phi(r)/r^2\) increases.
+The local and large-bias alternatives were already covered.
+This completes the all-bias proof for \(0\le r\le\rho_*\).
+
+\subsection{The fixed comparisons}
+\label{app:low-arithmetic}
+
+All coefficients above were defined by tangency. The following bounds
+only check finitely many values; they do not specify a fitted entropy
+curve. For \(1\le y\le2\), put \(z=(y-1)/(y+1)\) and define
+\begin{align*}
+ \ell_-(y)&=2\sum_{j=0}^{11}\frac{z^{2j+1}}{2j+1},\\
+ \ell_+(y)&=\ell_-(y)+\frac{2z^{25}}{25(1-z^2)}.
+\end{align*}
+The logarithm series gives
+\[
+ \ell_-(y)\le\log y\le\ell_+(y).
+\]
+For other positive rational arguments, first extract a power of two.
+Only the following logarithms occur:
+\[
+ \log(10/7),\qquad \log(6/5),\qquad \log(7/3),\qquad \log5.
+\]
+Substituting the displayed sums gives
+\[
+ \alpha>\frac{53}{40},\qquad 0<\beta<\frac{17}{20},\qquad
+ z_0<r_0^2,\quad r_1^2<z_1.
+\]
+These are the bounds used for the mean term, derivative shape, and
+interpolation domain. In the fixed checks below, evaluate \(\alpha\)
+and \(\beta\) directly from their defining logarithms and the displayed
+finite sums; no rounded coefficient values are needed.
+For scale only, the same substitutions with outward rounding give
+\begin{align*}
+ 1.3258315440444&<\alpha<1.3258315440447,\\
+ 0.8499134388946&<\beta<0.8499134388950.
+\end{align*}
+These decimal enclosures help a reader reproduce the calculation, but
+the proof uses the finite rational sums above.
+
+For completeness, the derivatives needed in the five fixed checks are
+\begin{align*}
+ B_0'(r)={}&-2(1+M)r+3Mr^2\\
+ &+(\alpha-\beta r^2)g(r)+2\beta r h(r),\\
+ B_0''(r)={}&-2(1+M)+6Mr+\frac{\alpha-\beta r^2}{1-r^2}\\
+ &-4\beta r g(r)+2\beta h(r),\\
+ B_0'''(r)={}&6M-6\beta g(r)-\frac{6\beta r}{1-r^2}\\
+ &+\frac{2r(\alpha-\beta r^2)}{(1-r^2)^2}.
+\end{align*}
+At rational arguments, use \(g(r)=\tfrac12\log((1+r)/(1-r))\)
+and the definition of \(h(r)\), replacing each logarithm by
+\(\ell_-\) or \(\ell_+\) in the unfavorable direction.
+At the common boundary, the same exponent gives all three values:
+\begin{align*}
+ r_1&=\frac{e^{31/10}-1}{e^{31/10}+1},&
+ g(r_1)&=\frac{31}{20},\\
+ h(r_1)&=\log(1+e^{-31/10})+\frac{31/10}{1+e^{31/10}}.
+\end{align*}
+The exponential sum and remainder in Section~\ref{app:fixed-arithmetic}
+bound the exponential. Substitution in these identities, followed by
+the logarithm bounds, gives the endpoint comparisons and
+\(r_1^2<z_1\). All substitutions are in the unfavorable direction
+in the displayed formula for \(B_0\) and its derivatives. For the local
+margin, use the same bounds on \(r_1\) and the logarithm formula for
+\(h(5r_1/8)\). These finite sums establish the table, with
+\(M=(7/8)^2\):
+\begin{center}\small
+\begin{tabular}{@{}p{.71\linewidth}r@{}}
+\toprule
+Fixed expression & Bound\\ \midrule
+\(M_{\rm loc}(r_1,5/8)\) & \(>1/1400\)\\
+\(B_0'(5/8)\) & \(<-17/250\)\\
+\(B_0''(5/8)\) & \(<7/30\)\\
+\(B_0'''(5/8)\) & \(<-1\)\\
+\(B_0''(4/5)\) & \(<-1/9\)\\
+\(B_0''(r_1)\) & \(<-1/10\)\\
+\(B_0(r_1)\) & \(>1/4000\)\\
+Starting contraction slack at \(r_0=5/8\) & \(>1/500\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+These stronger rational margins are obtained by the same unfavorable
+finite-sum substitutions and exceed the weaker signs used in the proof.
+Every check uses a fixed logarithm or exponential value. The interval
+argument is the derivative shape in \eqref{eq:low-curvature-shape}, not
+a grid of arithmetic checks.

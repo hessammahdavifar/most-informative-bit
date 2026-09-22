@@ -1,0 +1,288 @@
+\section{Information Growth Across Channel Regimes}
+\label{sec:pivotal-middle}
+
+\subsection{Intermediate-Correlation Growth}
+
+We first prove the required growth inequality on the intermediate range
+\(31/20\le\ell=\atanh\rho\le7/2\). In this section write \(r=\rho\).
+The idea is to keep the coordinates together. Logarithmic Sobolev gives
+an entropy cost for their pivotal probabilities; the log-sum inequality
+then combines that cost with the edge budget. We will not choose a
+comparison Fourier degree or divide coordinates by influence.
+The underlying entropy tool is Gross's cube logarithmic Sobolev
+inequality~\cite{Gross,ODonnell}. Its use here is specific: the positive
+kernel in the next calculation converts pivotal-set entropy into the
+same spectral expression produced by the centered angle comparison.
+This supplies the correction left after the entropy-flow edge
+bound~\cite{CGN}, without a conjectured coupling potential.
+
+
+\begin{proposition}[Pivotal entropy forces faster growth]
+\label{prop:middle-growth}
+Let \(f\) be monotone Boolean and
+\(31/20\le\atanh\rho\le7/2\). Then
+\[
+ I_f(\rho)>\phi(\rho)\quad\Longrightarrow\quad
+ I_f'(\rho)>\phi'(\rho).
+\]
+The mean of \(f\) is unrestricted.
+\end{proposition}
+
+The proof compares the energy demanded by the information premise with
+the growth available along the cube edges. It first obtains an
+angle-energy requirement, expresses part of that requirement as pivotal
+entropy, and then combines the entropy with the edge correction through
+the log-sum inequality.
+
+Put \(\Theta=\arcsin u\) and \(J_{\rm ang}=\E[\Theta\Lapl\Theta]\).
+The dictator has posterior values \(\pm r\). Define its angle and the
+slope of the line through those two angle values by
+\[
+ \theta=\arcsin r,\qquad \lambda=\theta/r.
+\]
+Two further coefficients come from the tangent inequality below:
+\[
+ \alpha=\frac{\theta+\sinh\ell}{\ell},\qquad
+ \gamma=\lambda\alpha,\qquad
+ \eta=\frac{\theta^2\gamma}{\gamma+1}.
+\]
+These are channel functions, not parameters to optimize.
+The same \(\gamma\) will serve throughout the growth proof, including
+the high-correlation extension. Only the way we estimate the pivotal
+cost changes with the channel.
+
+\subsubsection{Angle energy required by an information lead}
+
+The following scalar inequality is proved in
+Appendix~\ref{app:centered-support}:
+\begin{equation}
+ \begin{split}
+ \frac{\alpha}{2}(\arcsin x-\lambda x)^2
+ &\le x\arcsin x-r\theta\\
+ &\quad-\alpha[\phi(x)-\phi(r)],qquad -1\le x\le1.
+ \end{split}
+ \label{eq:centered-support}
+\end{equation}
+Both sides vanish at \(x=\pm r\). It bounds the error of the
+dictator's angle line by an entropy difference, without losing
+equality at the reference posterior.
+The comparison stays within Shannon entropy. Although the angle and
+the Hellinger program~\cite{Hellinger,CN} both involve the geometry of
+binary probabilities, we do not infer this inequality from a
+Hellinger-optimality conjecture; its scalar proof is given in full.
+
+Average \eqref{eq:centered-support} with \(x=u\), multiply by
+\(2\lambda\), and complete the square in the positive operator
+\(\Lapl+\gamma\). This gives
+\begin{equation}
+ \begin{split}
+ J_{\rm ang}\ge{}&2\theta^2+2\gamma[\phi(m)+\Delta_f(r)]\\
+ &+\lambda^2\E\left[u\left\{\gamma-
+       \frac{(\gamma+1)^2}{\Lapl+\gamma}\right\}u\right].
+ \end{split}
+ \label{eq:centered-resolvent}
+\end{equation}
+Here division by \(\Lapl+\gamma\) means multiplication of each
+degree-\(k\) Fourier coefficient by \(1/(k+\gamma)\).
+For completeness, the discarded nonnegative square is
+\begin{multline*}
+ \E\bigl[
+ \bigl(\Theta-\lambda(\gamma+1)(\Lapl+\gamma)^{-1}u\bigr)
+ (\Lapl+\gamma)\\
+ {}cdot\bigl(\Theta-\lambda(\gamma+1)
+ (\Lapl+\gamma)^{-1}u\bigr)\bigr].
+\end{multline*}
+The constant Fourier mode is included; this matters when \(m\ne0\).
+For the dictator, \(u=ry_1\) and \(\Theta=\lambda u\) are both
+degree one. The operator \((\gamma+1)(\Lapl+\gamma)^{-1}\)
+therefore fixes \(u\), so the discarded square is zero. In
+\eqref{eq:centered-resolvent} the spectral term is \(-\theta^2\);
+the result is exactly \(J_{\rm ang}=\theta^2\).
+
+\subsubsection{Contribution of noisy pivotal sets}
+
+Recall the pivotal indicator \(q_i^f\), with mean \(a_i\).
+Omit coordinates with \(a_i=0\); every logarithm below then has a
+positive argument.
+Let \(t\in[0,r^2]\) denote a squared noise correlation and put
+\[
+ w_i(t)=T_{\sqrt t}q_i^f,\qquad s_i(t)=\E w_i(t)^2.
+\]
+Noise here acts on the other \(n-1\) coordinates.
+The value \(w_i(t)\) is the conditional probability that coordinate
+\(i\) is pivotal. Its mean remains \(a_i\); its second moment
+\(s_i(t)\) records how unevenly that probability is distributed.
+Complete averaging gives \(s_i(0)=a_i^2\), whereas the unsmoothed
+indicator has second moment \(a_i\).
+Define an average of these second moments:
+\[
+ z_i=\frac{\gamma+1}{\gamma r^2}
+       \int_0^{r^2}[1-(t/r^2)^\gamma]s_i(t)\,dt,
+ \qquad Z=\sum_i z_i.
+\]
+The weight in this integral is nonnegative and has total mass one.
+Thus \(a_i^2\le z_i\le a_i\): noise preserves the mean and cannot
+increase the second moment of an indicator.
+
+Write \(V_0=1-m^2\) for the Boolean variance and
+\(U=\operatorname{Var}(u)/r^2\) for the normalized noisy variance.
+Fourier expansion of the integral gives
+\[
+ Z=(\gamma+1)\sum_{k\ge1}
+       \frac{r^{2(k-1)}}{\gamma+k}
+       \sum_{|S|=k}\widehat f(S)^2,
+ \qquad 0<Z\le U\le V_0.
+\]
+The last inequality is Boolean Parseval followed by noise contraction.
+For a dictator, \(w_1(t)=s_1(t)=z_1=1\), all other
+coordinate terms vanish, and \(Z=U=V_0=1\). Thus \(V_0-Z\)
+measures a variance reserve that is absent in the equality example.
+The exact integral identity
+\begin{align*}
+ &\frac{\gamma+1}{\gamma}
+ \int_0^{r^2}[1-(t/r^2)^\gamma]
+       \sum_i\E[w_i(t)\Lapl w_i(t)]\,dt\\
+ &\hspace{7em}=(\gamma+1)r^2(U-Z)
+\end{align*}
+is checked one Fourier degree at a time: a degree-\(k\) coefficient
+appears in \(k\) pivotal derivatives, each of degree \(k-1\).
+
+Cube logarithmic Sobolev, proved in Appendix~\ref{app:scalar}, gives
+\[
+ \E[w_i\Lapl w_i]\ge
+       \frac12 s_i\log\frac{s_i}{a_i^2}.
+\]
+For the auxiliary entropy bound, average under the probability
+density \(w_i^2/s_i\). Jensen applied to \(\log(1/w_i)\) gives
+\(\E_*\log w_i\ge\log(s_i/a_i)\), hence
+\(\operatorname{Ent}(w_i^2)\ge s_i\log(s_i/a_i^2)\).
+Here \(\operatorname{Ent}(v)=\E(v\log v)-(\E v)\log(\E v)\);
+zero-weight points are omitted. Convexity of \(s\log(s/a_i^2)\)
+and the averaging integral therefore give a bound on the
+\emph{pivotal entropy cost}, defined by
+\[
+ E_{\rm piv}:=\sum_i z_i\log\frac{z_i}{a_i^2}.
+\]
+Each summand is nonnegative since \(z_i\ge a_i^2\); a noisy pivotal
+probability that is constant has zero cost. In this notation,
+\begin{equation}
+ (\gamma+1)(U-Z)\ge\frac12 E_{\rm piv}.
+ \label{eq:pivotal-entropy}
+\end{equation}
+
+Rewrite \eqref{eq:centered-resolvent} in terms of \(U,Z,V_0\), including
+its constant mode, and then apply \eqref{eq:pivotal-entropy}.
+To keep the bias contribution visible, define
+\[
+ M(m):=2\gamma\phi(m)-[\lambda^2(2-r^2)+\lambda/\alpha]m^2.
+\]
+The required angle energy is now
+\begin{align}
+ J_{\rm ang}
+ &\ge\theta^2[1+V_0+\gamma U-(\gamma+1)Z]
+          +M(m)+2\gamma\Delta_f(r)\notag\\
+ &\ge\theta^2(1+V_0-Z)+\frac{\eta}{2}E_{\rm piv}
+          +M(m)+2\gamma\Delta_f(r).                 \label{eq:pivotal-baseline}
+\end{align}
+Read the last line term by term: the dictator's energy \(\theta^2\),
+the variance reserve \(\theta^2(V_0-Z)\), the pivotal entropy cost,
+the bias correction, and the credit \(2\gamma\Delta_f(r)\) for extra
+information. The last credit is strictly positive under a lead.
+For the dictator, \(E_{\rm piv}=1\log1=0\), and every term except
+\(\theta^2\) vanishes.
+
+\subsubsection{Log-sum closure of the edge budget}
+
+Suppose the information lead \(\Delta=\Delta_f(r)\) is positive,
+but its growth is no faster than the dictator's: \(A(u)\le r\ell\).
+We derive a contradiction.
+Monotonicity gives \(a_i\le1-|m|\le V_0\). Also
+\[
+ \E h(u)=h(r)-\phi(m)-\Delta\le V_0h(r),
+\]
+since \(\phi(m)\ge m^2/2\) and \(h(r)<1/2\).
+For the latter, \(r>9/10\) and \(L<7/10\) give
+\(h(r)\le L-r^2/2<1/2\).
+Apply Lemma~\ref{lem:edges} with
+\(H_{\rm budget}=V_0h(r)\). Its heights satisfy
+\[
+ F(v_i)=\frac{V_0h(r)}{r a_i}=\frac{V_0F(\ell)}{a_i},
+ \qquad 0<v_i\le\ell,
+\]
+where the upper bound follows from \(a_i\le V_0\) and the decrease
+of \(F\). With \(H(v)=v-c(v)\), the lemma gives
+\begin{equation}
+ \sum_i a_i v_i\le A(u)/r\le\ell,\qquad
+ A(u)\ge J_{\rm ang}+r\sum_i a_iH(v_i).
+ \label{eq:adjusted-edge}
+\end{equation}
+These heights are comparison parameters; they are not additional
+properties assumed of the field.
+
+Set \(\beta=2r/\eta\). The channel estimates proved in
+Lemma~\ref{lem:middle-channel-checks} are
+\begin{align}
+ \log\frac{vF(v)}{\ell F(\ell)}
+       &\ge\beta[H(\ell)-H(v)] &&(0<v\le\ell), \label{eq:middle-profile}\\
+ \theta^2-rH(\ell)-\eta/2&\ge0,                \label{eq:middle-energy}\\
+ M(m)-rH(\ell)m^2&\ge0.                       \label{eq:middle-mean}
+\end{align}
+Their role is simple: the first converts the edge budget to a
+normalization for log-sum; the other two leave nonnegative reserves.
+
+For that normalization, put
+\(b_i=a_i^2e^{-\beta H(v_i)}\) and \(B_{\rm piv}=\sum_i b_i\).
+This choice puts the edge correction inside the entropy logarithm:
+\(\log(z_i/b_i)=\log(z_i/a_i^2)+\beta H(v_i)\).
+The weights need not sum to one; log-sum keeps track of their total.
+Equation~\eqref{eq:middle-profile} gives
+\[
+ \frac{b_i}{a_iv_i}
+ \le\frac{V_0}{\ell}e^{-\beta H(\ell)},\qquad
+ B_{\rm piv}\le V_0e^{-\beta H(\ell)}.
+\]
+The second inequality uses the first bound in
+\eqref{eq:adjusted-edge}: a rule growing no faster than the dictator
+has only \(\ell\) units of edge weight to allocate.
+Since \(z_i\le a_i\), \(H\ge0\), and
+\(\eta\beta/2=r\), log-sum now yields
+\begin{align*}
+ \frac{\eta}{2}E_{\rm piv}+r\sum_i a_iH(v_i)
+ &\ge\frac{\eta}{2}\sum_i z_i\log\frac{z_i}{b_i}\\
+ &\ge\frac{\eta}{2}Z\log\frac Z{B_{\rm piv}}\\
+ &\ge\frac{\eta}{2}Z\log\frac Z{V_0}+rZH(\ell).
+\end{align*}
+The first line joins the two costs by the logarithmic identity just
+given. The second is log-sum. The third uses the bound on total weight.
+This is the connection between the information requirement and the
+available growth: both involve the same noisy pivotal sets.
+
+Finally insert this bound into \eqref{eq:pivotal-baseline} and
+\eqref{eq:adjusted-edge}. Subtract
+\(r\ell=\theta^2+rH(\ell)\), and use
+\(Z\log(Z/V_0)\ge Z-V_0\), the tangent inequality for \(t\log t\):
+\begin{equation}
+ \begin{aligned}
+ A(u)-r\ell\ge{}&
+ \underbrace{[\theta^2-rH(\ell)-\eta/2](V_0-Z)}_{
+                    \text{nonnegative variance reserve}}\\
+ &+\underbrace{[M(m)-rH(\ell)m^2]}_{\text{nonnegative bias reserve}}
+  +\underbrace{2\gamma\Delta}_{\text{positive lead credit}}>0.
+ \end{aligned}
+ \label{eq:pivotal-growth-account}
+\end{equation}
+This contradicts \(A(u)\le r\ell\). We have proved
+\[
+ \Delta_f(r)>0\ \Longrightarrow\ A(u)>r\ell
+ \qquad(31/20\le\ell\le7/2).
+\]
+At a dictator, \(a_1=z_1=V_0=1\) and \(v_1=\ell\).
+Log-sum has one term and is exact. The variance reserve, bias reserve,
+and lead credit are all zero. What remains is the exact account
+\[
+ \underbrace{r\ell}_{\text{growth}}
+   =\underbrace{\theta^2}_{\text{angle energy}}
+    +\underbrace{rH(\ell)}_{\text{edge correction}}.
+\]
+An information lead would add the strictly positive last term in
+\eqref{eq:pivotal-growth-account}; the other two terms cannot cancel it.

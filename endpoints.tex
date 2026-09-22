@@ -1,0 +1,107 @@
+\section{Endpoint Reduction for the Height Parameter}
+\label{app:endpoints}
+
+The scalar comparison initially depends on two variables: the channel's
+half-log-odds \(\logodds\) and one coordinate's comparison height \(v\).
+This appendix removes the height variable analytically.
+The reason is elementary: a suitable upper bound can decrease and then
+increase, but cannot have an interior maximum. We only need its endpoints.
+
+\subsection{Two Shape Properties}
+
+Recall \(c(v)=\arcsin(\tanh v)^2/\tanh v\) and
+\(F(v)=h(\tanh v)/\tanh v\). On \(v>0\),
+\[
+ c\text{ is concave},\qquad 1/F\text{ is convex}.
+\]
+Here is a short proof. Put
+\(s(v)=\arcsin(\tanh v)/\sinh v\). Differentiating gives
+\[
+ c'(v)=2s(v)-s(v)^2,\qquad 0<s(v)<1,\qquad s'(v)<0.
+\]
+Indeed, \(\sinh v-\arcsin(\tanh v)\) starts at zero and has
+positive derivative. Also
+\[
+ s'(v)=\frac{\tanh v-\arcsin(\tanh v)\cosh v}{\sinh^2v}<0,
+\]
+since \(\arcsin(\tanh v)>\tanh v>0\). Hence
+\(c''(v)=2(1-s(v))s'(v)<0\), and \(0<c'(v)<1\).
+
+For the reciprocal profile write
+\[
+ J(v)=\frac1{F(v)}=\frac{\sinh v}{{\mathcal H}(v)},\qquad
+ {\mathcal H}(v)=\cosh v\,h(\tanh v)>0.
+\]
+The difference \(v\coth v-\log(2\cosh v)\) decreases to zero:
+its derivative is \((\tanh v-v)/\sinh^2v<0\).
+Consequently
+\({\mathcal H}'(v)=\sinh v\log(2\cosh v)-v\cosh v<0\).
+Direct differentiation now gives
+\begin{align*}
+ J'(v)&=\frac{\log(2\cosh v)}{{\mathcal H}(v)^2},\\
+ J''(v)&=\frac{\tanh v\,{\mathcal H}(v)
+ -2\log(2\cosh v){\mathcal H}'(v)}{{\mathcal H}(v)^3}>0.
+\end{align*}
+
+\subsection{Lower and Upper Endpoints}
+
+Fix a channel with \(\ell=\logodds\ge7/2\), write \(r=\rho\),
+and use the canonical multiplier \(p=(\lambda+1/\alpha)^2\).
+The Parseval bound on the coordinate yield is
+\[
+ Y_P(v)=\frac{r c(v)+p[d_2/2+(d_1-d_2/2)F(\ell)/F(v)]}{v}.
+\]
+We prove below that \(Y_P\) has no interior maximum when
+\(p d_2/(2r)\ge5/32\). Appendix~\ref{app:canonical-prerequisites}
+verifies this condition on the whole stated half-line.
+The LSI comparison covers heights through \(z=\ell/2\).
+Define the last retained height \(V\) by
+\(F(V)=F(\ell)/a_{\rm cut}\), where the local lemma covers
+influences at least \(a_{\rm cut}\).
+If \(V\le z\), the LSI bound covers everything. Otherwise the
+only remaining checks are \(Y_P(z)<B/\ell\) and
+\(Y_P(V)<B/\ell\).
+
+The log-sum argument handles
+the smaller channels without this coordinate comparison.
+
+\subsection{A Uniform Rate for the Entropy Profile}
+
+The cutoff proof needs no inverse formula for \(F\). It only needs
+to know that \(F\) decreases fast enough. Define its relative decay
+rate \(Q_F(v)=-F'(v)/F(v)\). We prove
+\begin{equation}
+                         Q_F(v)>8/5\qquad(v>0).
+ \label{eq:analytic-profile-speed}
+\end{equation}
+Writing \(q_v=e^{-2v}\), differentiation of the entropy formula gives
+\[
+ Q_F(v)=\frac{4q_v[v+\log(1+q_v)]}
+ {(1-q_v)[(1+q_v)\log(1+q_v)+2v q_v]}.
+\]
+After multiplication by positive denominators, the claimed bound is
+equivalent to
+\[
+ v q_v(1+4q_v)+(5q_v-2+2q_v^2)\log(1+q_v)>0.
+\]
+If the logarithm has nonnegative coefficient, this is immediate.
+Otherwise \(\log(1+q_v)<q_v\) reduces it to the stronger assertion
+\(v-2+(4v+5)e^{-2v}>0\). This is immediate for \(v\ge2\).
+For \(0\le v<2\), the ratio
+\((2-v)e^{2v}/(4v+5)\) has derivative with the sign of
+\(-8v^2+6v+7\). Its maximum is therefore at
+\((3+\sqrt{65})/8\), between \(11/8\) and \(7/5\).
+The maximum is less than \(5e^{14/5}/84<1\). The last fixed
+exponential bound follows from the finite series and geometric
+remainder in Section~\ref{app:fixed-arithmetic}. This proves the rate.
+
+For the cutoff \(a_{\rm cut}=1/(1+(8/3)e^{-\ell})\), integration
+between its actual height \(V\) and \(\ell\) now gives
+\begin{align*}
+ \frac85(\ell-V)&<\int_V^\ell Q_F(v)\,dv=-\log a_{\rm cut}\\
+ &=\log\bigl(1+(8/3)e^{-\ell}\bigr)<\frac83e^{-\ell}.
+\end{align*}
+Thus \(0<\ell-V<(5/3)e^{-\ell}\), without evaluating an inverse
+of \(F\).
+
+\input{original-yield}

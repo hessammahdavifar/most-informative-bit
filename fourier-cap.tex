@@ -1,0 +1,193 @@
+\subsection{An elementary bound on singleton energy}
+\label{app:fourier-cap-proof}
+
+We prove the Fourier estimate needed below, including the estimate for
+sums of independent signs on which it rests. Let \(f\) be any function
+on the cube with values in \(\{-1,1\}\), and put
+\[
+ a_i=\widehat f(\{i\}),\qquad a=\max_i|a_i|,\qquad
+ W=\sum_i a_i^2=W_1(f).
+\]
+Thus \(a\) measures the strongest correlation with a single input bit,
+and \(W\) is the total squared correlation with all individual bits.
+We will show
+\begin{equation}
+                 a\le\frac58
+                 \quad\Longrightarrow\quad W\le 1-a_0+a_0^2=M.
+ \label{eq:elementary-fourier-cap}
+\end{equation}
+The estimate holds at every mean. It separates into two simple cases:
+one coefficient is moderately large, or every coefficient is small.
+This is a quantitative instance of the level-one rigidity underlying
+FKN~\cite{FKN}, tailored to a fixed cutoff rather than an asymptotic
+closeness theorem. For the broader sign-sum problem see~\cite{KSTJ},
+and for a sharp small-coefficient asymptotic see~\cite{YuSharp}.
+The particular constants needed here are established below.
+
+\subsubsection{A moderately large coefficient leaves little other energy}
+
+Orient a chosen input bit so that its coefficient is \(a\ge0\), and
+let \(f_+,f_-\) be the two sections obtained by fixing that bit.
+On the remaining cube define
+\[
+ s=\frac{f_++f_-}{2},\qquad d=\frac{f_+-f_-}{2}.
+\]
+Pointwise, \(s^2+d^2=1\) and \(d\in\{-1,0,1\}\). Also
+\(\E d=a\), so \(\E d^2\ge a\). The other singleton coefficients
+are the singleton coefficients of \(s\). Parseval therefore gives
+\begin{equation}
+ W=a^2+W_1(s)\le a^2+\E s^2\le a^2+1-a.
+ \label{eq:elementary-singleton-section}
+\end{equation}
+For \(3/8\le a\le5/8\), the convex quadratic on the right is at
+most its equal endpoint values:
+\[
+ \left(\frac38\right)^2+1-\frac38
+ =\left(\frac58\right)^2+1-\frac58
+ =\left(\frac78\right)^2=M.
+\]
+It remains to handle \(a\le3/8\).
+
+\subsubsection{Spread-out coefficients cannot have absolute mean near one}
+
+We use the following elementary moment bound. If
+\(Z=\sum_i b_iX_i\), where the \(X_i\) are independent uniform signs, then
+\begin{equation}
+ \sum_i b_i^2=1,\qquad \max_i b_i^2\le\frac15
+ \quad\Longrightarrow\quad \E|Z|<\frac78.
+ \label{eq:elementary-sign-sum}
+\end{equation}
+The normalization gives \(\E Z^2=1\), so Cauchy--Schwarz alone
+would give only \(\E|Z|\le1\). The condition on the largest
+summand gives a strict gap. We prove it with one polynomial above
+absolute value; no Gaussian approximation or tail estimate is needed.
+
+\paragraph{Contact polynomial.}
+Let \(p\) be the polynomial of degree at most five that matches
+\(\sqrt y\) and its derivative at the three points
+\[
+                         y=9/16,\quad 4,\quad 9.
+\]
+These are convenient contacts for one fixed bound, not parameters of
+the channel. The contact conditions determine \(p\) uniquely:
+the difference of two such polynomials would have six zeros, counting
+multiplicity, despite having degree at most five.
+For complete arithmetic, put \(D_{\rm mom}=4042912500\). The polynomial is
+\begin{equation}
+ \begin{split}
+ D_{\rm mom}p(y)={}&637696y^5-17928800y^4\\
+                  &+191446315y^3-1008169920y^2\\
+                  &+3660186285y+1260006516.
+ \end{split}
+ \label{eq:moment-majorant}
+\end{equation}
+Substitution verifies the six contact conditions.
+
+To prove that the contact polynomial is a global majorant, fix \(y>0\)
+away from the contact points. Subtract from \(\sqrt s-p(s)\) the multiple
+of \((s-9/16)^2(s-4)^2(s-9)^2\) that makes it zero at \(s=y\).
+There are seven zeros counting multiplicity. Applying Rolle's theorem
+six times gives, for some \(\xi>0\),
+\[
+ \sqrt y-p(y)=\frac{(\sqrt{\,\cdot\,})^{(6)}(\xi)}{6!}
+                (y-9/16)^2(y-4)^2(y-9)^2\le0,
+\]
+since \((\sqrt{\,\cdot\,})^{(6)}(\xi)=-945/(64\xi^{11/2})<0\).
+The contact points and zero follow by continuity. Thus
+\[
+                              |Z|\le p(Z^2).
+\]
+This sign argument is the reason for using a contact polynomial.
+
+\paragraph{Moment evaluation.}
+Write \(\sigma_j=\sum_i b_i^j\) for \(j=4,6,8,10\).
+Expansion of the sum, keeping only even multiplicities, gives
+\begin{align*}
+ \E Z^2&=1, & \E Z^4&=3-2\sigma_4,\\
+ \E Z^6&=15-30\sigma_4+16\sigma_6,\\
+ \E Z^8&=105-420\sigma_4+140\sigma_4^2\\
+        &\quad+448\sigma_6-272\sigma_8,\\
+ \E Z^{10}&=945-6300\sigma_4+6300\sigma_4^2\\
+ &\quad+10080\sigma_6-6720\sigma_4\sigma_6\\
+ &\quad-12240\sigma_8+7936\sigma_{10}.
+\end{align*}
+One systematic way to obtain these identities is to differentiate
+\(\E e^{tZ}=\prod_i\cosh(b_it)\) at zero. The coefficients needed are
+\begin{align*}
+ \log\cosh t={}&\frac{t^2}{2}-\frac{t^4}{12}+\frac{t^6}{45}\\
+ &-\frac{17t^8}{2520}+\frac{31t^{10}}{14175}+O(t^{12});
+\end{align*}
+they follow by integrating the Taylor series of \(\tanh t\).
+
+Put \(t=\sigma_4\) in the rest of this paragraph. The largest-weight
+condition implies
+\begin{align*}
+ 0\le t&\le\frac15,& \sigma_6&\le\frac t5,\\
+ \sigma_{10}&\le\frac{\sigma_8}{5},& \sigma_8&\ge t^3.
+\end{align*}
+For the last inequality, the numbers \(b_i^2\) are probability
+weights: Jensen for the convex map \(x\mapsto x^3\) gives
+\(\sum_i b_i^2(b_i^2)^3\ge(\sum_i b_i^2b_i^2)^3\).
+Substitute the moment identities into \eqref{eq:moment-majorant}, then
+apply these four inequalities. The result is the single cubic bound
+\[
+ D_{\rm mom}\E p(Z^2)\le T_{\rm mom}(t),
+\]
+where
+\begin{align*}
+ T_{\rm mom}(t)={}&3487476486+77364454t\\
+ &+650389376t^2-\frac{9583071744}{5}t^3.
+\end{align*}
+To check the substitution directions, the coefficient of \(\sigma_6\)
+before using \(\sigma_6\le t/5\) is
+\(1459014320-4285317120t>0\) on \([0,1/5]\).
+After \(\sigma_{10}\le\sigma_8/5\), the coefficient of
+\(\sigma_8\) is \(-9583071744/5<0\), so Jensen is used in the correct
+direction.
+
+Only one value of this cubic needs checking. Its derivative is concave,
+and is positive at both endpoints of \([0,1/5]\):
+\begin{align*}
+ T_{\rm mom}'(0)&=77364454>0,\\
+ T_{\rm mom}'(1/5)&=\frac{13440810318}{125}>0.
+\end{align*}
+Hence \(T_{\rm mom}(t)\le T_{\rm mom}(1/5)\). The remaining exact comparison is
+\[
+ 7D_{\rm mom}-8T_{\rm mom}(1/5)=\frac{119582002252}{625}>0.
+\]
+It follows that \(\E|Z|\le\E p(Z^2)<7/8\), proving
+\eqref{eq:elementary-sign-sum}.
+
+\subsubsection{Return to the Boolean function}
+
+Suppose \(a\le3/8\) and \(W\ge M=(7/8)^2\), and normalize
+\(b_i=a_i/\sqrt W\). Then
+\[
+ \sum_i b_i^2=1,\qquad
+ \max_i b_i^2\le\frac{(3/8)^2}{(7/8)^2}=\frac9{49}<\frac15.
+\]
+Booleanity supplies the bridge to the moment bound:
+\[
+ \sqrt W=\E\!\left[f\sum_i b_iX_i\right]
+       \le\E\left|\sum_i b_iX_i\right|<\frac78.
+\]
+This contradicts \(\sqrt W\ge\sqrt M=7/8\) directly.
+Thus small coefficients give \(W<M\). Together with the section
+bound on \([3/8,5/8]\), this proves
+\eqref{eq:elementary-fourier-cap}.
+
+\subsection{The same cutoff covers larger coefficients}
+\label{app:low-local-check}
+
+Recall the local margin \(M_{\rm loc}\) from
+Section~\ref{app:local-propagation}. At our common boundary
+\(r_1=\tanh(31/20)\), the fixed comparison in
+Section~\ref{app:low-arithmetic} gives
+\[
+ M_{\rm loc}(r_1,5/8)
+  =(1-r_1^2)h(5r_1/8)-(1-5r_1^2/8)h(r_1)>0.
+\]
+The propagation argument there extends this one check to every
+\(r\le r_1\) and \(a\ge5/8\). Thus every rule is covered:
+a coefficient at least \(5/8\) invokes the local lemma; otherwise
+the singleton energy is at most \((7/8)^2\).
