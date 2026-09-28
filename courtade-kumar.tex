@@ -1,4 +1,54 @@
-\input{preamble}
+\documentclass[journal]{IEEEtran}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs,array}
+\usepackage{cite}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\hypersetup{
+  pdftitle={The Most Informative Bit and Beyond: A Proof of the Courtade--Kumar Conjecture and Multibit Extensions},
+  pdfauthor={Hessam Mahdavifar and Ahmad Beirami}
+}
+
+\interdisplaylinepenalty=2500
+\setlength{\emergencystretch}{1.5em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{appendixlemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Compatibility wrappers for explanatory remarks retained in technical appendices.
+\newenvironment{intuition}[1]{\begin{remark}[#1]}{\end{remark}}
+\newenvironment{notebox}{\begin{remark}}{\end{remark}}
+
+\newcommand{\E}{\mathbb E}
+\newcommand{\Ent}{\operatorname{Ent}}
+\newcommand{\Inf}{\operatorname{Inf}}
+\newcommand{\atanh}{\operatorname{atanh}}
+\newcommand{\sech}{\operatorname{sech}}
+\newcommand{\Fhat}[1]{\widehat{#1}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\diff}{\,\mathrm d}
+\newcommand{\Lapl}{\mathcal L}
+\newcommand{\degree}{d}
+\newcommand{\logodds}{\ell_\rho}
+\newcommand{\weight}{\omega}
+\newcommand{\Klsi}{K_{\mathrm{LS}}}
+\newcommand{\cutoff}{v_{\mathrm{cut}}}
+\newcommand{\edgewidth}{d_{\mathrm{edge}}}
+\newcommand{\corr}{\operatorname{corr}}
+\newcommand{\unitcost}{\operatorname{yield}}
+
 
 \begin{document}
 
@@ -47,12 +97,11 @@ We construct quantizers from shortened Hamming codes whose covering
 structure beats the coordinate-projection benchmark for \(k=8\), and a
 direct-sum argument extends this failure to every \(k\geq8\). Thus, unlike
 in the single-bit case, structured coding can retain more information than
-simple coordinate selection. Finally, exhaustive searches within several
-structured code families and Monte Carlo searches over random codebooks
-for \(2\leq k\leq7\) reveal a clear advantage of structured codebooks over
-random ones while still underperforming the coordinate benchmark. These findings
-lead us to conjecture that coordinate projections remain optimal for
-\(2\leq k\leq7\).
+simple coordinate selection. Finally, searches within structured code
+families for \(2\leq k\leq7\), including exhaustive checks in selected
+families, and Monte Carlo searches over seven-bit random codebooks find
+no violation below eight bits. These findings lead us to conjecture that
+coordinate projections remain optimal for \(2\leq k\leq7\).
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -74,7 +123,6 @@ information, quantization.
 \input{low}
 \input{endpoints}
 \input{verification}
-\input{numerical-diagnostics}
 
 \input{references}
 

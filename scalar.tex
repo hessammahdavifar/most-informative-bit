@@ -1,12 +1,11 @@
 \section{Scalar Edge and Entropy Inequalities}\label{app:scalar}\label{ck-the-scalar-and-edge-lemmas}
 
-This appendix proves the scalar and edge facts used in
-Section~\ref{sec:mechanism}. Write
-\begin{align*}
- L&=\log2,& h(r)&=L-\phi(r),\\
- g(r)&=\operatorname{atanh}r,& F(v)&=\frac{h(\tanh v)}{\tanh v}.
-\end{align*}
-All these facts are independent of dimension.
+This appendix proves the scalar comparisons behind
+Lemma~\ref{lem:edges} and Proposition~\ref{prop:local}.
+Centering and convexity give the common entropy-budget bounds, and
+profile estimates control their angular correction.
+Entropy contraction and a mean correction give the
+influential-coordinate criterion.
 
 \subsection{Convex Lower Bound for Centered Edges}\label{centered-edges-give-a-convex-lower-bound}
 
@@ -16,101 +15,90 @@ For edge values \(p,q\in(-1,1)\), define
  a(p,q)&=\frac{(p-q)(g(p)-g(q))}{4},\\
  j(p,q)&=\frac{(\arcsin p-\arcsin q)^2}{4}.
 \end{align*}
-The edge contributes \(a(p,q)\) to the action and \(j(p,q)\) to the angle energy.
-We abbreviate these edge functions as \(a,j\) within this subsection. The subscript in \(\edgewidth\) names its role: edge half-width.
-Let \(F^{-1}\) denote the inverse function of \(F\).
-For a positive scalar \(k\), first define
+Write \(a=a(p,q)\), \(j=j(p,q)\), and, for \(k>0\), define
 \[
  \theta_{\rm edge}(k)=\arcsin(\tanh k),\qquad
  \corr(F(k))=k-\frac{\theta_{\rm edge}(k)^2}{\tanh k}.
 \]
-Here \(\corr\) is short for the retained edge correction.
-We will prove
+We prove
 \begin{align}
  a(p,q)&\ge \edgewidth F^{-1}(H_e/\edgewidth),\nonumber\\
  a(p,q)-j(p,q)&\ge \edgewidth\corr(H_e/\edgewidth).
  \tag{S2}\label{eq:scalar-S2}
 \end{align}
-The right-hand sides are convex functions of \((\edgewidth,H_e)\) and
-decrease with \(H_e\). This permits averaging over all edges in a
-coordinate. At \(\edgewidth=0\), both expressions are defined by their
-limiting value zero.
+For \(\edgewidth,H_e>0\), both right-hand sides are convex in
+\((\edgewidth,H_e)\) and decrease with \(H_e\). At
+\(\edgewidth=0\), with \(H_e>0\), they extend continuously by zero.
 
 \subsubsection{Centering property}\label{why-centering-the-edge-helps}
 
-For any real number \(r\), define
-\(\sinh r=(e^r-e^{-r})/2\) and \(\cosh r=(e^r+e^{-r})/2\).
-For \(r\ne0\), \(\coth r=\cosh r/\sinh r\).
-In this edge calculation \(v\) is a real center and \(k>0\) a
-half-width, specified by \(p=\tanh(v+k)\), \(q=\tanh(v-k)\).
-Assume \(p>q\). Then \(a=\edgewidth k\). Set \(M=\cosh(2v)\) and
-\(C_k=\cosh(2k)\). Direct calculation gives
+Assume \(p>q\), and write \(p=\tanh(v+k)\), \(q=\tanh(v-k)\),
+where \(k>0\). Then \(a=\edgewidth k\). With
+\(M=\cosh(2v)\) and \(C_k=\cosh(2k)\),
 \begin{align*}
  \edgewidth&=\frac{\sinh(2k)}{M+C_k},\\
  H_e&=\frac12\log[2(M+C_k)]
        -\frac{v\sinh(2v)+k\sinh(2k)}{M+C_k}.
 \end{align*}
-To differentiate with respect to the center, first consider \(v>0\)
-and set \(x=2v\). The derivative of the numerator of \(H_e/\edgewidth \) has the sign of \[
- \log[2(\cosh x+C_k)]-x\coth x.
-\]
-It is nonnegative because, for \(C_k\ge1\),
+For \(v>0\), the derivative of \(H_e/\edgewidth\) has the sign of
+\(\log[2(\cosh x+C_k)]-x\coth x\), where \(x=2v\). It is nonnegative:
 \begin{align*}
  \log[2(\cosh x+C_k)]
  &\ge x+2\log(1+e^{-x})\\
  &\ge x+\frac2{e^x+1}\\
  &\ge x+\frac{2x}{e^{2x}-1}=x\coth x.
 \end{align*}
-The last two steps use \(\log(1+y)\ge y/(1+y)\) for \(y\ge0\)
-and \(e^x-1\ge x\). Evenness handles \(v<0\). Hence \[
+Here we used \(\log(1+y)\ge y/(1+y)\) and \(e^x-1\ge x\).
+Evenness therefore gives
+\[
                          H_e/\edgewidth \ge F(k).               \tag{S3}\label{eq:scalar-S3}
 \]
 
-The function \(\arctan x\) is the angle between \(-\pi/2\) and
-\(\pi/2\) whose tangent is \(x\).
-For the angle term, let \(b_{\rm edge}=\sinh k\) and \(x=b_{\rm edge}/\cosh v\).
-This abbreviation is used only in the following half-angle calculation.
-The half-angle identity gives
+For \(b_{\rm edge}=\sinh k\) and \(x=b_{\rm edge}/\cosh v\),
+the half-angle identity gives
 \begin{align*}
  \arcsin p-\arcsin q&=2\arctan x,\\
  \frac{j}{\edgewidth}
  &=\frac{b_{\rm edge}}{\sqrt{1+b_{\rm edge}^2}}(1+x^2)
    \left(\frac{\arctan x}{x}\right)^2.
 \end{align*}
-The last factor increases with \(x\): its logarithmic derivative is
-\(2(x-\arctan x)/[x(1+x^2)\arctan x]>0\). Since
-\(x\le b_{\rm edge}\), it follows that
+The logarithmic derivative of
+\((1+x^2)(\arctan x/x)^2\) is
+\(2(x-\arctan x)/[x(1+x^2)\arctan x]>0\). Thus \(x\le b_{\rm edge}\) gives
 \[
                          j/\edgewidth \le\theta_{\rm edge}(k)^2/\tanh k.    \tag{S4}\label{eq:scalar-S4}
 \]
 
 \subsubsection{Averaging by convexity}\label{why-the-bounds-can-be-averaged}
 
-Put \(\ell=\log(2\cosh k)\). Differentiation gives \[
- F'(k)=-\frac{\ell}{\sinh^2 k},\qquad
- (F^{-1})'(F(k))=-\frac{\sinh^2 k}{\ell}.
-\] The positive ratio on the right increases with \(k\), since \(2\ell>\tanh^2 k\). Thus \(F^{-1}\) is decreasing and convex.
+Put \(L_k=\log(2\cosh k)\). Then
+\[
+ F'(k)=-\frac{L_k}{\sinh^2 k},\qquad
+ (F^{-1})'(F(k))=-\frac{\sinh^2 k}{L_k}.
+\]
+The positive ratio increases with \(k\), since \(2L_k>\tanh^2 k\).
+Hence \(F^{-1}\) is decreasing and convex.
 
 Similarly,
 \begin{align*}
  \frac d{dk}\left(k-\frac{\theta_{\rm edge}(k)^2}{\tanh k}\right)
  &=\left(1-\frac{\theta_{\rm edge}(k)}{\sinh k}\right)^2,\\
- \corr'(F(k))&=-\frac{(\sinh k-\theta_{\rm edge}(k))^2}{\ell}.
+ \corr'(F(k))&=-\frac{(\sinh k-\theta_{\rm edge}(k))^2}{L_k}.
 \end{align*}
-The positive ratio in the last expression increases with \(k\): its
-derivative has the sign of
-\(2\ell\sinh k-(\sinh k-\theta_{\rm edge}(k))>0\). Therefore \(\corr\)
-is nonnegative, decreasing, and convex.
+The latter positive ratio increases: its derivative has the sign of
+\(2L_k\sinh k-(\sinh k-\theta_{\rm edge}(k))>0\), since \(2L_k>1\).
+Thus \(\corr\) is decreasing and convex, and is nonnegative by its
+zero limit as \(k\downarrow0\).
 
 Combining these facts with \eqref{eq:scalar-S3}--\eqref{eq:scalar-S4}
 proves \eqref{eq:scalar-S2}.
-Let \(\psi\) be either of the two functions \(F^{-1}\) or \(\corr\).
-The function of two variables \(\edgewidth \psi(H_e/\edgewidth )\), called its
-\emph{perspective}, is convex, increases with \(\edgewidth \), and decreases
-with \(H_e\). Jensen may therefore be applied to \eqref{eq:scalar-S2}.
+For \(\psi\in\{F^{-1},\corr\}\), the perspectives
+\(\edgewidth\psi(H_e/\edgewidth)\) are convex and decrease with \(H_e\),
+so Jensen applies to \eqref{eq:scalar-S2}.
 
-For a monotone field \(u=T_\rho f\), a coordinate \(i\) with \(a_i>0\) satisfies
-\(\E\edgewidth=\rho a_i\) and \(\E H_e=\E h(u)\).
+Let \(u=T_\rho f\), with \(f\) nonconstant monotone Boolean and
+\(0<\rho<1\). Each active coordinate has \(\edgewidth>0\),
+\(\E\edgewidth=\rho a_i\), and \(\E H_e=\E h(u)\).
 For any upper bound \(H_{\rm budget}\ge\E h(u)>0\), Jensen and
 decrease in entropy give
 \begin{align*}
@@ -118,8 +106,7 @@ decrease in entropy give
  \E(a-j)&\ge\rho a_i[v_i-c(v_i)],\\
  F(v_i)&=H_{\rm budget}/(\rho a_i).
 \end{align*}
-Summing proves Lemma~\ref{lem:edges}. Its two applications simply
-supply different entropy budgets.
+Summing proves Lemma~\ref{lem:edges}; inactive coordinates contribute zero.
 
 \subsection{Monotonicity of the Entropy Profile}
 \label{a-short-proof-that-vfv-decreases}
@@ -129,25 +116,20 @@ supply different entropy budgets.
 The function \(vF(v)\) strictly decreases for \(v>0\).
 \end{appendixlemma}
 
-One concavity argument supplies the needed entropy bound. The function
-\((1-r^2)g(r)-r h(r)\) has continuous value zero at both endpoints
-of \([0,1]\), and its second derivative is \(-r/(1-r^2)<0\).
-It is therefore positive inside the interval, giving
+The function \((1-r^2)g(r)-r h(r)\) vanishes at both endpoints of
+\([0,1]\) and has second derivative \(-r/(1-r^2)<0\). Hence
 \[
-                   h(r)<\frac{(1-r^2)g(r)}r.
+                   h(r)<\frac{(1-r^2)g(r)}r,\qquad 0<r<1.
 \]
-Now fix \(v>0\) and put \(r=\tanh v\), so \(g(r)=v\).
-The factor \(r-v(1-r^2)\) is positive: it vanishes at zero
-and its derivative in \(v\) is \(2vr(1-r^2)>0\).
-We may consequently use the entropy bound in the derivative
+With \(r=\tanh v\), we have \(r-v(1-r^2)>0\), since
+\(\sinh(2v)>2v\). Substitution gives
 \begin{align*}
  \frac{d}{dv}[vF(v)]
  &=\frac{h(r)[r-v(1-r^2)]}{r^2}-\frac{v^2(1-r^2)}r\\
  &<\frac{v(1-r^2)}{r^3}(r-v)<0,
 \end{align*}
-where the last step uses \(\tanh v<v\).
+since \(r<v\).
 
-\paragraph{Consequence for the small-height comparison.}
 Choose an upper height \(0<\cutoff\le\logodds\). For \(0<v\le\cutoff\) and
 \(a=F(\logodds)/F(v)\), monotonicity gives
 \(a/v\le F(\logodds)/[\cutoff F(\cutoff)]\).
@@ -156,7 +138,7 @@ The LSI branch of Lemma~\ref{lem:deficit} now gives
 \[
  \unitcost(v)\le\rho+p\Klsi\rho^2\frac{F(\logodds )}{\cutoff F(\cutoff)}
                    \qquad(0<v\le\cutoff).                 \tag{S5}\label{eq:scalar-S5}
-\] This bounds the entire small-\(v\) interval by one expression.
+\]
 
 \input{profile-rates}
 
@@ -164,71 +146,49 @@ The LSI branch of Lemma~\ref{lem:deficit} now gives
 
 \subsection{The Influential-Coordinate Criterion}\label{a-large-singleton-coefficient-already-proves-ck}
 
-The starting point is the standard strong data-processing bound
-obtained from cube logarithmic Sobolev~\cite{Gross,ODonnell}.
-The local-optimality perspective is shared with~\cite{Sam,Yu}; the
-calculation below makes explicit the mean correction needed to use
-this particular criterion for biased rules.
-
-For an arbitrary Boolean \(f\), fix a coordinate and write \(a=|\widehat f(\{i\})|\), \(m=Ef\), \(\delta=1-\rho^2\). Necessarily \(|m|+a\le1\).
+For Boolean \(f\) and \(0<\rho<1\), fix a coordinate and write
+\(a=|\widehat f(\{i\})|\), \(m=\E f\), \(\delta=1-\rho^2\).
+Then \(|m|+a\le1\).
 
 For a cube field \(v\) taking values in \([-1,1]\), define
 \(\operatorname{Ent}_{\phi}(v)=\E\phi(v)-\phi(\E v)\).
-We first derive the entropy contraction used here and in Appendix~\ref{app:low}:
+The standard entropy contraction following from cube
+LSI~\cite{Gross,ODonnell} is
 \[
  \operatorname{Ent}_{\phi}(T_\rho v)
                  \le\rho^2\operatorname{Ent}_{\phi}(v).       \tag{S6a}\label{eq:scalar-S6a}
 \]
-For a positive field \(w\), the elementary edge inequality
-\[
- (p-q)(\log p-\log q)\ge4(\sqrt p-\sqrt q)^2
- \qquad(p,q>0)
-\]
-follows by Cauchy--Schwarz applied to the integrals of \(1\) and
-\(1/\sqrt t\) between \(p\) and \(q\). Sum over cube edges and use the
-logarithmic Sobolev inequality just proved in
-Section~\ref{app:lsi-proof}:
-\[
- \E[(\Lapl w)\log w]\ge4\E[\sqrt w\,\Lapl \sqrt w]\ge2\Ent(w).
-\]
-Let \(t\ge0\) be the noise-flow time and define \(w_t=T_{e^{-t}}w\).
-The mean is constant and
-\(\frac{\diff}{\diff t}\Ent(w_t)=-\E[(\Lapl w_t)\log w_t]\).
-Integration gives
-\(\Ent(T_\rho w)\le\rho^2\Ent(w)\).
-For a positive real \(\varepsilon\), nonnegative fields follow
-by replacing \(w\) with \(w+\varepsilon\)
-and taking \(\varepsilon\downarrow0\).
-Finally,
-\[
- \operatorname{Ent}_{\phi}(v)
-       =\tfrac12\{\Ent(1+v)+\Ent(1-v)\},
-\]
-which proves \eqref{eq:scalar-S6a}.
+Here \(\Ent(w)=\E[w\log w]-(\E w)\log(\E w)\), with \(0\log0=0\).
+Apply \(\Ent(T_\rho w)\le\rho^2\Ent(w)\) to \(w=1\pm v\)
+and use
+\(2\operatorname{Ent}_{\phi}(v)=\Ent(1+v)+\Ent(1-v)\).
 
-Apply \eqref{eq:scalar-S6a} to the other coordinates after noising the
-chosen bit first.
-The intermediate field has values \(\pm\rho\) on pivotal edges and
-\(\pm1\) otherwise. Pivotal probability is at least \(a\), and the section
-means are \(m\pm\rho a\). Thus \[
- Eh(T_\rho f)\ge\rho^2a\,h(\rho)
+Noise the chosen bit first, then apply \eqref{eq:scalar-S6a} to the
+remaining coordinates. The intermediate values are \(\pm\rho\) on
+pivotal edges and \(\pm1\) otherwise; pivotal probability is at least
+\(a\), and the section means are \(m\pm\rho a\). Thus
+\[
+ \E h(T_\rho f)\ge\rho^2a\,h(\rho)
                       +\frac{\delta}{2}[h(m+\rho a)+h(m-\rho a)]. \tag{S6}\label{eq:scalar-S6}
 \]
 
-The mean costs no additional loss because \[
+The required mean correction is
+\[
  \phi(m)+\frac{\delta}{2}[h(m+\rho a)+h(m-\rho a)]
                               \ge\delta h(\rho a).    \tag{S7}\label{eq:scalar-S7}
-\] For completeness, twice differentiate the difference in \(m\). After positive factors are removed, its second derivative has the sign of \[
+\]
+The difference vanishes with its first derivative at \(m=0\).
+Its second derivative has the sign of
+\[
  [1-(m+a)^2][1-(m-a)^2]
-          +(1-\rho^2)a^2(1-m^2-a^2)\ge0.
-\] The difference and its first derivative vanish at zero. Integrating
-proves \eqref{eq:scalar-S7}; reflection handles negative \(m\).
+          +(1-\rho^2)a^2(1-m^2-a^2)\ge0
+\]
+on \(|m|+a<1\). Convexity proves \eqref{eq:scalar-S7} there,
+and continuity covers \(|m|+a=1\).
 
 Combining \eqref{eq:scalar-S6}--\eqref{eq:scalar-S7} proves CK whenever \[
                  (1-\rho^2)h(\rho a)
                     -(1-\rho^2a)h(\rho)\ge0.          \tag{S8}\label{eq:scalar-S8}
-\] For fixed \(\rho\), the left side is concave in \(a\) and zero at
-\(a=1\). Checking it at a cutoff therefore covers every larger \(a\).
-Section~\ref{app:local-propagation} proves directly why a successful
-cutoff also works at smaller correlations. The all-bias step is
-\eqref{eq:scalar-S7}, proved here.
+\]
+Section~\ref{app:local-propagation} extends a successful cutoff to
+larger \(a\) and smaller correlations.

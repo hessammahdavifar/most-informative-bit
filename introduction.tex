@@ -37,6 +37,12 @@ argument is dynamical: wherever a function has more information than a
 dictator, its advantage must increase with \(\rho\). Such an advantage
 cannot return to its nonpositive value at \(\rho=1\).
 
+A Lean~4 formalization of our one-bit proof, together with its
+definitions, pinned dependencies, and verification instructions, is
+available in the project's \href{https://github.com/hessammahdavifar/most-informative-bit/tree/main/lean}{\texttt{lean} directory}.\footnote{\url{https://github.com/hessammahdavifar/most-informative-bit/tree/main/lean}}
+Its exported statement uses finite-distribution mutual information in
+bits and covers every crossover probability \(p\in[0,1]\).
+
 We also study the natural vector-valued extension in which \(f(X)\)
 contains \(k\) bits. The scalar theorem does not tensorize through the
 chain rule because conditioning on preceding output bits destroys the
@@ -78,16 +84,19 @@ inequality implying the conjecture~\cite{Hellinger}. Chen and Nair placed
 this proposal in an ordered family of entropy inequalities and related
 the low-noise limits to sharp cube isoperimetry~\cite{CN}. The critical
 square-root isoperimetric inequality was recently established by Durcik,
-Ivanisvili, Roos, and Xie~\cite{DIRX}. These limiting or stronger
-statements do not themselves yield the finite-noise Shannon inequality.
+Ivanisvili, Roos, and Xie~\cite{DIRX}, confirming the balanced low-noise
+limit predicted by the Hellinger conjecture. This limiting result does
+not by itself establish the finite-noise Shannon inequality. Other approaches use principal inertia components~\cite{PIC}, adjacency
+events~\cite{HOS}, Gaussian analogues~\cite{KOW}, and stochastic
+interpolation~\cite{EMR}.
 
 The closest antecedent to the present proof is the differential-equation
-framework odf Chen, Gohari, and Nair~\cite{CGN}. Their entropy-flow identity
+framework of Chen, Gohari, and Nair~\cite{CGN}, introduced in 2025.
+Their entropy-flow identity
 and entropy-constrained two-point extremal formula are used here. 
 
-Two
-concurrent works establish the scalar conjecture in full
-generality~\cite{CGJLMNW,KyTran}. Chen, Gohari, Javanmard, Lin, Mirrokni,
+Three concurrent works also establish the scalar conjecture in full
+generality~\cite{CGJLMNW,KyTran,KramerSaglam}. Chen, Gohari, Javanmard, Lin, Mirrokni,
 Nair, and Woodruff close the differential-equation program through an
 unrestricted four-moment Bellman inequality for a hybrid potential,
 using analytic reductions together with certified interval arithmetic.
@@ -99,15 +108,14 @@ and a differential contradiction at the noiseless endpoint. The
 quantitative implementations differ. Our proof centers on an angular
 edge correction and logarithmic-Sobolev estimates for pivotal sets,
 whereas Ky and Tran use a profile-clock integration and selected-coordinate
-spectral estimates. Finally, neither of~\cite{CGJLMNW,KyTran} considers the \(k\)-bit extension
-studied in the present paper where we conjecture that up to $k=7,$ the most informative \(k\)-bit function follows a similar structure.
+spectral estimates. In another concurrent work, Kramer and
+Saglam~\cite{KramerSaglam} give a substantially shorter proof based on
+induction on the dimension, applied to a strengthened inequality that
+retains the output mean. We have independently verified their proof in
+Lean. Finally, neither of~\cite{CGJLMNW,KyTran,KramerSaglam} considers the \(k\)-bit extension
+studied in the present paper.
 
-Related operator and channel perspectives include principal inertia
-components~\cite{PIC} and mutual-information bounds based on adjacency
-events~\cite{HOS}. Continuous analogues and stochastic-interpolation
-variants were developed in~\cite{KOW,EMR}.
-
-The present paper additionally develops the vector-valued extension in
+As mentioned above, the present paper develops the vector-valued extension in
 which the quantizer reports \(k\) bits. For this problem, Chandar and
 Tchamkerten characterized the positive-rate asymptotics and
 gave Hamming- and Golay-code counterexamples with \(k\geq11\)~\cite{CT}.
@@ -120,16 +128,16 @@ that work is different from BSC mutual information.
 
 \subsection{Contributions and Organization}
 
-Our fist main contribution is Theorem~\ref{thm:CK}, which proves the
+Our first main contribution is Theorem~\ref{thm:CK}, which proves the
 Courtade--Kumar conjecture in every dimension and for every crossover
 probability, without any balance assumption on the Boolean function. The
-proof follows a single dynamical strategy. For
+proof follows a single dynamical strategy. In natural units, set
 $
  I_f(\rho)\coloneqq I(f(X);Y_\rho),
  \phi(\rho)\coloneqq I(X_1;Y_\rho),
  \Delta_f(\rho)\coloneqq I_f(\rho)-\phi(\rho),
-$
-we show that a positive advantage over a coordinate projection would have
+$.
+We show that a positive advantage over a coordinate projection would have
 to grow strictly as the channel becomes less noisy. Section~\ref{sec:mechanism}
 introduces the posterior representation of \(I_f\), the required Fourier
 notation, and the monotone reduction. In particular,
@@ -184,17 +192,12 @@ which the quantizer reports \(k\) bits and the coordinate benchmark is
 linear maps cannot violate this benchmark. Nonlinear nearest-codeword
 quantizers built from linear codebooks behave differently: an exact
 high-noise expansion, expressed through the coset-leader distribution,
-produces shortened-Hamming counterexamples for \(k=8,9,10\) in
-Proposition~\ref{prop:k8-k10-counterexamples}. A direct-sum construction
-in Proposition~\ref{cor:failure-all-k-ge-8} extends the failure to every
-\(k\geq8\). For \(k<8\), exhaustive searches over several structured
-code families and Monte Carlo experiments with random codebooks find no
-violation, while also showing a clear advantage of structured codebooks
-over random ones in this finite-block regime. These findings motivate
+produces shortened-Hamming counterexamples for \(k=8,9,10\); Proposition~\ref{prop:k8-k10-counterexamples}
+extends the failure to every \(k\geq8\) by a direct-sum construction. Below eight bits, structured-code searches and seven-bit random-codebook
+experiments find no violation. The seven-bit examples also show an
+advantage of the tested structured codebooks over the sampled random
+codebooks. These findings motivate
 Conjecture~\ref{conj:seven-bit-threshold}, which predicts that coordinate
-projections remain optimal for \(2\leq k\leq7\). The appendices provide
-the scalar inequalities, logarithmic-Sobolev and Fourier estimates,
-channel-range comparisons, endpoint reductions, exact arithmetic
-certificates, and reproducible numerical diagnostics used throughout the
-proof.
-
+projections remain optimal for \(2\leq k\leq7\). The appendices establish
+the scalar and Fourier bounds, endpoint reductions, and channel
+comparisons needed for the proof.
