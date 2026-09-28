@@ -1,0 +1,186 @@
+{
+  "paper": {
+    "title": "The Most Informative Bit and Beyond: A Proof of the Courtade–Kumar Conjecture and Multibit Extensions",
+    "authors": [
+      "Hessam Mahdavifar",
+      "Ahmad Beirami"
+    ],
+    "year": 2026,
+    "arxiv": "2609.26444",
+    "url": "https://arxiv.org/abs/2609.26444"
+  },
+  "formalized_manuscript": {
+    "filename": "most_informative_bit.zip",
+    "sha256": "34ed4ff76cae9b2b27464e100f7a15a1c16cba044a30b6b771bc0922f1e1d2b7",
+    "member_sha256": {
+      "IEEEtran.cls": "da751920a317ed318b7b5cd7fa585a6cc7d28502d457856382e9be24b10a3bd7",
+      "README.md": "ce59f2680a909602e8b2950d8681e6bbbe1826570146a39b01373b2aea04422d",
+      "ai-disclosure.tex": "15c18224d4dc8b93a32418c08740fdffbe8acb9a5bd890f94335491647c6be7e",
+      "canonical-tail-checks.tex": "3a8c5af251ac82421e24da20a96c286d042d706bb651eb2ab9f47f14ac01c811",
+      "centered-edge.pdf": "226e6539e22764f242f4c19047cf1f2fbf4d33f52fe65f2ee31b808dec6611c4",
+      "centered-support.tex": "8bf9a1eb848e4329e613241b60ac98d1b2e62e48b271a2bcd261d34b17d3ffa5",
+      "conclusion.tex": "3ed0f088556c5f1e4df8fbd7f60f8baa3b43b56afc992fb89ba2c51d1d0316b6",
+      "courtade-kumar.pdf": "c86f4ec78870af548a0a8a8da6954a83001e88e798eeb84f0b860f9f375f674b",
+      "courtade-kumar.tex": "7062408bb2b21f9f66c28b4e8bfd49632fefd5994f164f029e5c8fceac58a9a1",
+      "elementary-inputs.tex": "3df25a558ab2bbaf0d10f9700b411bb7afad50ab89ba29aabc653957880b20eb",
+      "endpoints.tex": "e63acdc2c1bbab6ed9d15f22f9cb386905644af5345125d9b037d000a581c141",
+      "fourier-cap.tex": "249987850e9599a997985415136bae541d696c7bcb37bc55d2cb46786b8f942f",
+      "introduction.tex": "aaba48664c5a994c81a4281a044ff119072e551c259d474b0f6b5cc731de78a7",
+      "low.tex": "09f8e7d8899ac05808a8c0075180ff0d84d562b364854a8e62ac62fab30d080a",
+      "manual-cutoff-common.tex": "5706724ea631013894194fa50af2f87c6e1bf251857e1e63d7092c5b34c1a297",
+      "manual-local.tex": "7d785bcac4f7d845e16fc26f2f991e3ad817b4c0af28bf0de40bfe677261366b",
+      "maximum.pdf": "6e5f36f2a2ab151cc94a1c352a983366e4e0ef2cc880cc2a2eea4b15c3d9fd0c",
+      "mechanism.tex": "70f7a16c37e638f7904a8031040e81630b1525d3a21c61328ebc74ef1338c813",
+      "most-informative-social-figure-large-text.png": "3f32f265165745e7660edb00b51f00274a8417e2b3e9389d2e680c45c1d1785c",
+      "multibit-extension.tex": "6997286dddb7295b2ef94c3bf1001018a51a30205a6de38850c1c188f10b033c",
+      "numerical-diagnostics.tex": "a67e5e409305ae4b8012143f0992323f6ab8c1d6257448545273a5ba5a8a3427",
+      "numerical_diagnostics.py": "9f9963425d57384f82aac7538d4e7a0b35b1781b859a0daea26546e75fe969f5",
+      "original-yield.tex": "8d827de3b83b8fe9dfd1670443f154701f5e97b09e56c183e2570911f846f7ee",
+      "pivotal-channel-checks.tex": "c927d5500481353e1ca1a8dc5c594231bc901057919c4d735136b925e954b935",
+      "profile-rates.tex": "b8502925346637e8c9366228342900db16ab1c24acff4d4a3955649b9a269bb5",
+      "references.tex": "c9bff5ca6dfdf24ce728332852904ebd15573bb8c913450cf2f24b744ec575a5",
+      "scalar.tex": "872732661ca24f648ab3e2038babdb13106c0d80a42de212f5800dee2e996bbe",
+      "verification.tex": "2c43f3c4c44e38972a042743dc8fa861171469aa3c6da81a0749e823fa431b81"
+    }
+  },
+  "lean_version": "4.33.0",
+  "lean_commit": "d8b18978322de05a8f3dba51ef03cf5461676c17",
+  "mathlib_commit": "db584cd6d46c92f209a44c0f1c829460d327499d",
+  "verification": {
+    "source_checks": "passed: local import closure, retained-module byte identity, audit declaration coverage, Python syntax",
+    "build_status": "not rerun; Lean and Lake unavailable in the editing environment",
+    "axiom_audit_status": "configured; not rerun for this edition",
+    "axiom_audit_declarations": 21,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "hosted_ci_status": "configured; not run as part of source preparation",
+    "full_range_theorem": "MostInformativeBit.general_courtade_kumar",
+    "full_range_proposition": "GeneralCK.GeneralCourtadeKumar"
+  },
+  "production_source_sha256": {
+    "MostInformativeBit/AngularPivotal.lean": "b5608b624a0a3bd2a64121386ac81ba13ca70b25da955a4a407322a38b784963",
+    "MostInformativeBit/AngularResolvent.lean": "fa2f74a2d7005b8c9bb08fd8d7d50936cddbb49be2b9ecf7185399f6e3dd71f8",
+    "MostInformativeBit/CenteredSupport.lean": "f3ac0aff7b59acf5094c5442580907bed3b5b3d3928e11bc4b63fbc10f9d6794",
+    "MostInformativeBit/ChannelBounds.lean": "e7793152b6e0c68d1f2042dacca2696bc57946357a679a3e75e4c570c80193b2",
+    "MostInformativeBit/ChannelProfiles.lean": "a2c1e0ce30deb452932a0a618aec8065591d0d296a2ffcf64f679d6969acb4c8",
+    "MostInformativeBit/CoordinateDeficit.lean": "e9756d2841961302bcbcb6bef68afe4ec42e75fc2c192d38bd9128ba992f5f12",
+    "MostInformativeBit/CubeFourier.lean": "587be275bca963d5f7254072a90011d94cbca30fa98e1a97f1dd4218b33830cc",
+    "MostInformativeBit/CubeLogSobolev.lean": "ac93a1712e4b8bb4f7719e033bfe5a7028eb76c583b3e5f7ab3b970d2e8bcf11",
+    "MostInformativeBit/CutoffMargin.lean": "f1d14ff9e55dc6da0bd6aa782fb025fbcf0c021ff6b7109fefbd40c6261cfe57",
+    "MostInformativeBit/Definitions.lean": "b4debd9e8e2cad2d89c5e0b1f5956ed59d1b050a28c37a4de5629569ab8d1617",
+    "MostInformativeBit/EdgeBudget.lean": "b9217b0701b45efe6e474f979b0115b80b97c24232872a6fd75f8757fbe601ff",
+    "MostInformativeBit/EntropyBounds.lean": "0358526053f30573c9222cc5b2ca61d9be133031a6a8feff93a13cb11be71eef",
+    "MostInformativeBit/EntropyContraction.lean": "12a92b83482daf423db68267bce844d256501d7ce95a3e7b4ffdfd94e1d2e8b6",
+    "MostInformativeBit/EntropyFlow.lean": "c5f549a36a2c8fcfe2c14c5431a053487bf8b9d738d1b1fe8b3edd507de7ec68",
+    "MostInformativeBit/EntropyTensorization.lean": "a1baf31c5cdff23df8bf42bc4d516934897daa53c330c6e3e1a2c1c3a99ecf37",
+    "MostInformativeBit/GrowthBudget.lean": "5c5801c5e6f35f4166c8c231fe4fe0a5c3bc55b7e608748b60ca7f08e642d6b0",
+    "MostInformativeBit/HighAngular.lean": "9322837cd88b223f822a6beb9e0c01ce054993c464e14a1b71d81224274f5c84",
+    "MostInformativeBit/HighChannel.lean": "2f7a688a1fff178c9ea82ba8ed545773e2e7eb52682dd6d119fe0afefb570ddb",
+    "MostInformativeBit/HighCoordinate.lean": "000f7fe75ab3a047534efa602d78c5239c368148c5ced5267b9e0ce2506ccc3e",
+    "MostInformativeBit/HighGrowth.lean": "3247e0d4dad92f111063b1e12e941d00c5de543d7c131271b352e1db5bfd5d9a",
+    "MostInformativeBit/HighLocal.lean": "d66c92c8667f296a0b77f1878cf87841a7d976b4419684eab0a334668af85476",
+    "MostInformativeBit/HighRegime.lean": "ad519e7f41f57a975e6a162cff1b07489451d645f400ef89f7457d5ee8aeeaa9",
+    "MostInformativeBit/HighYield.lean": "9b592bcf551a154e851553831801e928b2fb7d02266ca1cfb7f37f722ac7cbea",
+    "MostInformativeBit/InfluentialCoordinate.lean": "fa66dd6fa0c3a4504f84a60756c120745074f7b0d4b80db9b7ad58d0e65a08e9",
+    "MostInformativeBit/IntervalBounds.lean": "0ac2e2bcfe33b6c0acab5beb2a95c08064e447147e5f80eb6a7da8871b2b2a3a",
+    "MostInformativeBit/LocalPropagation.lean": "203be2ae7f9ff3b207ca933ed15698c84a6e699afcd736b430880a1909df8c04",
+    "MostInformativeBit/LowCertificates.lean": "8877faef6b95095f27bbacc34a5370239381066038e9d15ed44463ecaaffeb7d",
+    "MostInformativeBit/LowDefinitions.lean": "a5de3f474d64b9582c93c23dc21a94e4fe85feaf578b2bdb92c7d37a7b3dfbd7",
+    "MostInformativeBit/LowGapCalculus.lean": "a997e582d0f1cd7815ba90e25159444f45fe4f108bac43cab18e1d243fedf350",
+    "MostInformativeBit/LowNumericalBridge.lean": "9d6cc9110232c63f826ba4ce22d71044792090391b9ef742b36ac99e3bdf18ff",
+    "MostInformativeBit/LowRegime.lean": "96e40b08d6c45daf874ea4ea5819bbac3e10e47a1095fbe56ea3d2f22fb45abb",
+    "MostInformativeBit/LowScalar.lean": "8060033783da6e84b9437e4b98659cda939cc6e408999d9f51fd59c4b6b2e829",
+    "MostInformativeBit/Main.lean": "83854ebce7442351824335d2e8ab0666aa61e4792248d513c2c6e3bd40af7895",
+    "MostInformativeBit/MainReduction.lean": "9f9005d3a96e73be8d99ece2d880202929be1618d196ca5a0c561d67953f9b17",
+    "MostInformativeBit/MaximumPrinciple.lean": "9362b32c81e38be49488ca5f9330ebfb3ff43bfecbea129a28cad50f11463daf",
+    "MostInformativeBit/MeanCorrection.lean": "2a703117fa52924dce77bbd3a598f667c418680f6ab1ef8ff0f340d62539b777",
+    "MostInformativeBit/MiddleBudget.lean": "08bf0edb5f29cb3719a8eaa92d120ab5d484f19c2b058845287051fb740a8039",
+    "MostInformativeBit/MiddleChannel.lean": "ce42342c0135cf834915b76b234606a95f3b27cd571e1ae3b22e8f39b19c742c",
+    "MostInformativeBit/MiddleGrowth.lean": "a06fb9bf2f458c205268cdf8a2b4ec590bad62a89fddaa3db70764774d1aba14",
+    "MostInformativeBit/MomentMajorant.lean": "04a1cdffc1da79a1b69a9b2cf1bf9646c4a628983f8f487030bcb92ee1ca01f1",
+    "MostInformativeBit/MonotoneReduction.lean": "982b67cfefa42c852da4f9856cc15a586cf70481445e1ac1e8643d1342fb4bfc",
+    "MostInformativeBit/NoiseComplement.lean": "ba16cc80f0c5acf82829e4ceedf90e439140618d80c755107af51a35b313f261",
+    "MostInformativeBit/OriginalYield.lean": "1069e7bb22edf40363917fca91cd1a87d28e22bf50d3d50fe24550fc65697af7",
+    "MostInformativeBit/PivotalEntropy.lean": "e180287a9bc1dec2957ba506c419da21dd97282493f2eee727556b5e105e4940",
+    "MostInformativeBit/PivotalGeometry.lean": "a02042b7b0c37bfb96f953bc792081c0b36ae46cc8348d3ada9bd0176572870e",
+    "MostInformativeBit/PivotalLogSum.lean": "3fdc5d66aa7d19a34334ba763abe65f2c9e109da877d828cbfd1dd3b7958c218",
+    "MostInformativeBit/ProbabilityEndpoints.lean": "2784c66a3b57d094f129705c027427d4d9f093a7bc57aaf27fd008e03fc9c618",
+    "MostInformativeBit/ProfileMonotonicity.lean": "6c188ef8a14d01cf2f1f3f211d5b117ae87214152d097e4234965b5f896cb88e",
+    "MostInformativeBit/RademacherMoments.lean": "84bf313344a72863369581d6b31a733ca4da4087c6ef2e679a0a37d2d039cb86",
+    "MostInformativeBit/RegimeAssembly.lean": "5afb1bbc5c88cd21ec90b771c721c2d067cc0cd558e063888958b1cc22f312eb",
+    "MostInformativeBit/RegimeSplit.lean": "9b436504680a242594a64cf7e38a416efd4004390b385e65a08f6148d21ebd6d",
+    "MostInformativeBit/ScalarEdge.lean": "16a420cf22870995cb5acab3fcceb9c51ca7f6bd02549530de3b148b50a823a6",
+    "MostInformativeBit/SingletonCap.lean": "fb0b29c0b85499e0f0c2e1f80a13d3c5400dfb410bda62da8081e71ad8fef728",
+    "MostInformativeBit/SourceStatement.lean": "3a0f85e023171e6ed70d0d586109c0eb10fe77a7b6fab3e668083b72e594bbb9",
+    "MostInformativeBit/SpectralBaseline.lean": "5db8bbbd7a8513b1dac6c7fa3d2f7fbcae7bd5e0922769e53c5f8ef2bf0b5d1c",
+    "MostInformativeBit/TangentMinorant.lean": "97499eb79c2cb792d35efe92c1ecff42f4819ee15dc3bfaccb772ebf9ca06099",
+    "MostInformativeBit/Vendor/GeneralCK/Distribution.lean": "d758e79145317e332ce1367ae7a0cbab972d5b926f2c4a3431f576527d85b1bf",
+    "MostInformativeBit/Vendor/GeneralCK/InformationIdentity.lean": "2fd51c062bdd07745c26979bc4208d2d8e30e4f0da08d6ffc4d586f795d0d10a",
+    "MostInformativeBit/Vendor/GeneralCK/Statement.lean": "f589876f3509337ebbe9b5c61fb3c3437240a470dc760386c6708e6474a522b2",
+    "MostInformativeBit.lean": "dd5ea471f481e04c785dcf3ea4768bbdfb23baa990c0c28205d2c886464e00cc"
+  },
+  "scope": "Courtade–Kumar one-bit theorem and its supporting estimates",
+  "derived_from": {
+    "filename": "most-informative-bit-lean-middle-only.zip",
+    "sha256": "8c55a4ab7991511edd41f30c2c89cf90bdca8f812298fb3da5dbc0b4fcc13b37",
+    "changes": "Removed multibit modules and combined theorem wrapper; reduced imports and audits to CK; updated documentation.",
+    "unchanged_mathematical_modules": 59
+  },
+  "original_package_verification": {
+    "original_project_build_exit_code": 0,
+    "original_project_build_jobs": 3480,
+    "axiom_audit_declarations": 62,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "hosted_ci_status": "configured; not run as part of source preparation",
+    "full_range_theorem": "MostInformativeBit.general_courtade_kumar",
+    "full_range_proposition": "GeneralCK.GeneralCourtadeKumar",
+    "full_range_verified_at_utc": "2026-09-26T02:31:44.134150+00:00",
+    "full_range_audit_sha256": "a7b0a9a1b6e21a1d47ca85ae4aeccbbcb9a5ad30aeec25336d6417adf0fc6862"
+  },
+  "original_package_verification_note": "Historical verification record reported by the supplied archive; not rerun during this edit. See original_package_source_hash_discrepancies.",
+  "original_package_source_hash_discrepancies": {
+    "MostInformativeBit/MiddleChannel.lean": {
+      "original_recorded_sha256": "6ccee6b2990b3a5eb7864e21f13ef749a41f5561810a226264c8c1df34035071",
+      "supplied_file_sha256": "ce42342c0135cf834915b76b234606a95f3b27cd571e1ae3b22e8f39b19c742c",
+      "note": "Supplied archive source differs from its recorded hash. This edition retains that source unchanged and records its actual hash."
+    }
+  },
+  "source_counts": {
+    "all_lean": {
+      "files": 61,
+      "physical_lines": 14578,
+      "nonblank_lines": 12990
+    },
+    "mathematical_modules": {
+      "files": 59,
+      "physical_lines": 14528,
+      "nonblank_lines": 12946
+    },
+    "project_mathematical_modules": {
+      "files": 56,
+      "physical_lines": 14249,
+      "nonblank_lines": 12713
+    },
+    "vendor_modules": {
+      "files": 3,
+      "physical_lines": 279,
+      "nonblank_lines": 233
+    },
+    "root_and_audit": {
+      "files": 2,
+      "physical_lines": 50,
+      "nonblank_lines": 44
+    }
+  },
+  "audit_source_sha256": {
+    "Check.lean": "7e7fd4741767eca12ae0b12f4f072104c0c94c1b76f28db667c69e6538707a77",
+    "scripts/verify.py": "97ee600974bc17db518222052b17ed951096b1ff2edaea7d7bc14fc355c5b31c"
+  }
+}

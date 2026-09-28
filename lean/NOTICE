@@ -1,0 +1,25 @@
+Courtade–Kumar Conjecture — Lean 4 formalization
+
+This project formalizes the Courtade–Kumar theorem in:
+Hessam Mahdavifar and Ahmad Beirami.
+The Most Informative Bit and Beyond: A Proof of the Courtade–Kumar
+Conjecture and Multibit Extensions. arXiv:2609.26444, 2026.
+https://arxiv.org/abs/2609.26444
+
+The files in MostInformativeBit/Vendor/GeneralCK/ are adapted from
+dpwoodru/general-courtade-kumar-lean:
+https://github.com/dpwoodru/general-courtade-kumar-lean
+Copyright 2026 the general-courtade-kumar-lean contributors.
+Licensed under the Apache License, Version 2.0.
+
+These three files provide finite probability definitions and elementary
+information identities. Local modifications change their import paths;
+the upstream statements and proofs are retained. Their copyright headers
+and license are preserved. This project proves the Mahdavifar–Beirami
+argument in its own modules and does not import the upstream final theorem
+or generated certificate collection.
+
+Mathlib and its dependencies are separately fetched at the revisions in
+lake-manifest.json and retain their respective notices and licenses.
+The root Apache-2.0 license applies to the code in this repository; it does
+not purport to change the license or authorship of the cited manuscript.

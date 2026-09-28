@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Please cite the Mahdavifar–Beirami paper below when using this formalization."
+type: software
+title: "Courtade–Kumar Conjecture: Lean 4 Formalization"
+authors:
+  - name: "Contributors to this Lean formalization"
+version: 0.1.0
+license: Apache-2.0
+preferred-citation:
+  type: article
+  title: "The Most Informative Bit and Beyond: A Proof of the Courtade–Kumar Conjecture and Multibit Extensions"
+  authors:
+    - family-names: Mahdavifar
+      given-names: Hessam
+    - family-names: Beirami
+      given-names: Ahmad
+  journal: arXiv
+  year: 2026
+  doi: 10.48550/arXiv.2609.26444
+  url: https://arxiv.org/abs/2609.26444
